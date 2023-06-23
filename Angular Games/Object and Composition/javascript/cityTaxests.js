@@ -14,7 +14,6 @@ function cityTaxests(name, population, treasury) {
             this.treasury -= Math.floor(this.treasury * percent / 100);
         },
     };
-}
-;
+};
 var cityts = cityTaxests('Tortuga', 7000, 15000);
 console.log(cityts);
