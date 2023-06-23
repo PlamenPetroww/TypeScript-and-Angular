@@ -1,4 +1,4 @@
-/* class Person {
+class Person {
     constructor(name) {
         this.name = name;
         this.age = age;
@@ -9,7 +9,7 @@ let peter = new Person('Peter');
 let john = new Person('John')
 
 console.log(peter)
-console.log(john); */
+console.log(john);
 
 const collection = new Map()
 
