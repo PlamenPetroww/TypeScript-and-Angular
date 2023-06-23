@@ -10,9 +10,13 @@ function solvets(input) {
             objts[city] += Number(peoplets);
         }
     }
+    for (var _b = 0, _c = Object.entries(objts); _b < _c.length; _b++) {
+        var _d = _c[_b], city = _d[0], people = _d[1];
+        console.log("".concat(city, " : ").concat(people));
+    }
 }
-solvets(['Istanbul <-> 100000',
+console.log(solvets(['Istanbul <-> 100000',
     'Honk Kong <-> 2100004',
     'Jerusalem <-> 2352344',
     'Mexico City <-> 23401925',
-    'Istanbul <-> 1000']);
+    'Istanbul <-> 1000']));
