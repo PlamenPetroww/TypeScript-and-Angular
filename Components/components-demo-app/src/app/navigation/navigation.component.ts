@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class NavigationComponent {
 
   isActive = false;
+  inputValue = 'Hello';
 
   activeUsers = [{ name: 'Plamen', age: 21 },
   { name: 'Petko', age: 31 },
