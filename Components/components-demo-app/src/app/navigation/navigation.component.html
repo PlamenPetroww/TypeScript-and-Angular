@@ -2,9 +2,7 @@
 
     <span *ngIf="isActive">
         <ul>
-            <li>Active List</li>
-            <li>Active List</li>
-            <li>Active List</li>
+            <li *ngFor="let user of activeUsers">{{user.name}} : {{user.age}}</li>
         </ul>
     </span>
 
