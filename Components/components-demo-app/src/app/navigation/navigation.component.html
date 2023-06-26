@@ -1,5 +1,17 @@
 <div>
-    <span *ngIf="toggle">{{title}}</span>
-    <button (click)="handleClick()">Click me!</button>
-</div>
 
+    <span *ngIf="isActive">
+        <ul>
+            <li>Active List</li>
+            <li>Active List</li>
+            <li>Active List</li>
+        </ul>
+    </span>
+
+    <span *ngIf="!isActive">
+        <div>Nothing is activ :(</div>
+    </span>
+    <button (click)="handleClick()">
+        Make {{isActive ? "Inactive" : "Activ" }}
+    </button>
+</div>
