@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-navigation',
@@ -7,15 +7,11 @@ import { Component } from '@angular/core';
 })
 export class NavigationComponent {
 
+  @Input('title') titleFromApp: string="";
+  @Input('activeUsers') activeUsers: {name: string, age: number}[] = [];
   isActive = false;
   inputValue = 'Hello';
 
-  activeUsers = [
-    { name: 'Plamen', age: 21 },
-  { name: 'Petko', age: 31 },
-  { name: 'Valq', age: 40 },
-  { name: 'Gosho', age: 26 },
-]
 
   handleClick() {
     this.isActive = !this.isActive;
