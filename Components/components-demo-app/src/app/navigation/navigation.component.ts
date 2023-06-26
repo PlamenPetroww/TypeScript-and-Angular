@@ -10,10 +10,12 @@ export class NavigationComponent {
   isActive = false;
   inputValue = 'Hello';
 
-  activeUsers = [{ name: 'Plamen', age: 21 },
+  activeUsers = [
+    { name: 'Plamen', age: 21 },
   { name: 'Petko', age: 31 },
-  { name: 'Valq', age: 41 },
-  { name: 'Gosho', age: 26 },]
+  { name: 'Valq', age: 40 },
+  { name: 'Gosho', age: 26 },
+]
 
   handleClick() {
     this.isActive = !this.isActive;
