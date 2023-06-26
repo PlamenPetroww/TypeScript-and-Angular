@@ -1,4 +1,4 @@
-import { Component, Input} from '@angular/core';
+import { Component, EventEmitter, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-navigation',
@@ -9,13 +9,14 @@ export class NavigationComponent {
 
   @Input('title') titleFromApp: string="";
   @Input('activeUsers') activeUsers: {name: string, age: number}[] = [];
+  @Output() onTestOutput = new EventEmitter<boolean>();
   isActive = false;
   inputValue = 'Hello';
 
 
   handleClick() {
     this.isActive = !this.isActive;
-
+    this.onTestOutput.emit(this.isActive)
   }
 
 }
