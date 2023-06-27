@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-
-import { TodoListComponentComponent } from './todo-list-component/todo-list-component.component';
+import { AppComponent } from './app.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
-    TodoListComponentComponent,
+    AppComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
