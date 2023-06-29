@@ -1,5 +1,12 @@
-<app-navigation
+<!-- <app-navigation
   [title]="title"
   [activeUsers]="users"
   (onTestOutput)="onTestOutput()"
-/>
+/> -->
+<h3>{{title}} works!</h3>
+<div>
+  <input #inputName type="text"placeholder="name">
+  <input #inputAge type="text"placeholder="age">
+  <button (click)="addUser(inputName, inputAge)">Add user</button>
+</div>
+<app-users-list [users]="users" />
