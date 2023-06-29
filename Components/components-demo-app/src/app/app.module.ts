@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { UsersListComponent } from './users-list/users-list.component';
 import { UsersListItemComponent } from './users-list-item/users-list-item.component';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,7 @@ import { UsersListItemComponent } from './users-list-item/users-list-item.compon
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
