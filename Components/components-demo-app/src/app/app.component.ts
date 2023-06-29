@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { User } from './types/User';
 import { UserService } from './user.service';
+
 
 @Component({
   selector: 'app-root',
@@ -34,7 +35,7 @@ o.subscribe((data) => {
 }) */
 
 function interval(intervalValue: number) {
-  return new Observable((observer) => {
+  return new Observable<number>((observer) => {
     let counter = 0;
     const timer = setInterval(() => {
       observer.next(counter++);
@@ -46,8 +47,14 @@ function interval(intervalValue: number) {
   });
 }
 
-const stream$ = interval(3000).subscribe((data) => {
-  console.log('data from observer', data)
+const stream$ = interval(3000).pipe(map((x) => x * 2));
+
+setTimeout(() => {
+  stream$.subscribe({
+    next: (x) => console.log('data', x),
+    error: (err) => console.error(`Error occured: ${err}`),
+    complete: () => console.log('Stream has been completed!'),
+  });
 })
 
 
