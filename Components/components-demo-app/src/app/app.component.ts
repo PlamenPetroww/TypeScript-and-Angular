@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from './types/User';
+import { UserService } from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -8,38 +9,17 @@ import { User } from './types/User';
 })
 export class AppComponent {
   title = 'Title from App Component!';
+  appUsers: User[] = [];
 
-  users: User[] = [
-    { name: 'Plamen', age: 21 },
-    { name: 'Petko', age: 31 },
-    { name: 'Valq', age: 40 },
-    { name: 'Gosho', age: 26 },
-  ];
-  
-
-  constructor() {
-    setInterval(() => {
-      this.users.push({
-        name: 'DemoName',
-        age: 0
-      });
-      console.log('User is added!');
-    }, 3000);
+  constructor(public userService: UserService) {
+    this.appUsers = this.userService.users;
   }
 
-  addUser(inputName: HTMLInputElement, inputAge: HTMLInputElement) {
-    const user = {
-      name: inputName.value,
-      age: Number(inputAge.value),
-    };
-    if(inputName.value == '' || inputAge.value == '') {
-      return;
+    setUser(inputName: HTMLInputElement, inputAge: HTMLInputElement) {
+      this.userService.addUser(inputName, inputAge);
     }
-    this.users = [...this.users, user];
-    inputName.value = '';
-    inputAge.value = '';
 
-  }
+  
 }
 
 
