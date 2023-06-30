@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './types/User';
+import { User } from './types/JsonPlaceHolderUser';
 import { UserService } from './user.service';
 
 
