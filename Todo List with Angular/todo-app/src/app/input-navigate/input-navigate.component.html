@@ -11,7 +11,7 @@
         <span id="completed">Completed</span>
       </div>
       <button (click)="addName(inputName)">Add name</button>
-      <button class="clear-btn">Clear All</button>
+      <button (click)="clearData()">Clear All</button>
     </div>
     <ul class="task-box">
       <li *ngFor="let name of activeName">{{name.name}}</li>

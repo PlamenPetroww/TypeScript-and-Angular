@@ -19,5 +19,9 @@ export class InputNavigateComponent {
     this.activeName.push(name);
 
     inputName.value = '';
+  };
+
+  clearData() {
+    this.activeName = [];
   }
 }
