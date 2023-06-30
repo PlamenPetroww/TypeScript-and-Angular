@@ -19,10 +19,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUsers().then(users => {
-      this.appUsers = users;
-      this.isLoading = false;
-    });
+    // this.userService.getUsers().then((users) => {
+    //   this.appUsers = users;
+    //   this.isLoading = false;
+    //});
+
+    this.userService.getUsers().subscribe((users) => {
+        this.appUsers = users;
+        this.isLoading = false;
+  })
   }
 
   setUser(inputName: HTMLInputElement, inputAge: HTMLInputElement) {
