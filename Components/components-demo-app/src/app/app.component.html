@@ -3,10 +3,17 @@
   [activeUsers]="users"
   (onTestOutput)="onTestOutput()"
 /> -->
-<h3>{{title}} works!</h3>
+<h3>{{ title }} works!</h3>
 <div>
-  <input #inputName type="text"placeholder="name">
-  <input #inputAge type="text"placeholder="age">
+  <input #inputName type="text" placeholder="name" />
+  <input #inputAge type="text" placeholder="age" />
   <button (click)="setUser(inputName, inputAge)">Add user</button>
 </div>
-<app-users-list [users]="appUsers" />
+
+<div *ngIf="isLoading">
+  <h3>Loading...</h3>
+</div>
+
+<div *ngIf="!isLoading">
+  <app-users-list [users]="appUsers" />
+</div>

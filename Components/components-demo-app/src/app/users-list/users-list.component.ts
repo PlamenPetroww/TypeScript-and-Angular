@@ -15,7 +15,7 @@ export class UsersListComponent {
   }
 
   ngOnChanges() {
-    console.log('invoked from ngOnChanges!')
+    // console.log('invoked from ngOnChanges!')
   }
   
   refresh() {

@@ -6,12 +6,7 @@ import { User } from './types/User';
 // })
 export class UserService {
 
-  users: User[] = [
-    { name: 'Plamen', age: 21 },
-    { name: 'Petko', age: 31 },
-    { name: 'Valq', age: 40 },
-    { name: 'Gosho', age: 26 },
-  ];
+  users: User[] = [];
   
 
   constructor() {
@@ -20,7 +15,7 @@ export class UserService {
         name: 'DemoName',
         age: 0
       });
-      console.log('User is added!');
+      // console.log('User is added!');
     }, 3000);
   }
 
@@ -36,5 +31,11 @@ export class UserService {
     inputName.value = '';
     inputAge.value = '';
 
+  }
+
+  getUsers() {
+    return fetch('https://jsonplaceholder.typicode.com/users').then((res) => 
+    res.json()
+    );
   }
 }
