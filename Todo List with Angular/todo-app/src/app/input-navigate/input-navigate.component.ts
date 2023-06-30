@@ -9,7 +9,6 @@ import { Name } from '../types/Name';
 export class InputNavigateComponent {
   @Input('title') titleFromApp: string = '';
   title = 'Add your name hier';
-  @Input() names: Name[] = [];
 
   activeName: Name[] = [];
 
