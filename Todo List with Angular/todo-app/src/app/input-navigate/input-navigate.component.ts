@@ -8,7 +8,7 @@ import { Name } from '../types/Name';
 })
 export class InputNavigateComponent {
   @Input('title') titleFromApp: string = '';
-  title = 'Add your name hier';
+  titleFromInput = 'Your name is ';
 
   activeName: Name[] = [];
 
@@ -17,11 +17,11 @@ export class InputNavigateComponent {
       name: inputName.value,
     };
     this.activeName.push(name);
-
     inputName.value = '';
   };
 
   clearData() {
     this.activeName = [];
-  }
+  };
+
 }
