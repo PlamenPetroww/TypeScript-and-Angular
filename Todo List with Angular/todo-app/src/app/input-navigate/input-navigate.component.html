@@ -1,15 +1,16 @@
 <div class="wrapper">
     <div class="task-input">
-        <h3>Add hier your name</h3>
-      <input type="text" placeholder="Add a new name">
+        <h3>{{titleFromApp}}</h3>
+      <input #inputName type="text" placeholder="Add a new name">
     </div>
     <div class="controls">
       <div class="filters">
         <span class="active" id="all">All</span>
+        
         <span id="pending">Pending</span>
         <span id="completed">Completed</span>
       </div>
-      <button (click)="addName">Add name</button>
+      <button (click)="addName(inputName)">Add name</button>
       <button class="clear-btn">Clear All</button>
     </div>
     <ul class="task-box"></ul>

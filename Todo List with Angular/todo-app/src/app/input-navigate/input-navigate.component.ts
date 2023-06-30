@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Name } from '../types/Name';
 
 @Component({
   selector: 'app-input-navigate',
@@ -6,7 +7,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./input-navigate.component.css']
 })
 export class InputNavigateComponent {
-  addName() {
-    console.log('click')
+  @Input('title') titleFromApp: string = '';
+  title = 'Add your name hier';
+  @Input() names: Name[] = [];
+
+  activeName: Name[] = [];
+
+  addName(inputName: HTMLInputElement) {
+    const name = {
+      name: inputName.value,
+    };
+    this.activeName.push(name);
+
+    inputName.value = '';
   }
 }
