@@ -5,18 +5,23 @@ import { Post } from '../types/post';
 @Component({
   selector: 'app-posts-list',
   templateUrl: './posts-list.component.html',
-  styleUrls: ['./posts-list.component.css']
+  styleUrls: ['./posts-list.component.css'],
 })
 export class PostsListComponent implements OnInit {
   postsList: Post[] = [];
-  constructor(private apiService: ApiService) {
-
-  }
+  isLoading: boolean = true;
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.apiService.getPosts(5).subscribe((posts) => {
-      this.postsList = posts;
+    this.apiService.getPosts(5).subscribe({
+      next: (themes) => {
+        this.postsList = themes;
+        this.isLoading = false;
+      },
+      error: (err) => {
+        this.isLoading = false;
+        console.log(`Error: ${err}`);
+      },
     });
   }
-
 }
