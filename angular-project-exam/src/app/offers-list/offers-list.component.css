@@ -1,0 +1,78 @@
+.listing__bilder__part__two {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card__part__two {
+    width: 80%;
+    flex: 0 0 30%;
+    margin: 1em;
+    box-shadow: 0 0 0.3em 0 rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    min-width: 323px;
+}
+
+.listing__bilder__part__two .card__media__two {
+    flex: 0 0 17%;
+    margin: 1em;
+    box-shadow: 0 0 0.3em 0 rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.card__part__two .card__media__two img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.card__content__two a {
+    font-weight: bolder;
+    text-align: left;
+    text-decoration: none;
+    color: #121A37;
+    font-family: 'Poppins';
+    text-transform: uppercase;
+}
+
+.card__content__two p {
+    font-family: 'Open Sans';
+    font-size: 14px;
+}
+
+.card__content__two .summe {
+    color: #01B663;
+    font-weight: bolder;
+}
+
+.card__part__two .card__content__two {
+    flex-grow: 1;
+    padding: 1em 1.5em;
+}
+
+.button__card__two {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button__card__two a {
+    display: flex;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding-left: 2.8em;
+    padding-top: 0.4em;
+    font-family: 'Poppins';
+    font-weight: bolder;
+    background-color: #01B663;
+    color: #FFFFFF;
+    border-radius: 0.3em;
+    text-decoration: none;
+    width: 150px;
+    height: 40px;
+}

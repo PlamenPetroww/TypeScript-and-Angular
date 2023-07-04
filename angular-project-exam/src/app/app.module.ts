@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { MainComponent } from './main/main.component';
-import { NavigationComponent } from './navigation/navigation.component';
 import { LessonsListComponent } from './lessons-list/lessons-list.component';
 import { OffersListComponent } from './offers-list/offers-list.component';
 
@@ -13,7 +12,6 @@ import { OffersListComponent } from './offers-list/offers-list.component';
   declarations: [
     AppComponent,
     MainComponent,
-    NavigationComponent,
     LessonsListComponent,
     OffersListComponent
   ],
