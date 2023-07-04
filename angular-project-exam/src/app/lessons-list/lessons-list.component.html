@@ -1,9 +1,13 @@
-<div class="listing">
+<div *ngIf="isLoading">
+    <app-loader />
+</div>
+
+<div *ngIf="!isLoading" class="listing">
 
     <article class="card">
 
         <div class="card__media">
-            <img src="img/Kiteboarding.jpg" alt="#">
+            <img src="assets/img/Kiteboarding.jpg" alt="#">
         </div>
 
         <div class="card__content">
@@ -15,7 +19,7 @@
     <article class="card">
 
         <div class="card__media">
-            <img src="img/Snorkeling_drive.jpg" alt="#">
+            <img src="assets/img/Snorkeling_drive.jpg" alt="#">
         </div>
 
         <div class="card__content">
@@ -27,7 +31,7 @@
     <article class="card">
 
         <div class="card__media">
-            <img src="img/Surfing.jpg" alt="#">
+            <img src="assets/img/Surfing.jpg" alt="#">
         </div>
 
         <div class="card__content">
@@ -39,7 +43,7 @@
     <article class="card">
 
         <div class="card__media">
-            <img src="img/After_school.jpg" alt="#">
+            <img src="assets/img/After_school.jpg" alt="#">
         </div>
 
         <div class="card__content">
@@ -55,7 +59,7 @@
     <article class="card">
 
         <div class="card__media">
-            <img src="img/Surf_swimming.jpg" alt="#">
+            <img src="assets/img/Surf_swimming.jpg" alt="#">
         </div>
 
         <div class="card__content">
@@ -67,7 +71,7 @@
     <article class="card">
 
         <div class="card__media">
-            <img src="img/Learm_swimming.jpg" alt="#">
+            <img src="assets/img/Learm_swimming.jpg" alt="#">
         </div>
 
         <div class="card__content">
@@ -79,7 +83,7 @@
     <article class="card">
 
         <div class="card__media">
-            <img src="img/Kids_for_lessons.jpg" alt="#">
+            <img src="assets/img/Kids_for_lessons.jpg" alt="#">
         </div>
 
         <div class="card__content">
@@ -91,7 +95,7 @@
     <article class="card">
 
         <div class="card__media">
-            <img src="img/Private_lessons.jpg" alt="#">
+            <img src="assets/img/Private_lessons.jpg" alt="#">
         </div>
 
         <div class="card__content">

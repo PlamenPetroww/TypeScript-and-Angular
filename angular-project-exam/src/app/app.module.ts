@@ -7,6 +7,7 @@ import { CoreModule } from './core/core.module';
 import { MainComponent } from './main/main.component';
 import { LessonsListComponent } from './lessons-list/lessons-list.component';
 import { OffersListComponent } from './offers-list/offers-list.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { OffersListComponent } from './offers-list/offers-list.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

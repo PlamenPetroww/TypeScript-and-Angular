@@ -76,3 +76,18 @@
     width: 150px;
     height: 40px;
 }
+
+.add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins';
+    background-color: #121A37;
+    color: #FFFFFF;
+    border-radius: 0.3em;
+    text-decoration: none;
+    width: 150px;
+    height: 40px;
+    margin-left: 61px;
+    cursor: pointer;
+}

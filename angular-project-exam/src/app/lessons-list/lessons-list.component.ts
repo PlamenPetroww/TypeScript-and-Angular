@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class LessonsListComponent {
 
+  isLoading: boolean = true;
+
+  ngOnInit(): void {
+    this.isLoading = false;
+  }
+
 }
