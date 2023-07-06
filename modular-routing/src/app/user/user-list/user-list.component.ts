@@ -16,10 +16,14 @@ export class UserListComponent implements OnInit {
     private globalLoaderService: GlobalLoaderService
   ) {}
   ngOnInit(): void {
+    this.loadUsers();
+  }
+
+  loadUsers(): void {
     this.globalLoaderService.showLoader();
-    //setTimeout(() => {
+    setTimeout(() => {
       this.userService.fetchUsers().subscribe({
-          next: (users) => {
+        next: (users) => {
           this.userList = users;
           this.globalLoaderService.hideLoader();
         },
@@ -28,6 +32,10 @@ export class UserListComponent implements OnInit {
           this.globalLoaderService.hideLoader();
         },
       });
-    //}, 1500);
+    }, 1500);
+  }
+
+  reloadUsers(): void {
+    this.loadUsers();
   }
 }
