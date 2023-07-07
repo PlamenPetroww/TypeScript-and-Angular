@@ -20,7 +20,8 @@ export class AuthGuard implements CanActivate {
     | UrlTree
     | Observable<boolean | UrlTree>
     | Promise<boolean | UrlTree> {
-    return this.checkIfLogged(state.url);
+        // wenn du nicht Authenticated bist mit this.router.createUrlTree kan man redirect to login page or whatever ....
+    return this.checkIfLogged(state.url) ||this.router.createUrlTree(['/user/list']);
   }
 
   checkIfLogged(url: string): boolean {
