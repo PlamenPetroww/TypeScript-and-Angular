@@ -8,7 +8,7 @@ import { UserModule } from './user/user.module';
 import { HttpClientModule } from '@angular/common/http';
 import { TodoModule } from './todo/todo.module';
 import { RouterModule } from '@angular/router';
-import { routes } from './app-routing.module';
+import { AppRoutingModule, routes } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,10 @@ import { routes } from './app-routing.module';
     CoreModule,
     UserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
+    // deaktiviert RouterModule wenn wir mapping mit AppRoutingModule
+    //RouterModule.forRoot(routes),
+    // deaktiviert AppRoutingModule wenn wir mapping mit RouterModule
+    AppRoutingModule,
     TodoModule
   ],
   providers: [],

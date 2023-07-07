@@ -7,8 +7,10 @@ export const routes: Routes = [
   { path: 'todo-list', component: TodoListComponent },
 ];
 
-/* @NgModule({
+//wenn ist mit AppRoutingModule -> class AppRoutingModule muss active sein!, auch in app.module.ts!
+
+@NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {} */
+export class AppRoutingModule {}
