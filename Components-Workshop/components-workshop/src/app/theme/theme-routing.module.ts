@@ -7,26 +7,24 @@ import { CurrentThemeComponent } from './current-theme/current-theme.component';
 const routes: Routes = [
   {
     path: 'themes',
+    
     children: [
       {
         path: '',
         pathMatch: 'full',
         component: MainComponent,
       },
+      {
+        path: ':themeId',
+        component: CurrentThemeComponent,
+      },
     ],
   },
-  {
-    path: ':themeId',
-    component: CurrentThemeComponent,
-  },
-  {
-    path: 'add-theme',
-    component: NewThemeComponent,
-  },
+  { path: 'add-theme', component: NewThemeComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
 export class ThemeRoutingModule {}
