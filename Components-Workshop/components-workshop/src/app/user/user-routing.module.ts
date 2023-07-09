@@ -9,17 +9,17 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    canActivate: [AuthActivate],
+    // canActivate: [AuthActivate],
   },
   {
     path: 'register',
     component: RegisterComponent,
-    canActivate: [AuthActivate],
+    // canActivate: [AuthActivate],
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [AuthActivate],
+    // canActivate: [AuthActivate],
   }
 ];
 
