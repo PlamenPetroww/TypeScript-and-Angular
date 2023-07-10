@@ -10,7 +10,7 @@
     <ul>
       <li>
         <a href="#">Find<span class="header__space">|</span></a>
-        <a href="#">Create Course<span class="header__space">|</span></a>
+        <!-- <a href="#">Create Course<span class="header__space">|</span></a> -->
         <a *ngIf="isLogged" routerLink="/login">Login<span class="header__space">|</span></a>
         <a *ngIf="isLogged" routerLink="/register">Register<span class="header__space">|</span></a>
         <a href="#">Logout</a>
@@ -21,15 +21,12 @@
 
 <div class="nav__menu">
   <div class="nav__menu__left">Aidride</div>
-  <div class="nav__menu__center"><a href="#">Home Page</a></div>
-  <div class="nav__menu__center"><a href="#">About Us</a></div>
-  <div class="nav__menu__center"><a href="#">Projects</a></div>
-  <div class="nav__menu__center"><a href="#">Contact Us</a></div>
+  <div class="nav__menu__center"><a routerLink="/home">Home Page</a></div>
+  <div class="nav__menu__center"><a routerLink="/courses">Course</a></div>
+  <div class="nav__menu__center"><a routerLink="/add-course">Offers</a></div>
   <div class="nav__menu__right">
     <span class="nav__menu__book"
       ><a href="#" class="nav__menu__white">Book Today&#129054;</a></span
     >
   </div>
 </div>
-
-<h2 class="our-offers">Our Offers</h2>

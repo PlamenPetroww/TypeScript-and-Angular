@@ -1,5 +1,13 @@
 /*login register forms  */
 
+/* .container {
+  font-family: "Opensans";
+  background-image: url("/src/assets/img/Surfing.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+
 form.login,
 form.register {
   width: 40%;
@@ -32,7 +40,7 @@ form.register {
   flex: 0 1 100%;
   border: 1px solid;
   padding: 0.3em;
-  border-left: 0.3em solid #01B663;
+  border-left: 0.3em solid #01b663;
   border-top-right-radius: 0.3em;
   border-bottom-right-radius: 0.3em;
 }
@@ -44,7 +52,7 @@ form.register {
 
 .login button,
 .register button {
-  color: #01B663;
+  color: #01b663;
   border: none;
   border-radius: 0.3em;
   padding: 0.6em 1.2em;

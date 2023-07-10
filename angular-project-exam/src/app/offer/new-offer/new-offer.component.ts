@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./new-offer.component.css']
 })
 export class NewOfferComponent {
+  isLoading: boolean = true;
 
+  ngOnInit(): void {
+    this.isLoading = false;
+  }
 }

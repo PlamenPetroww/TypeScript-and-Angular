@@ -10,6 +10,7 @@ import { OffersListComponent } from './offers-list/offers-list.component';
 import { SharedModule } from './shared/shared.module';
 import { HomeComponent } from './home/home.component';
 import { UserModule } from './user/user.module';
+import { OfferModule } from './offer/offer.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserModule } from './user/user.module';
     AppRoutingModule,
     CoreModule,
     SharedModule,
-    UserModule
+    UserModule,
+    OfferModule
   ],
   providers: [],
   bootstrap: [AppComponent]

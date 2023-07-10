@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NewOfferComponent } from './new-offer/new-offer.component';
 import { CurrentOfferComponent } from './current-offer/current-offer.component';
+import { OfferRoutingModule } from './offer-routing.module';
 
 
 
@@ -11,7 +12,8 @@ import { CurrentOfferComponent } from './current-offer/current-offer.component';
     CurrentOfferComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    OfferRoutingModule
   ]
 })
 export class OfferModule { }
