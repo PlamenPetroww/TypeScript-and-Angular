@@ -1,19 +1,18 @@
+
+
 <div class="header">
   <div class="header__adresse">
     <img src="https://img.icons8.com/material-outlined/48/000000/marker.png" />
     <p>27 Division, Mirpur-12, Palm Beach</p>
   </div>
-  <!-- <div class="header__email">
-    <span>&#9993;</span>
-    <p>plamenpetroww@gmail.com</p>
-  </div> -->
+
   <div class="header__menu">
     <ul>
       <li>
         <a href="#">Find<span class="header__space">|</span></a>
         <a href="#">Create Course<span class="header__space">|</span></a>
-        <a *ngIf="isLogged" href="#">Login<span class="header__space">|</span></a>
-        <a *ngIf="isLogged" href="#">Register<span class="header__space">|</span></a>
+        <a *ngIf="isLogged" routerLink="/login">Login<span class="header__space">|</span></a>
+        <a *ngIf="isLogged" routerLink="/register">Register<span class="header__space">|</span></a>
         <a href="#">Logout</a>
       </li>
     </ul>
@@ -32,3 +31,5 @@
     >
   </div>
 </div>
+
+<h2 class="our-offers">Our Offers</h2>
