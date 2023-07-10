@@ -13,7 +13,7 @@ import { OfferRoutingModule } from './offer-routing.module';
   ],
   imports: [
     CommonModule,
-    OfferRoutingModule
+    OfferRoutingModule,
   ]
 })
 export class OfferModule { }
