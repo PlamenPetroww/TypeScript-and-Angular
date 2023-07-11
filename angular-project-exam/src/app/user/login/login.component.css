@@ -1,12 +1,8 @@
 /*login register forms  */
 
-/* .container {
-  font-family: "Opensans";
-  background-image: url("/src/assets/img/Surfing.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-} */
+.container {
+  margin-bottom: 40px;
+}
 
 form.login,
 form.register {
@@ -27,6 +23,8 @@ form.register {
 .register h2 {
   padding-top: 0;
   border-bottom: none;
+  color: #121A37;
+  font-family: 'Hey October';
 }
 
 .login p,

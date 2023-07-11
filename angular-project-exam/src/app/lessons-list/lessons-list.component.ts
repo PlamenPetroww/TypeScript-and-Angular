@@ -13,7 +13,7 @@ export class LessonsListComponent implements OnInit {
   ngOnInit(): void {
     this.isLoading = false;
     this.apiService.getLessons().subscribe(lessons => {
-      console.log(lessons)
+      console.log(lessons);
     })
   }
 

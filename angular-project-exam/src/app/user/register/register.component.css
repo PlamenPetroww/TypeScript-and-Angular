@@ -18,6 +18,8 @@ form.register {
 .register h2 {
   padding-top: 0;
   border-bottom: none;
+  font-family: 'Hey October';
+  color: #121A37;
 }
 
 .login p,
@@ -38,7 +40,7 @@ form.register {
 
 .login select,
 .register select {
-  border-color: black;
+  border-color: #121A37;
 }
 
 .login button,

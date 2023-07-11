@@ -1,26 +1,6 @@
 
 
-.button__card__two {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.button__card__two a {
-    display: flex;
-    margin-top: 2em;
-    margin-bottom: 2em;
-    padding-left: 2.8em;
-    padding-top: 0.4em;
-    font-family: 'Poppins';
-    font-weight: bolder;
-    background-color: #01B663;
-    color: #FFFFFF;
-    border-radius: 0.3em;
-    text-decoration: none;
-    width: 150px;
-    height: 40px;
-}
 
 .your-offer {
     display: flex;
