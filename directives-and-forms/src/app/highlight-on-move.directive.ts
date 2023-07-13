@@ -19,21 +19,32 @@ export class HighlightOnMoveDirective implements OnInit {
     this.renderer.listen(
       this.elRef.nativeElement,
       'mouseenter',
-      this.mouseEnterHandler
+      this.mouseEnterHandler.bind(this)
     );
 
     this.renderer.listen(
       this.elRef.nativeElement,
       'mouseleave',
-      this.mouseLeaveHandler
+      this.mouseLeaveHandler.bind(this)
     );
   }
-    mouseEnterHandler(e: MouseEvent): void{
-      console.log('enter', e)
-    };
 
-    mouseLeaveHandler(e: MouseEvent): void {
-      console.log('leave', e)
-    }
 
+  mouseEnterHandler(e: MouseEvent): void {
+    console.log('enter', e);
+    this.renderer.setStyle(
+      this.elRef.nativeElement,
+      'background-color',
+      'yellow'
+    );
+  }
+
+  mouseLeaveHandler(e: MouseEvent): void {
+    console.log('leave', e);
+    this.renderer.setStyle(
+      this.elRef.nativeElement,
+      'background-color',
+      'blue'
+    );
+  }
 }
