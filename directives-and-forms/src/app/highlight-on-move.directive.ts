@@ -31,13 +31,6 @@ export class HighlightOnMoveDirective implements OnInit, OnDestroy {
         this.mouseLeaveHandler.bind(this)
       )
     );
-    // this.elRef.nativeElement.style.backgroundColor = 'yellow'
-
-    // this.renderer.setStyle(
-    //   this.elRef.nativeElement,
-    //   'background-color',
-    //   'red'
-    // );
 
     this.renderer.listen(
       this.elRef.nativeElement,
