@@ -58,6 +58,8 @@ export class HighlightOnMoveDirective implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    
+    this.unsubscribeFromEvent.forEach((fn) => {
+      console.log(fn)
+    })
   }
 }

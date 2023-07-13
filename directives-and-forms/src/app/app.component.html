@@ -1,5 +1,16 @@
-<div appHighlightOnMove>Hello directives!</div>
-<span appMyRouterLink="/login">Link to Login</span>
-<br />
-<span appMyRouterLink="/register">Link to Register</span>
+<nav>
+  <div appMyRouterLink="/login">Link to Login</div>
+  <div appMyRouterLink="/register">Link to Register</div>
+</nav>
 <router-outlet />
+
+<hr />
+<div *ngIf="true">Simple Div 1</div>
+
+<ng-template [ngIf]="true">
+  <div>Simple Div 1.1</div>
+</ng-template>
+
+<button (click)="toggle()">toggle my State</button>
+
+<div *appMyStructural="isShown">Structural directives(Usage 1)</div>
