@@ -3,30 +3,3 @@
   <div appMyRouterLink="/register">Link to Register</div>
 </nav>
 <router-outlet />
-
-<hr />
-<div *ngIf="true">Simple Div 1</div>
-
-<ng-template [ngIf]="true">
-  <div>Simple Div 1.1</div>
-</ng-template>
-
-<!-- Custom Structural Directives -->
-<button (click)="toggle()">toggle my State</button>
-<!-- Usega 1 -->
-<div *appMyStructural="isShown">Strucural Directive (Usage 1)</div>
-
-<!-- Usage 2 -->
-<ng-template [appMyStructural]="isShown" let-value ="value" let-val>
-    <div>Strucural Directive (Usage 2)</div>
-    <h4>value: {{value}} : {{val}}</h4>
-</ng-template>
-
-<!-- Usage 3 -->
-<ng-template #tmp>
-    <div>Strucural Directive (Usage 3)</div>
-</ng-template>
-
-<ng-container [appMyStructural]="isShown" [myTmpProp]="tmp" />
-
-

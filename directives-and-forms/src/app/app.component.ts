@@ -6,11 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'directives-and-forms';
 
-  isShown: boolean = true
-
-  toggle(): void {
-    this.isShown = !this.isShown;
-  }
+  
 }
