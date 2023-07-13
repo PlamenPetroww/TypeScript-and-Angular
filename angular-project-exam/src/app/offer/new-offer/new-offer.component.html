@@ -1,92 +1,38 @@
-
-
-<h2 class="title__page">Your offers</h2>
-
-<div *ngIf="!isLoading" class="listing__bilder__part__two">
-  <article class="card__part__two">
-    <div class="card__media__two">
-      <img src="assets/img/Kiteboarding.jpg" alt="#" />
+<div class="container">
+  <div class="new-theme-border">
+    <div class="header-background">
+      <span>New Theme</span>
     </div>
-
-    <div class="card__content__two">
-      <a href="#">Kids kitesurfing lessons</a>
-      <p>Duration: 2 days (12hs)</p>
-      <p>Subscribers: 242</p>
-      <p class="summe">Price: 250.00$</p>
-      <button class="add">Add</button>
-    </div>
-  </article>
-
-  <article class="card__part__two">
-    <div class="card__media__two">
-      <img src="assets/img/Snorkeling_drive.jpg" alt="#" />
-    </div>
-
-    <div class="card__content__two">
-      <a href="#">Kids kitesurfing lessons</a>
-      <p>Duration: 2 days (12hs)</p>
-      <p>Subscribers: 242</p>
-      <p class="summe">Price: 250.00$</p>
-      <button class="add">Add</button>
-    </div>
-  </article>
-
-  <article class="card__part__two">
-    <div class="card__media__two">
-      <img src="assets/img/Surfing.jpg" alt="#" />
-    </div>
-
-    <div class="card__content__two">
-      <a href="#">Kids kitesurfing lessons</a>
-      <p>Duration: 2 days (12hs)</p>
-      <p>Subscribers: 242</p>
-      <p class="summe">Price: 250.00$</p>
-      <button class="add">Add</button>
-    </div>
-  </article>
-
-  <article class="card__part__two">
-    <div class="card__media__two">
-      <img src="assets/img/Kiteboarding.jpg" alt="#" />
-    </div>
-
-    <div class="card__content__two">
-      <a href="#">Kids kitesurfing lessons</a>
-      <p>Duration: 2 days (12hs)</p>
-      <p>Subscribers: 242</p>
-      <p class="summe">Price: 250.00$</p>
-      <button class="add">Add</button>
-    </div>
-  </article>
-
-  <article class="card__part__two">
-    <div class="card__media__two">
-      <img src="assets/img/Snorkeling_drive.jpg" alt="#" />
-    </div>
-
-    <div class="card__content__two">
-      <a href="#">Kids kitesurfing lessons</a>
-      <p>Duration: 2 days (12hs)</p>
-      <p>Subscribers: 242</p>
-      <p class="summe">Price: 250.00$</p>
-      <button class="add">Add</button>
-    </div>
-  </article>
-
-  <article class="card__part__two">
-    <div class="card__media__two">
-      <img src="assets/img/Surfing.jpg" alt="#" />
-    </div>
-
-    <div class="card__content__two">
-      <a href="#">Kids kitesurfing lessons</a>
-      <p>Duration: 2 days (12hs)</p>
-      <p>Subscribers: 242</p>
-      <p class="summe">Price: 250.00$</p>
-      <button class="add">Add</button>
-    </div>
-  </article>
-</div>
-<div class="button__card__two">
-  <a href="#">View all</a>
+    <form>
+      <div class="new-theme-title">
+        <label for="themeTitle">Title <span class="red">*</span></label>
+        <input for="themeTitle" type="text" name="themeName" id="themeName" />
+        <!-- <p class="error">Theme title is required.</p>
+          <p class="error">Theme name must be at least 5 characters long.</p> -->
+        </div>
+      <div class="new-theme-price">
+        <label for="themePrice">Price <span class="red">*</span></label>
+        <input type="text" name="themeName" id="themeName" />
+        <!-- <p class="error">Theme name is required.</p>
+        <p class="error">Theme name must be at least 5 characters long.</p> -->
+      </div>
+      <div class="new-theme-duration">
+        <label for="themeDuration">Duration <span class="red">*</span></label>
+        <input type="text" name="themeName" id="themeName" />
+        <!-- <p class="error">Theme name is required.</p>
+        <p class="error">Theme name must be at least 5 characters long.</p> -->
+      </div>
+      
+      <div class="new-theme-description">
+        <label for="themeDescription">Description <span class="red">*</span></label>
+        <textarea type="text"  name="themeDescription"  id="themeDescription"  rows="8"  class="height"  ></textarea>
+        <!-- <p class="error">The field with your post is required.</p>
+        <p class="error">Post must be at least 10 characters long.</p> -->
+      </div>
+      <div class="new-theme-buttons">
+        <button class="cancel">Cancel</button>
+        <button class="public">Add</button>
+      </div>
+    </form>
+  </div>
 </div>

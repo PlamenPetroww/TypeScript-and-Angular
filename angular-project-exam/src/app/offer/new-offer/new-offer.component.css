@@ -1,101 +1,113 @@
+/* new-theme */
 
-.listing__bilder__part__two {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+.new-theme-border {
+  border: 1px solid;
+  border-radius: 1em;
+  width: 60%;
+  margin: auto;
+  margin-top: 2em;
+  padding: 1em;
 }
 
-.listing__bilder__part__two .card__media__two {
-    flex: 0 0 17%;
-    margin: 1em;
-    box-shadow: 0 0 0.3em 0 rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
+.new-theme-border .input {
+  margin-bottom: 1em;
 }
 
-.card__part__two {
-    width: 80%;
-    flex: 0 0 30%;
-    margin: 1em;
-    box-shadow: 0 0 0.3em 0 rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    min-width: 323px;
+.header-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #01b663;
+  border: 1px solid #01b663;
+  padding: 1.5em;
+  margin-bottom: 1em;
+  border-radius: 1em;
 }
 
-.card__content__two a {
-    font-weight: bolder;
-    text-align: left;
-    text-decoration: none;
-    color: #121A37;
-    font-family: 'Poppins';
-    text-transform: uppercase;
+.header-background span {
+  background-color: #fff;
+  padding: 0.5em;
+  border-radius: 0.3em;
+  font-family: "Hey October";
+  font-size: larger;
 }
 
-.card__content__two p {
-    font-family: 'Open Sans';
-    font-size: 14px;
+.title,
+.new-theme-content {
+  display: flex;
+  flex-direction: column;
 }
 
-.card__content__two .summe {
-    color: #01B663;
-    font-weight: bolder;
+.new-theme-content {
+  min-height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
-.card__part__two .card__content__two {
-    flex-grow: 1;
-    padding: 1em 1.5em;
+.new-theme-content textarea {
+  width: 100%;
+  padding: 0.5em;
+  margin: 0;
 }
 
-.card__part__two .card__media__two img {
-    display: block;
-    width: 100%;
-    height: 100%;
+.new-theme-content label {
+  margin-bottom: 0.3em;
 }
 
-.add {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Poppins';
-    background-color: #121A37;
-    color: #FFFFFF;
-    border-radius: 0.3em;
-    text-decoration: none;
-    width: 150px;
-    height: 40px;
-    margin-left: 61px;
-    cursor: pointer;
+.new-theme-title,
+.new-theme-description,
+.new-theme-price,
+.new-theme-duration {
+  font-family: "Hey October";
+  font-size: xx-large;
 }
 
-.title__page {
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.new-theme-title input,
+.new-theme-description input,
+.new-theme-price input,
+.new-theme-duration input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 55%;
+  border-radius: 0.3em;
+  padding: 0.35em;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.button__card__two {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.new-theme-title label,
+.new-theme-description textarea,
+.new-theme-price label,
+.new-theme-duration label  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.button__card__two a {
-    display: flex;
-    margin-top: 2em;
-    margin-bottom: 2em;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Poppins';
-    font-weight: bolder;
-    background-color: #01B663;
-    color: #FFFFFF;
-    border-radius: 0.3em;
-    text-decoration: none;
-    width: 150px;
-    height: 40px;
+button + button {
+  margin-left: 1rem;
+}
+
+.new-theme-buttons {
+  margin-top: 1em;
+  text-align: center;
+}
+
+.new-theme-buttons button {
+  padding: 0.4em 1.5em;
+  border: 1px solid #333333;
+  border-radius: 0.3em;
+}
+
+p.error {
+  text-align: left;
+  border-radius: 0.3em;
+  color: red;
+  padding-top: 0;
+}
+
+.input-error {
+  border-left-color: red;
 }

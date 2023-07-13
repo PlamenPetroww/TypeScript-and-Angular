@@ -1,109 +1,26 @@
-<h2 class="title__page">Our Lessons</h2>
+<h2 class="title__page">Your offers</h2>
 
 <div *ngIf="isLoading">
-    <app-loader />
+  <app-loader />
 </div>
 
-<div *ngIf="!isLoading" class="listing">
+<div *ngIf="!isLoading" class="listing__bilder__part__two">
+  <article *ngFor="let offer of offerArray" class="card__part__two">
+    <div class="card__media__two">
+      <img src="assets/img/Kiteboarding.jpg" alt="#" />
+    </div>
 
-    <article class="card">
-
-        <div class="card__media">
-            <img src="assets/img/Kiteboarding.jpg" alt="#">
-        </div>
-
-        <div class="card__content">
-            <a href="#">Kiteboarding</a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>    
-    </article>
-
-    <article class="card">
-
-        <div class="card__media">
-            <img src="assets/img/Snorkeling_drive.jpg" alt="#">
-        </div>
-
-        <div class="card__content">
-            <a href="#">Snorkeling drive</a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-    </article>
-
-    <article class="card">
-
-        <div class="card__media">
-            <img src="assets/img/Surfing.jpg" alt="#">
-        </div>
-
-        <div class="card__content">
-            <a href="#">Drive swimming</a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-    </article>
-
-    <article class="card">
-
-        <div class="card__media">
-            <img src="assets/img/After_school.jpg" alt="#">
-        </div>
-
-        <div class="card__content">
-            <a href="#">After school</a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-    </article>
-
+    <div class="card__content__two">
+      <a href="#">Title: {{ offer.title }}</a>
+      <p>Description: {{offer.description}}</p>
+      <p>Author: {{ offer.author }}</p>
+      <p>Duration: {{ offer.duration }}</p>
+      <p>Subscribers: {{ offer.subscribers }}</p>
+      <p class="summe">Price: {{ offer.price }}$</p>
+      <button class="add">Add</button>
+    </div>
+  </article>
 </div>
-
-<div class="listing">
-
-    <article class="card">
-
-        <div class="card__media">
-            <img src="assets/img/Surf_swimming.jpg" alt="#">
-        </div>
-
-        <div class="card__content">
-            <a href="#">Scuba driving</a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-    </article>
-
-    <article class="card">
-
-        <div class="card__media">
-            <img src="assets/img/Learm_swimming.jpg" alt="#">
-        </div>
-
-        <div class="card__content">
-            <a href="#">Learn swimming</a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-    </article>
-
-    <article class="card">
-
-        <div class="card__media">
-            <img src="assets/img/Kids_for_lessons.jpg" alt="#">
-        </div>
-
-        <div class="card__content">
-            <a href="#">Kids for lessons</a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-    </article>
-
-    <article class="card">
-
-        <div class="card__media">
-            <img src="assets/img/Private_lessons.jpg" alt="#">
-        </div>
-
-        <div class="card__content">
-            <a href="#">Private lessons</a>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </div>
-    </article>
-
+<div class="button__card__two">
+  <a href="#">View all</a>
 </div>

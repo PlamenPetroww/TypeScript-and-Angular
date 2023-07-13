@@ -1,9 +1,8 @@
-export interface Lesson {
-    title: string;
+export interface Offer {
+    /* title: string;
     price: number;
     duration: number;
     description: string;
     subscribers: number;
-    author: string;
-    lessonId: string;
+    author: string; */
 }
