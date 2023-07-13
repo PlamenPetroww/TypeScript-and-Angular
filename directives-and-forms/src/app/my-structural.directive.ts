@@ -6,6 +6,7 @@ import {
   SimpleChanges,
   TemplateRef,
   ViewContainerRef,
+  Optional,
 } from '@angular/core';
 
 @Directive({
@@ -13,20 +14,35 @@ import {
 })
 export class MyStructuralDirective implements OnChanges {
   @Input() appMyStructural: boolean = false;
+  @Input() myTmpProp: any;
 
   constructor(
-    private templateRef: TemplateRef<any>,
+    @Optional() private templateRef: TemplateRef<any>,
     private vcRef: ViewContainerRef
-  ) {}
+  ) {
+    console.log('----------------------')
+    console.log('templateRef', this.templateRef);
+    console.log('myTmpProp', this.myTmpProp);
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(this.appMyStructural) {
-      this.vcRef.createEmbeddedView(
-        this.templateRef
-      )
-    } else {
-      this.vcRef.clear()
+
+    if(this.templateRef === undefined) {
+      return
     }
 
+    const template = this.templateRef || this.myTmpProp;
+    if(!template) {
+      return
+    }
+
+    if (this.appMyStructural) {
+      this.vcRef.createEmbeddedView(template, {
+        value: 'value From Ng OnChanges 123',
+        $implicit: 'this is implicit data',
+      });
+    } else {
+      this.vcRef.clear();
+    }
   }
 }
