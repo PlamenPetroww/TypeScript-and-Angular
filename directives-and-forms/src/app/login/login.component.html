@@ -1,12 +1,19 @@
-<form #loginForm="ngForm">
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="text" id="email" name="email" />
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="text" id="password" name="password" />
-    </div>
+<form #loginForm="ngForm" (ngSubmit)="submitHandler(loginForm)">
+  <!-- EMAIL -->
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" ngModel />
+  </div>
+  <!-- PASSWORD -->
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="text" id="password" name="password" ngModel />
+  </div>
 
-    <button>Login</button>
+  <button>Login</button>
 </form>
+<br />
+<br />
+<br />
+
+{{ loginForm.value | json }}
