@@ -7,24 +7,36 @@
       id="email"
       name="email"
       ngModel
-      email 
+      email
       required
       #emailInput="ngModel"
-    /> <!-- at the end email and requried are build in validation -->
+    />
+    <!-- at the end email and requried are build in validation -->
   </div>
 
   <!-- Email error message -->
   <div *ngIf="emailInput.touched">
-      <div *ngIf="emailInput.errors?.['required']">Email is required!</div>
-      <div *ngIf="emailInput.errors?.['email']">Invalid Email!</div>
+    <div *ngIf="emailInput.errors?.['required']">Email is required!</div>
+    <div *ngIf="emailInput.errors?.['email']">Invalid Email!</div>
   </div>
 
   <!-- PASSWORD -->
 
   <div class="form-group">
     <label for="password">Password</label>
-    <input type="text" id="password" name="password" ngModel />
+    <input
+      type="text"
+      id="password"
+      name="password"
+      ngModel
+      #passwordInput="ngModel"
+      [appMaxCount]="4"
+    />
   </div>
+
+  <!-- Password error message -->
+
+
 
   <button>Login</button>
 </form>

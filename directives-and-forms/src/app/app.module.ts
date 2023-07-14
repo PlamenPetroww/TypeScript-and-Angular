@@ -11,6 +11,7 @@ import { MyRouterLinkDirective } from './my-router-link.directive';
 import { MyStructuralDirective } from './my-structural.directive';
 import { PlaygroundComponent } from './playground/playground.component';
 import { FormsModule } from '@angular/forms';
+import { MaxCountDirective } from './max-count.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FormsModule } from '@angular/forms';
     HighlightOnMoveDirective,
     MyStructuralDirective,
     PlaygroundComponent,
+    MaxCountDirective,
   ],
   imports: [BrowserModule,
     AppRoutingModule,
