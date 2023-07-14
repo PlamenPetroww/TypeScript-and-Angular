@@ -1,1 +1,41 @@
-<p >You are on the Register Page</p>
+<form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
+  <!-- EMAIL -->
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" formControlName="email"/>
+    <!-- at the end email and requried are build in validation -->
+  </div>
+
+  <!-- Email error message -->
+  <div *ngIf="registerForm.get('email')?.touched">
+    <div *ngIf="registerForm.get('email')?.errors?.['required']">Email is required!</div>
+    <div *ngIf="registerForm.get('email')?.errors?.['email']">Invalid Email!</div>
+  </div>
+
+  <!-- PASSWORD -->
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="text"
+      id="password"
+      name="password"
+      formControlName="password"
+      [appMaxCount]="4"
+    />
+  </div>
+
+  <!-- Password error message -->
+
+  <div *ngIf="registerForm.get('password')?.errors?.['appMaxCount']">
+    Invalid Password, because length is longer then
+    {{registerForm.get('password')?.errors?.['appMaxCount']}} ...
+  </div>
+
+  <button>Login</button>
+</form>
+<br />
+<br />
+<br />
+
+{{ registerForm.value | json }}
