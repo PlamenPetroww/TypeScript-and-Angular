@@ -1,4 +1,4 @@
-<form #loginForm="ngForm" (ngSubmit)="submitHandler(loginForm)">
+<form #loginForm="ngForm" (ngSubmit)="submitHandler()">
   <!-- EMAIL -->
   <div class="form-group">
     <label for="email">Email</label>
@@ -36,7 +36,10 @@
 
   <!-- Password error message -->
 
-
+  <div *ngIf="passwordInput.errors?.['appMaxCount']">
+    Invalid Password, because length is longer then
+    {{passwordInput.errors?.['appMaxCount']}} ...
+  </div>
 
   <button>Login</button>
 </form>

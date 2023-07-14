@@ -18,6 +18,8 @@ export class MaxCountDirective implements Validator {
     if(this.appMaxCount === undefined || (control.value?.length || 0) <= this.appMaxCount) {
       return null;
     }
-    return null;
+   return {
+    appMaxCount: this.appMaxCount,
+   };
   }
 }
