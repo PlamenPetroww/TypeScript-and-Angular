@@ -11,6 +11,7 @@ export class LessonsListComponent implements OnInit {
   offerList: Lesson[] = [];
   offerArray: Lesson[] = [];
   isLoading: boolean = true;
+  offerId: any;
 
   constructor(private apiService: ApiService) {}
 
@@ -19,7 +20,9 @@ export class LessonsListComponent implements OnInit {
       next: (offers) => {
         this.offerList = offers;
         this.offerArray = Object.values(this.offerList);
+        this.offerId = Object.keys(this.offerList)
         console.log(offers)
+        console.log(this.offerId)
         this.isLoading = false;
       },
       error: (error) => {
