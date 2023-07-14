@@ -2,9 +2,25 @@
   <!-- EMAIL -->
   <div class="form-group">
     <label for="email">Email</label>
-    <input type="text" id="email" name="email" ngModel email required  /> <!-- at the end email and requried are build in validation -->
+    <input
+      type="text"
+      id="email"
+      name="email"
+      ngModel
+      email 
+      required
+      #emailInput="ngModel"
+    /> <!-- at the end email and requried are build in validation -->
   </div>
+
+  <!-- Email error message -->
+  <div *ngIf="emailInput.touched">
+      <div *ngIf="emailInput.errors?.['required']">Email is required!</div>
+      <div *ngIf="emailInput.errors?.['email']">Invalid Email!</div>
+  </div>
+
   <!-- PASSWORD -->
+
   <div class="form-group">
     <label for="password">Password</label>
     <input type="text" id="password" name="password" ngModel />
