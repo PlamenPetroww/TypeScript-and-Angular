@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Lesson } from '../types/lessons';
+import { map } from 'rxjs/operators';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-lessons-list',
@@ -8,8 +10,8 @@ import { Lesson } from '../types/lessons';
   styleUrls: ['./lessons-list.component.css']
 })
 export class LessonsListComponent implements OnInit {
-  offerList: Lesson[] = [];
-  offerArray: Lesson[] = [];
+  lessonList: Lesson[] = [];
+  lessonArray: Lesson[] = [];
   isLoading: boolean = true;
   offerId: any;
 
@@ -17,12 +19,13 @@ export class LessonsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiService.getLessons().subscribe({
-      next: (offers) => {
-        this.offerList = offers;
-        this.offerArray = Object.values(this.offerList);
-        this.offerId = Object.keys(this.offerList)
-        console.log(offers)
-        console.log(this.offerId)
+      next: (lesson) => {
+        const lessonArray = Object.values(lesson);
+        this.lessonList = lessonArray.map((item) => ({
+          ...item,
+          lessonId: uuidv4()
+        }));
+        this.lessonArray = Object.values(this.lessonList);
         this.isLoading = false;
       },
       error: (error) => {
@@ -31,5 +34,5 @@ export class LessonsListComponent implements OnInit {
       },
     });
   }
-
+  
 }

@@ -1,22 +1,22 @@
-<h2 class="title__page">Your offers</h2>
+<h2 class="title__page">Our Lessons</h2>
 
 <div *ngIf="isLoading">
   <app-loader />
 </div>
 
 <div *ngIf="!isLoading" class="listing__bilder__part__two">
-  <article *ngFor="let offer of offerArray" class="card__part__two">
+  <article *ngFor="let lesson of lessonArray" class="card__part__two">
     <div class="card__media__two">
       <img src="assets/img/Kiteboarding.jpg" alt="#" />
     </div>
 
     <div class="card__content__two">
-      <a href="#">Title: {{ offer.title }}</a>
-      <p>Description: {{offer.description}}</p>
-      <p>Author: {{ offer.author }}</p>
-      <p>Duration: {{ offer.duration }}</p>
-      <p>Subscribers: {{ offer.subscribers }}</p>
-      <p class="summe">Price: {{ offer.price }}$</p>
+      <a [routerLink]="lesson.lessonId">Title: {{ lesson.title }}</a>
+      <p>Description: {{lesson.description}}</p>
+      <p>Author: {{ lesson.author }}</p>
+      <p>Duration: {{ lesson.duration }}</p>
+      <p>Subscribers: {{ lesson.subscribers }}</p>
+      <p class="summe">Price: {{ lesson.price }}$</p>
       <button class="add">Add</button>
     </div>
   </article>

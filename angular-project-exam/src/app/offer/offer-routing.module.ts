@@ -6,7 +6,8 @@ import { CurrentOfferComponent } from './current-offer/current-offer.component';
 
 const routes: Routes = [
   {
-    path: 'courses',
+    path: 'lessons',
+
     children: [
       {
         path: '',
@@ -14,12 +15,12 @@ const routes: Routes = [
         component: MainComponent,
       },
       {
-        path: 'offerId',
+        path: ':lessonId',
         component: CurrentOfferComponent
       }
     ],
   },
-  { path: 'add-course',
+  { path: 'add-lesson',
    component: NewOfferComponent },
 ];
 
