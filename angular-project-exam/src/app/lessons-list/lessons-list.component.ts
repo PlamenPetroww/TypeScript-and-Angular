@@ -22,8 +22,6 @@ export class LessonsListComponent implements OnInit {
         this.lessonList = offers;
         this.lessonArray = Object.values(this.lessonList);
         this.offerId = Object.keys(this.lessonList)
-        console.log(offers)
-        console.log(this.offerId)
         this.isLoading = false;
       },
       error: (error) => {

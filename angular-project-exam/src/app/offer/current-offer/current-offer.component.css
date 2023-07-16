@@ -1,0 +1,70 @@
+/* offer content */
+
+.container {
+  width: 90%;
+  margin: auto;
+  padding-bottom: 4.5em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-evenly;
+}
+
+.offer-content {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* offer title  */
+
+.offer-name-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.3em 0.5em;
+  border: 1px solid #999;
+  border-radius: 0.3em;
+  font-size: 0.8em;
+  margin-top: 1em;
+}
+
+.offer-title {
+  padding: 0;
+}
+
+.offer-name {
+  width: 100%;
+}
+
+.columns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.7rem;
+}
+
+.offer-title {
+  width: 100%;
+}
+
+.offer-name {
+  margin-right: 1em;
+}
+
+.offer-name h2 {
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #121A37;
+  font-family: "Hey October";
+  font-size: xxx-large;
+}
+
+.description,
+.duration,
+.price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

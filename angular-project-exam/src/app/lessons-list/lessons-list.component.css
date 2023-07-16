@@ -56,7 +56,9 @@
     height: 100%;
 }
 
-.add {
+.add,
+.edit,
+.delete {
     display: flex;
     justify-content: center;
     align-items: center;

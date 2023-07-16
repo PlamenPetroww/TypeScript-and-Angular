@@ -1,7 +1,29 @@
-<div *ngIf="lesson">
+<div class="container" *ngIf="lesson">
+    <div class="offer-content">
+        <div class="offer-title">
+            <div class="offer-name-wrapper">
+                <div class="offer-name">
+                    <h2>{{lesson.title}}</h2>
+                    <div class="description">
+                        <label for="description">Description: {{lesson.description}}</label>
+                        <input type="text" id="description" name="description">
+                    </div>
+                    <div class="duration">{{lesson.duration}}</div>
+                    <div class="price">{{lesson.price}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- <div *ngIf="lesson">
     <h2>{{lesson.title}}</h2>
     <h2>{{lesson.duration}}</h2>
     <h2>{{lesson.price}}</h2>
     <h2>{{lesson.subscribers}}</h2>
-
-</div>
+</div> -->
