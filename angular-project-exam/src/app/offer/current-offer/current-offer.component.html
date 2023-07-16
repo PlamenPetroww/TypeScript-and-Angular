@@ -1,29 +1,21 @@
-<div class="container" *ngIf="lesson">
-    <div class="offer-content">
-        <div class="offer-title">
-            <div class="offer-name-wrapper">
-                <div class="offer-name">
-                    <h2>{{lesson.title}}</h2>
-                    <div class="description">
-                        <label for="description">Description: {{lesson.description}}</label>
-                        <input type="text" id="description" name="description">
-                    </div>
-                    <div class="duration">{{lesson.duration}}</div>
-                    <div class="price">{{lesson.price}}</div>
-                </div>
-            </div>
-        </div>
+<main class="container" *ngIf="lesson">
+  <section class="offer-content">
+    <div class="form">
+      <h2>Edit Your Offer</h2>
+      <form class="create-form">
+        <input type="text" name="title" id="title" value="{{ lesson.title }}" />
+        <textarea id="description" name="description">{{
+          lesson.description
+        }}</textarea>
+        <input
+          type="text"
+          name="duration"
+          id="duration"
+          value="{{ lesson.duration }}"
+        />
+        <input type="text" name="price" id="price" value="{{ lesson.price }}" />
+        <button type="submit">Edit</button>
+      </form>
     </div>
-</div>
-
-
-
-
-
-
-<!-- <div *ngIf="lesson">
-    <h2>{{lesson.title}}</h2>
-    <h2>{{lesson.duration}}</h2>
-    <h2>{{lesson.price}}</h2>
-    <h2>{{lesson.subscribers}}</h2>
-</div> -->
+  </section>
+</main>
