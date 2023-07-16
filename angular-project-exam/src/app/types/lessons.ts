@@ -5,5 +5,5 @@ export interface Lesson {
     description: string;
     subscribers: number;
     author: string;
-    lessonId: string;
+    offerId: string;
 }

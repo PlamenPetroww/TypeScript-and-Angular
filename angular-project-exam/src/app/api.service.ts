@@ -9,6 +9,7 @@ import { Lesson } from './types/lessons';
 export class ApiService {
   constructor(private http: HttpClient) { }
 
+
   getLesson(lessonId: string) {
     const {appUrl} = environment;
     return this.http.get<Lesson>(`${appUrl}/lessons/${lessonId}.json`);
@@ -18,10 +19,5 @@ export class ApiService {
     const {appUrl} = environment
     return this.http.get<Lesson[]>(`${appUrl}/lessons.json`)
   } 
-
-  /* getOffers(){
-    const {appUrl} = environment
-    return this.http.get<Offer[]>(`${appUrl}/offers.json`);
-  } */
 
 }

@@ -5,13 +5,13 @@
 </div>
 
 <div *ngIf="!isLoading" class="listing__bilder__part__two">
-  <article *ngFor="let lesson of lessonArray" class="card__part__two">
+  <article *ngFor="let lesson of lessonArray; let i = index" class="card__part__two">
     <div class="card__media__two">
       <img src="assets/img/Kiteboarding.jpg" alt="#" />
     </div>
 
     <div class="card__content__two">
-      <a [routerLink]="lesson.lessonId">Title: {{ lesson.title }}</a>
+      <a [routerLink]="[offerId[i]]">Title: {{ lesson.title }}</a>
       <p>Description: {{lesson.description}}</p>
       <p>Author: {{ lesson.author }}</p>
       <p>Duration: {{ lesson.duration }}</p>

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Lesson } from '../types/lessons';
-import { map } from 'rxjs/operators';
 import { v4 as uuidv4 } from 'uuid';
 
 @Component({
@@ -19,6 +18,23 @@ export class LessonsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.apiService.getLessons().subscribe({
+      next: (offers) => {
+        this.lessonList = offers;
+        this.lessonArray = Object.values(this.lessonList);
+        this.offerId = Object.keys(this.lessonList)
+        console.log(offers)
+        console.log(this.offerId)
+        this.isLoading = false;
+      },
+      error: (error) => {
+        this.isLoading = true;
+        console.log(`Error: ${error}`);
+      },
+    });
+  }
+
+  /* ngOnInit(): void {
+    this.apiService.getLessons().subscribe({
       next: (lesson) => {
         const lessonArray = Object.values(lesson);
         this.lessonList = lessonArray.map((item) => ({
@@ -33,6 +49,6 @@ export class LessonsListComponent implements OnInit {
         console.log(`Error: ${error}`);
       },
     });
-  }
-  
+  } */
+
 }
