@@ -1,10 +1,17 @@
-import { ValidatorFn } from '@angular/forms';
+import { ValidatorFn, FormGroup } from '@angular/forms';
 
 export function matchPasswordsValidator(
-  passwordOneValue: string,
-  passwordTwoValue: string
+  passwordControlOne: string,
+  passwordControlTwo: string
 ): ValidatorFn {
   return (control) => {
-    return null;
+    const group = control as FormGroup;
+    const passControl1 = group.get(passwordControlOne);
+    const passControl2 = group.get(passwordControlTwo);
+
+
+    return passControl1?.value === passControl2?.value ? null : {
+        matchPasswordsValidator: true
+    }
   };
 }
