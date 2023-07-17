@@ -28,6 +28,7 @@
       </ng-container>
 
       <!-- email -->
+
       <p class="field field-icon">
         <label for="email"
           ><span><i class="fas fa-envelope"></i></span
@@ -40,10 +41,16 @@
           formControlName="email"
         />
       </p>
-
-      <ng-container>
-        <p class="error">Email is required!</p>
-        <p class="error">Email is not valid!</p>
+      <ng-container *ngIf="form.get('email')?.touched">
+        <p class="error" *ngIf="form.get('email')?.errors?.['required']">
+          Email is required!
+        </p>
+        <p
+          class="error"
+          *ngIf="form.get('email')?.errors?.['appEmailValidator']"
+        >
+          Email is not valid!
+        </p>
       </ng-container>
       <!-- telephone -->
       <p class="field field-icon">
