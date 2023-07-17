@@ -1,5 +1,5 @@
 <div class="container">
-  <form class="register" action="" method="post">
+  <form class="register" [formGroup]="form" (ngSubmit)="register()">
     <fieldset>
       <h2>Registration Form</h2>
 
@@ -81,7 +81,7 @@
       </p>
       <!-- <p class="error">Repeat Password does not match password!</p> -->
 
-      <button disabled>Create Account</button>
+      <button>Create Account</button>
 
       <p class="text-center">
         Have an account?

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {FormBuilder, NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -6,5 +7,23 @@ import { Component } from '@angular/core';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+
+  form = this.fb.group({
+    email: ['emailTest'],
+    username: ['usernameTest'],
+    tel: ['telTest'],
+    passGroup: this.fb.group({
+      password: ['pass'],
+      rePAssword: ['pass']
+    })
+
+  })
+
+  constructor(private fb: FormBuilder) {}
+
+  register(): void {
+    console.log(this.form.value)
+  }
+
 
 }
