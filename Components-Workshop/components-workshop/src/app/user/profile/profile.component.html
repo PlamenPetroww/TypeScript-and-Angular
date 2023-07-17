@@ -1,6 +1,9 @@
 <div class="container">
   <div class="profile">
     <img src="/assets/profile.png" alt="default user" />
+
+<!-- READ ONLY MODE -->
+
     <ng-container *ngIf="!isEditMode">
       <h3>User Info:</h3>
       <div class="flex">
@@ -17,8 +20,11 @@
       </div>
       <button class="edit-button" (click)="toggleEditMode()">Edit</button>
     </ng-container>
+
+<!-- EDIT MODE -->
+
     <ng-container  *ngIf="isEditMode">
-      <form action="">
+      <form [formGroup]="form" (ngSubmit)="saveProfileHandler()">
         <div class="flex">
           <p>Username:</p>
           <input type="text" name="username" id="username" value="Johny" />
