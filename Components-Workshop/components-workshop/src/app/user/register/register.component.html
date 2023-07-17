@@ -17,7 +17,15 @@
           formControlName="username"
         />
       </p>
-      <p class="error">Username is required!</p>
+
+      <ng-container *ngIf="form.get('username')?.touched">
+        <p class="error" *ngIf="form.get('username')?.errors?.['required']">
+          Username is required!
+        </p>
+        <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">
+          Username's length should not be less than 5!
+        </p>
+      </ng-container>
 
       <!-- email -->
       <p class="field field-icon">
@@ -32,9 +40,11 @@
           formControlName="email"
         />
       </p>
-      <p class="error">Email is required!</p>
-      <p class="error">Email is not valid!</p>
 
+      <ng-container>
+        <p class="error">Email is required!</p>
+        <p class="error">Email is not valid!</p>
+      </ng-container>
       <!-- telephone -->
       <p class="field field-icon">
         <label for="tel"
@@ -58,22 +68,32 @@
           <label for="password"
             ><span><i class="fas fa-lock"></i></span
           ></label>
-          <input name="password" id="password" placeholder="******" formControlName="password"/>
+          <input
+            name="password"
+            id="password"
+            placeholder="******"
+            formControlName="password"
+          />
         </p>
         <p class="error">Password is required!</p>
-        <p class="error">Password must be at least 4 characters!</p>
+        <p class="error">Password must be at least 5 characters!</p>
 
         <!-- rePassword -->
         <p class="field field-icon">
           <label for="rePassword"
             ><span><i class="fas fa-lock"></i></span
           ></label>
-          <input name="rePassword" id="rePassword" placeholder="******" formControlName="rePassword"/>
+          <input
+            name="rePassword"
+            id="rePassword"
+            placeholder="******"
+            formControlName="rePassword"
+          />
         </p>
         <p class="error">Repeat Password does not match password!</p>
       </ng-container>
       <button>Create Account</button>
-
+      <div>{{ form.value | json }}</div>
       <p class="text-center">
         Have an account?
         <a routerLink="/login">Log In</a>
