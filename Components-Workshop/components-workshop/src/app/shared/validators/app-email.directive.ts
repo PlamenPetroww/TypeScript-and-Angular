@@ -1,12 +1,24 @@
 import { Directive, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { Validator, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
+import {
+  Validator,
+  AbstractControl,
+  NG_VALIDATORS,
+  ValidationErrors,
+  ValidatorFn,
+} from '@angular/forms';
 import { appEmailValidator } from './app-email-validator';
 
 @Directive({
   selector: '[appEmail]',
+  providers: [
+    {
+      provide: NG_VALIDATORS,
+      useExisting: AppEmailDirective,
+      multi: true,
+    },
+  ],
 })
 export class AppEmailDirective implements Validator, OnChanges {
-
   @Input() appEmail: string[] = [];
 
   validator: ValidatorFn = () => null;
@@ -18,11 +30,9 @@ export class AppEmailDirective implements Validator, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-   const currentEmailChanges =  changes['appEmail'];
-   if(currentEmailChanges) {
-
-    this.validate = appEmailValidator(currentEmailChanges.currentValue);
-   }
-
+    const currentEmailChanges = changes['appEmail'];
+    if (currentEmailChanges) {
+      this.validate = appEmailValidator(currentEmailChanges.currentValue);
+    }
   }
 }
