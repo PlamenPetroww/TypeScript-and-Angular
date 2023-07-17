@@ -40,14 +40,20 @@
           minlength="10"
         ></textarea>
         <ng-container *ngIf="textAreaInput.touched">
-          <p class="error" *ngIf="textAreaInput.errors?.['required']">The field with your post is required.</p>
-          <p class="error" *ngIf="textAreaInput.errors?.['minlength']">Post must be at least 10 characters long.</p>
+          <p class="error" *ngIf="textAreaInput.errors?.['required']">
+            The field with your post is required.
+          </p>
+          <p class="error" *ngIf="textAreaInput.errors?.['minlength']">
+            Post must be at least 10 characters long.
+          </p>
         </ng-container>
       </div>
 
       <div class="new-theme-buttons">
         <button class="cancel">Cancel</button>
-        <button class="public">Post</button>
+        <button class="public" [disabled]="form.invalid"
+        [style]="{backgroundColor:  form.invalid ? 'grey' : 'blue'}"
+        >Post</button>
       </div>
     </form>
   </div>
