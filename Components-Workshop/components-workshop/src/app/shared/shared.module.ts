@@ -13,6 +13,6 @@ import { AppEmailDirective } from './validators/app-email.directive';
   imports: [
     CommonModule
   ],
-  exports: [LoaderComponent]
+  exports: [LoaderComponent, AppEmailDirective]
 })
 export class SharedModule { }
