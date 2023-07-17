@@ -82,9 +82,22 @@
             formControlName="password"
           />
         </p>
-        <p class="error">Password is required!</p>
-        <p class="error">Password must be at least 5 characters!</p>
-
+        <ng-container *ngIf="form.get('passGroup')?.get('password')?.touched">
+          <p
+            class="error"
+            *ngIf="form.get('passGroup')?.get('password')?.errors?.['required']"
+          >
+            Password is required!
+          </p>
+          <p
+            class="error"
+            *ngIf="form.get('passGroup')?.get('password')?.errors?.['minlength']"
+          >
+            Password must be at least
+            {{form.get('passGroup')?.get('password')?.errors?.['minlength']?.['requiredLength']}}
+            characters!
+          </p>
+        </ng-container>
         <!-- rePassword -->
         <p class="field field-icon">
           <label for="rePassword"
