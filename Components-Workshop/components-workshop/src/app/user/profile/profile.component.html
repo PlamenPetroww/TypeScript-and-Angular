@@ -1,7 +1,7 @@
 <div class="container">
   <div class="profile">
     <img src="/assets/profile.png" alt="default user" />
-    <ng-container>
+    <ng-container *ngIf="!isEditMode">
       <h3>User Info:</h3>
       <div class="flex">
         <p>Username:</p>
@@ -15,9 +15,9 @@
         <p>Phone:</p>
         <p>+359 885 888 888</p>
       </div>
-      <button class="edit-button">Edit</button>
+      <button class="edit-button" (click)="toggleEditMode()">Edit</button>
     </ng-container>
-    <ng-container>
+    <ng-container  *ngIf="isEditMode">
       <form action="">
         <div class="flex">
           <p>Username:</p>
