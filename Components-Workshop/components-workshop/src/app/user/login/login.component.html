@@ -24,7 +24,9 @@
         <p class="error" *ngIf="inputEmail.errors?.['required']">
           Email is required!
         </p>
-        <p class="error" *ngIf="inputEmail.errors?.['appEmailValidator']">Email is not valid!</p>
+        <p class="error" *ngIf="inputEmail.errors?.['appEmailValidator']">
+          Email is not valid!
+        </p>
       </ng-container>
 
       <p class="field field-icon">
@@ -39,10 +41,17 @@
           #inputPassword="ngModel"
           ngModel
           required
+          minlength="5"
         />
       </p>
-      <p class="error">Password is required!</p>
-      <p class="error">Password must be at least 4 characters!</p>
+      <ng-container *ngIf="inputPassword.touched">
+        <p class="error" *ngIf="inputPassword.errors?.['required']">
+            Password is required!
+        </p>
+        <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+            Password must be at least {{inputPassword.errors?.['minlength']['requiredLength']}} characters!
+        </p>
+      </ng-container>
 
       <button>Login</button>
 
