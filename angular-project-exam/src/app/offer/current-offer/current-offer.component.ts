@@ -9,7 +9,6 @@ import { Lesson } from 'src/app/types/lessons';
   styleUrls: ['./current-offer.component.css'],
 })
 export class CurrentOfferComponent implements OnInit {
-
   lesson: Lesson | undefined;
 
   constructor(
@@ -26,7 +25,7 @@ export class CurrentOfferComponent implements OnInit {
 
     this.apiService.getLesson(lessonId).subscribe((lesson) => {
       this.lesson = lesson;
-      console.log({lesson})
-    })
+      console.log({ lesson });
+    });
   }
 }
