@@ -1,5 +1,13 @@
 import { Component } from '@angular/core';
-import {FormBuilder} from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
+import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
+import { appEmailValidator } from 'src/app/shared/validators/app-email-validator';
+
+interface Profile {
+  username: string;
+  email: string;
+  tel: string;
+}
 
 @Component({
   selector: 'app-profile',
@@ -9,12 +17,20 @@ import {FormBuilder} from '@angular/forms';
 export class ProfileComponent {
   isEditMode: boolean = false;
 
-form = this.fb.group({
-  username: ['user1'],
-  email: ['email1'],
-  tel: ['tel1'],
+  profileDetails: Profile = {
+    username: 'John',
+    email: 'john.doe@email.com',
+    tel: '213 123 123',
+  };
 
-})
+  form = this.fb.group({
+    username: ['', [Validators.required, Validators.minLength(5)]],
+    email: [
+      '',
+      [Validators.required, appEmailValidator(DEFAULT_EMAIL_DOMAINS)],
+    ],
+    tel: ['tel'],
+  });
 
   constructor(private fb: FormBuilder) {}
 
@@ -23,7 +39,11 @@ form = this.fb.group({
   }
 
   saveProfileHandler(): void {
-    this.toggleEditMode()
-  }
+    if (this.form.invalid) {
+      return;
+    }
 
+    this.profileDetails = { ...this.form.value } as Profile;
+    this.toggleEditMode();
+  }
 }
