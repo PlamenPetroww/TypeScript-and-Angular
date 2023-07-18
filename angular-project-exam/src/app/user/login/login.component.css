@@ -57,7 +57,8 @@ form.register {
   margin-top: 1.5rem;
   width: 60%;
   outline: none;
-  font-size: large;
+  font-size: x-large;
+  font-family: 'Hey October';
 }
 
 .login i,
@@ -101,4 +102,10 @@ p.error {
 
 .input-error {
   border-left-color: red;
+}
+
+.validForm {
+  transition: background-color 0.5s ease;
+  color: #01b663;
+  background-color: #121a37;
 }
