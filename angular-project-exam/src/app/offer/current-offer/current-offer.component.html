@@ -5,16 +5,19 @@
       <form class="create-form">
         <span class="editForm">Title</span>
         <input type="text" name="title" id="title" value="{{ lesson.title }}" />
+        <span class="editForm">Description</span>
         <textarea id="description" name="description">{{
           lesson.description
         }}</textarea>
+        <span class="editForm">Duration</span>
         <input
           type="text"
           name="duration"
           id="duration"
           value="{{ lesson.duration }}"
         />
-        <input type="text" name="price" id="price" value="{{ lesson.price }}" />
+        <span class="editForm">Price</span>
+        <input type="text" name="price" id="price" value="{{ lesson.price }} $" />
         <button type="submit">Edit</button>
       </form>
     </div>
