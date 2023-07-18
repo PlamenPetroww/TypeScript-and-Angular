@@ -75,3 +75,9 @@ textarea {
   color: #01b663;
   background-color: #121a37;
 }
+
+.editForm {
+  font-family: 'Montserrat', sans-serif!important;
+  font-size: 24px;
+  font-weight: bold;
+}
