@@ -22,8 +22,9 @@
 
       <ng-container *ngIf="inputEmail.touched">
         <p class="error" *ngIf="inputEmail.errors?.['required']">Email is required!</p>
-        <p class="error" *ngIf="inputEmail.errors?.['']">Email is not valid!</p>
+        <p class="error" *ngIf="inputEmail.errors?.['emailValidator']">Email is not valid!</p>
       </ng-container>
+      
       <p class="field field-icon">
         <label for="password"
           ><span><i class="fas fa-lock"></i></span
