@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Lesson } from 'src/app/types/lessons';
+import {FormBuilder, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-current-offer',
@@ -9,12 +10,21 @@ import { Lesson } from 'src/app/types/lessons';
   styleUrls: ['./current-offer.component.css'],
 })
 export class CurrentOfferComponent implements OnInit {
-  lesson: Lesson | undefined;
 
+  form = this.fb.group({
+    title: [[Validators.required, Validators.minLength(4)]],
+    description: [[Validators.required, Validators.minLength(10)]],
+    duration: [[Validators.required]],
+    price: [[Validators.required]],
+  });
+  
   constructor(
     private apiService: ApiService,
-    private activatedRoute: ActivatedRoute
-  ) {}
+    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
+    ) {}
+
+    lesson: Lesson | undefined;
 
   ngOnInit(): void {
     this.fetchLesson();
@@ -27,5 +37,9 @@ export class CurrentOfferComponent implements OnInit {
       this.lesson = lesson;
       console.log({ lesson });
     });
+  }
+
+  edit(): void {
+    
   }
 }

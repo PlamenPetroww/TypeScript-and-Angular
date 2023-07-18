@@ -81,3 +81,23 @@ textarea {
   font-family: "Hey October";
   font-size: xx-large;
 }
+
+/* errors  */
+
+p.error {
+  text-align: left;
+  border-radius: 0.3em;
+  color: red;
+  padding-top: 0;
+  font-family: 'Poppins';
+}
+
+.input-error {
+  border-left-color: red;
+}
+
+.validForm {
+  transition: background-color 0.5s ease;
+  color: #01b663;
+  background-color: #121a37;
+}

@@ -2,25 +2,78 @@
   <section class="offer-content">
     <div class="form">
       <h2>Edit Your Offer</h2>
-      <form class="create-form">
+      <form class="create-form" editForm="form" (ngSubmit)="edit()">
         <span class="editForm">Title</span>
-        <input type="text" name="title" id="title" value="{{ lesson.title }}" />
+        <input
+          type="text"
+          name="title"
+          id="title"
+          value="{{ lesson.title }}"
+          formControlName="title"
+        />
+
+        <!-- title validation -->
+
+        <p class="error" >
+          Title is required!
+        </p>
+        <p class="error">
+          Title is not valid!
+        </p>
+
+
         <span class="editForm">Description</span>
-        <textarea id="description" name="description">{{
-          lesson.description
-        }}</textarea>
+        <textarea
+          id="description"
+          name="description"
+          formControlName="description"
+          >{{ lesson.description }}
+      </textarea>
+
+      <!-- description validation -->
+
+      <p class="error" >
+        Description is required!
+      </p>
+      <p class="error">
+        Description is not valid!
+      </p>
         <span class="editForm">Duration</span>
         <input
           type="text"
           name="duration"
           id="duration"
           value="{{ lesson.duration }}"
+          formControlName="duration"
         />
+
+        <!-- duration validation -->
+
+        <p class="error" >
+          Duration is required!
+        </p>
+        <p class="error">
+          Duration is not valid!
+        </p>
         <span class="editForm">Price</span>
-        <input type="text" name="price" id="price" value="{{ lesson.price }} $" />
+        <input
+          type="text"
+          name="price"
+          id="price"
+          value="{{ lesson.price }} $"
+          formControlName="price"
+        />
+
+        <!-- price validation -->
+
+        <p class="error" >
+          Price is required!
+        </p>
+        <p class="error">
+          Price is not valid!
+        </p>
         <button type="submit">Edit</button>
       </form>
     </div>
   </section>
 </main>
-
