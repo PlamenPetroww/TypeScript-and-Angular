@@ -3,11 +3,11 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { AppModule } from './app/app.module';
 import { Observable, map } from 'rxjs';
 
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err) => console.error(err));
 
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
-
-  //Promise Demo
+//Promise Demo
 // const p = new Promise((resolve) => {
 //   resolve(100)
 // });
@@ -28,4 +28,31 @@ platformBrowserDynamic().bootstrapModule(AppModule)
 //   next: console.log,
 //   error: (err) => console.log(`Error: ${err}`),
 //   complete: () => console.log('Obs completed')
-// })
+// });
+
+function interval(delay: number, count?: number) {
+  let counter = 0;
+  return new Observable((obs) => {
+    if(counter === count) {
+      obs.complete();
+      return 
+    }
+    const i = setInterval(() => {
+      obs.next(counter++);
+    }, delay);
+
+    return () => {
+      clearInterval(i);
+    };
+  });
+}
+
+const subscription = interval(1000, 8).subscribe({
+    next: console.log,
+    error: (err) => console.log(`Error: ${err}`),
+    complete: () => console.log('Obs completed')
+  });
+
+  setTimeout(() => {
+    subscription.unsubscribe();
+  }, 3000)
