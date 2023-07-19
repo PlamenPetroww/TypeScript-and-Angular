@@ -1,11 +1,13 @@
 import {
+  HTTP_INTERCEPTORS,
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
   HttpRequest,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { API_URL } from './constants';
+import { Provider } from '@angular/core';
 
 export class AppInterceptor implements HttpInterceptor {
   intercept(
@@ -19,6 +21,18 @@ export class AppInterceptor implements HttpInterceptor {
       });
     }
 
-    return next.handle(request)
+    return next.handle(request).pipe(
+      tap((req) => {
+        if (req instanceof HttpRequest) {
+          console.log(req);
+        }
+      })
+    );
   }
 }
+
+export const appInterceptorProvider: Provider = {
+  provide: HTTP_INTERCEPTORS,
+  multi: true,
+  useClass: AppInterceptor,
+};
