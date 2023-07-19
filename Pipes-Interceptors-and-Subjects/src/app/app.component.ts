@@ -13,6 +13,18 @@ export class AppComponent {
   };
 
   sum(a: number, b: number): number {
-    return a + b
+    return a + b;
   }
+
+  addProperty(): void {
+    (this.user as any)['test123'] = 'test123';
+    this.user.list = [...this.user.list, 100];
+    console.log(this.user);
+  }
+
+  p = new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(100);
+    }, 3000)
+  });
 }
