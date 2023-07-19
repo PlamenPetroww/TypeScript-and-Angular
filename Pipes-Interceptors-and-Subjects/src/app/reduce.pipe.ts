@@ -12,7 +12,7 @@ export class ReducePipe<T> implements PipeTransform {
     reduceFn: (acc: any, curr: T) => any,
     initialValue: T
   ): unknown {
-    console.log('Involked from reducePipe')
+    // console.log('Involked from reducePipe')
     return array.reduce(reduceFn, initialValue);
   }
 }

@@ -36,11 +36,11 @@ export class AppComponent implements OnInit {
 
   constructor(private userService: UserService) {}
   ngOnInit(): void {
-    this.userService.loadUsers().subscribe({
-      next: console.log,
-      error: (err) => {
-        console.error(`Error from AppComponent: ${err}`)
-      }
-    })
+    // this.userService.loadUsers().subscribe({
+    //   next: console.log,
+    //   error: (err) => {
+    //     console.error(`Error from AppComponent: ${err}`)
+    //   }
+    // })
   }
 }
