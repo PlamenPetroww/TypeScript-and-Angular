@@ -5,7 +5,7 @@ import {
   HttpInterceptor,
   HttpRequest,
 } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { EMPTY, Observable, catchError, tap } from 'rxjs';
 import { API_URL } from './constants';
 import { Provider } from '@angular/core';
 
@@ -26,6 +26,14 @@ export class AppInterceptor implements HttpInterceptor {
         if (req instanceof HttpRequest) {
           console.log(req);
         }
+      }),
+      catchError((err) => {
+          if(err.status === 0) {
+            console.error(`Error from interceptor: ${JSON.stringify(err)}`);
+            
+            return EMPTY;
+        }
+        return [err]
       })
     );
   }
