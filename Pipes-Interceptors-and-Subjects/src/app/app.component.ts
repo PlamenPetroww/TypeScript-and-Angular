@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Pipes-Interceptors-and-Subjects';
+  
+  user = {
+    username: 'Plamen',
+    age: 12
+  }
+
 }
