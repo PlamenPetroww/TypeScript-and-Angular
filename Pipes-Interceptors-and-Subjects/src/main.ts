@@ -30,29 +30,29 @@ platformBrowserDynamic()
 //   complete: () => console.log('Obs completed')
 // });
 
-function interval(delay: number, count?: number) {
-  let counter = 0;
-  return new Observable((obs) => {
-    if(counter === count) {
-      obs.complete();
-      return 
-    }
-    const i = setInterval(() => {
-      obs.next(counter++);
-    }, delay);
+// function interval(delay: number, count?: number) {
+//   let counter = 0;
+//   return new Observable((obs) => {
+//     if(counter === count) {
+//       obs.complete();
+//       return 
+//     }
+//     const i = setInterval(() => {
+//       obs.next(counter++);
+//     }, delay);
 
-    return () => {
-      clearInterval(i);
-    };
-  });
-}
+//     return () => {
+//       clearInterval(i);
+//     };
+//   });
+// }
 
-const subscription = interval(1000, 8).subscribe({
-    next: console.log,
-    error: (err) => console.log(`Error: ${err}`),
-    complete: () => console.log('Obs completed')
-  });
+// const subscription = interval(1000, 8).subscribe({
+//     next: console.log,
+//     error: (err) => console.log(`Error: ${err}`),
+//     complete: () => console.log('Obs completed')
+//   });
 
-  setTimeout(() => {
-    subscription.unsubscribe();
-  }, 3000)
+//   setTimeout(() => {
+//     subscription.unsubscribe();
+//   }, 3000)
