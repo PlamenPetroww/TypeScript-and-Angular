@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Lesson } from 'src/app/types/lessons';
-import {FormBuilder, Validators} from '@angular/forms';
+import {FormBuilder, Validators, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-current-offer',
@@ -11,11 +11,12 @@ import {FormBuilder, Validators} from '@angular/forms';
 })
 export class CurrentOfferComponent implements OnInit {
 
+
   form = this.fb.group({
-    title: [[Validators.required, Validators.minLength(4)]],
+    title: ["", [Validators.required, Validators.minLength(4)]],
     description: [[Validators.required, Validators.minLength(10)]],
-    duration: [[Validators.required]],
-    price: [[Validators.required]],
+    duration: [[Validators.required, Validators.max(2)]],
+    price: [[Validators.required, Validators.max(1000)]],
   });
   
   constructor(
@@ -40,6 +41,9 @@ export class CurrentOfferComponent implements OnInit {
   }
 
   edit(): void {
-    
+    if(this.form.invalid) {
+      return;
+    }
   }
+
 }

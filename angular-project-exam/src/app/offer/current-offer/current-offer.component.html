@@ -2,7 +2,10 @@
   <section class="offer-content">
     <div class="form">
       <h2>Edit Your Offer</h2>
-      <form class="create-form" editForm="form" (ngSubmit)="edit()">
+      <form class="create-form" (ngSubmit)="edit()">
+
+        <!-- title -->
+
         <span class="editForm">Title</span>
         <input
           type="text"
@@ -14,13 +17,11 @@
 
         <!-- title validation -->
 
-        <p class="error" >
-          Title is required!
-        </p>
-        <p class="error">
-          Title is not valid!
-        </p>
-
+        <ng-container *ngIf="form.get('title')?.touched">
+          <p class="error" *ngIf="form.get('title')?.errors?.['required']">Title is required!</p>
+          <p class="error" *ngIf="form.get('title')?.errors?.['minlength']">Title name must be at least 4 characters long.</p>
+        </ng-container>
+        <!-- description -->
 
         <span class="editForm">Description</span>
         <textarea
@@ -28,19 +29,19 @@
           name="description"
           formControlName="description"
           >{{ lesson.description }}
-      </textarea>
+      </textarea
+        >
 
-      <!-- description validation -->
+        <!-- description validation -->
 
-      <p class="error" >
-        Description is required!
-      </p>
-      <p class="error">
-        Description is not valid!
-      </p>
+        <p class="error">Description is required!</p>
+        <p class="error">Description must be at least 10 characters long.</p>
+
+        <!-- duration -->
+
         <span class="editForm">Duration</span>
         <input
-          type="text"
+          type="number"
           name="duration"
           id="duration"
           value="{{ lesson.duration }}"
@@ -49,12 +50,11 @@
 
         <!-- duration validation -->
 
-        <p class="error" >
-          Duration is required!
-        </p>
-        <p class="error">
-          Duration is not valid!
-        </p>
+        <p class="error">Duration is required!</p>
+        <p class="error">The duration cannot exceed 15 days.</p>
+
+        <!-- price -->
+
         <span class="editForm">Price</span>
         <input
           type="text"
@@ -66,12 +66,8 @@
 
         <!-- price validation -->
 
-        <p class="error" >
-          Price is required!
-        </p>
-        <p class="error">
-          Price is not valid!
-        </p>
+        <p class="error">Price is required!</p>
+        <p class="error">Price name must be at least 5 characters long.</p>
         <button type="submit">Edit</button>
       </form>
     </div>
