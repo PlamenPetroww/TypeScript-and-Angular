@@ -1,1 +1,5 @@
 <div>{{user | json}}</div>
+<h1>
+  Sum of list: 
+  <div>{{user.list | reduce : sum : 0}}</div>
+</h1>
