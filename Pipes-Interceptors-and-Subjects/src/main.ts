@@ -1,7 +1,7 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
-import { Observable, Subject, map,BehaviorSubject } from 'rxjs';
+import { Observable, Subject, map, BehaviorSubject, ReplaySubject } from 'rxjs';
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
@@ -78,14 +78,25 @@ platformBrowserDynamic()
 
 // BEHAVIOR SUBJECT
 
-const bSub$$ = new BehaviorSubject(100);
-bSub$$.subscribe((data) => console.log('Subscription 1', data));
-setTimeout(() => {
-  bSub$$.next(200);
-  bSub$$.subscribe((data) => console.log('Subscription 2', data));
-    setTimeout(() => {
-      bSub$$.next(300);
-      bSub$$.subscribe((data) => console.log('Subscription 3', data));
-    }, 2000)
-  }, 2000)
+// const bSub$$ = new BehaviorSubject(100);
+// bSub$$.subscribe((data) => console.log('Subscription 1', data));
+// setTimeout(() => {
+//   bSub$$.next(200);
+//   bSub$$.subscribe((data) => console.log('Subscription 2', data));
+//     setTimeout(() => {
+//       bSub$$.next(300);
+//       bSub$$.subscribe((data) => console.log('Subscription 3', data));
+//     }, 2000)
+//   }, 2000)
 
+// REPLAY SUBJECT
+const rSub$$ = new ReplaySubject(10);
+rSub$$.next(1000);
+rSub$$.subscribe((d) => console.log('Subscribe 1', d));
+
+for(let i = 1; i <= 30; i++) {
+  rSub$$.next(i);
+}
+
+console.log('-------------');
+rSub$$.subscribe((d) => console.log('Subscribe 2', d))
