@@ -37,6 +37,7 @@ export class AppComponent {
   constructor(private userService: UserService) {}
   
     users$ = this.userService.userObs$;
+    isLoadingUsers$ = this.userService.isLoadingUsers$;
 
   reloadUsers(): void {
     this.userService.loadUsers()
