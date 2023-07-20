@@ -1,8 +1,11 @@
+<h2>Login Form</h2>
 <div class="container">
   <form class="login" #form="ngForm" (ngSubmit)="login(form)">
     <fieldset>
-      <h2>Login Form</h2>
 
+      <!-- email -->
+
+      <span class="login-email">Username</span>
       <p class="field field-icon">
         <label for="email"
           ></label
@@ -31,10 +34,12 @@
         </p>
       </ng-container>
 
+      <!-- password -->
+      <span class="login-password">Password</span>
+
       <p class="field field-icon">
         <label for="password"
-          ><!-- <span><i class="fas fa-lock"></i></span
-        > --></label
+          ></label
         >
         <input
           type="password"
