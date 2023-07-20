@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { interval, map } from 'rxjs';
 import { UserService } from './user.service';
 
@@ -7,7 +7,7 @@ import { UserService } from './user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   user = {
     username: 'Plamen',
     age: 12,
@@ -35,12 +35,18 @@ export class AppComponent implements OnInit {
   )
 
   constructor(private userService: UserService) {}
-  ngOnInit(): void {
-    // this.userService.loadUsers().subscribe({
-    //   next: console.log,
-    //   error: (err) => {
-    //     console.error(`Error from AppComponent: ${err}`)
-    //   }
-    // })
+  
+    users$ = this.userService.userObs$;
+
+  reloadUsers(): void {
+    this.userService.loadUsers()
   }
+  // ngOnInit(): void {
+  //   this.userService.loadUsers().subscribe({
+  //     next: console.log,
+  //     error: (err) => {
+  //       console.error(`Error from AppComponent: ${err}`)
+  //     }
+  //   })
+  // }
 }

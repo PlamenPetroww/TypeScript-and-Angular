@@ -1,14 +1,14 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
-import {
-  Observable,
-  Subject,
-  map,
-  BehaviorSubject,
-  ReplaySubject,
-  AsyncSubject,
-} from 'rxjs';
+// import {
+//   Observable,
+//   Subject,
+//   map,
+//   BehaviorSubject,
+//   ReplaySubject,
+//   AsyncSubject,
+// } from 'rxjs';
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
@@ -110,12 +110,12 @@ platformBrowserDynamic()
 
 // ASYNC SUBJECT
 
-const aSub$$ = new AsyncSubject();
-aSub$$.next(1);
-aSub$$.next(2);
-aSub$$.next(3);
-aSub$$.subscribe((d) => console.log('Subscribe 1', d));
-aSub$$.next(5);
-aSub$$.subscribe((d) => console.log('Subscribe 2', d));
-aSub$$.complete();
+// const aSub$$ = new AsyncSubject();
+// aSub$$.next(1);
+// aSub$$.next(2);
+// aSub$$.next(3);
+// aSub$$.subscribe((d) => console.log('Subscribe 1', d));
+// aSub$$.next(5);
+// aSub$$.subscribe((d) => console.log('Subscribe 2', d));
+// aSub$$.complete();
 
