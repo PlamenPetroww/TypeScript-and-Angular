@@ -1,7 +1,7 @@
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
-import { Observable, map } from 'rxjs';
+import { Observable, Subject, map } from 'rxjs';
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)
@@ -35,7 +35,7 @@ platformBrowserDynamic()
 //   return new Observable((obs) => {
 //     if(counter === count) {
 //       obs.complete();
-//       return 
+//       return
 //     }
 //     const i = setInterval(() => {
 //       obs.next(counter++);
@@ -56,3 +56,22 @@ platformBrowserDynamic()
 //   setTimeout(() => {
 //     subscription.unsubscribe();
 //   }, 3000)
+
+// SUBJECT
+
+const subj$$ = new Subject();
+subj$$.subscribe (console.log);
+subj$$.next(123);
+
+subj$$.subscribe(console.log);
+subj$$.subscribe(console.log);
+subj$$.next(400);
+
+setTimeout(() => {
+  subj$$.subscribe(console.log);
+    subj$$.next(200);
+  setTimeout(() => {
+    subj$$.subscribe(console.log);
+    subj$$.next(1001);
+  }, 2000)
+}, 2000)
