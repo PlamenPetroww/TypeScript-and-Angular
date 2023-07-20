@@ -84,12 +84,14 @@ textarea {
 
 /* errors  */
 
-p.error {
+p.error-edit-page {
   text-align: left;
-  border-radius: 0.3em;
-  color: red;
-  padding-top: 0;
-  font-family: 'Poppins';
+    border-radius: 0.3em;
+    color: red;
+    padding-top: 0;
+    font-family: 'Poppins';
+    background-color: white;
+    padding: 5px 10px;
 }
 
 .input-error {

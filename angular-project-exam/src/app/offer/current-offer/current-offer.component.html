@@ -2,7 +2,8 @@
   <section class="offer-content">
     <div class="form">
       <h2>Edit Your Offer</h2>
-      <form class="create-form" editForm="form" (ngSubmit)="edit()">
+      <form class="create-form" [formGroup]="form" (ngSubmit)="edit()">
+        <!--  -->
 
         <!-- title -->
 
@@ -11,15 +12,19 @@
           type="text"
           name="title"
           id="title"
-          value="{{ lesson.title }}"
+          [ngModel]="lesson.title"
           formControlName="title"
         />
 
         <!-- title validation -->
 
         <ng-container *ngIf="form.get('title')?.touched">
-          <p class="error" *ngIf="form.get('title')?.errors?.['required']">Title is required!</p>
-          <p class="error" *ngIf="form.get('title')?.errors?.['minlength']">Title name must be at least 4 characters long.</p>
+          <p class="error-edit-page" *ngIf="form.get('title')?.errors?.['required']">
+            Title is required!
+          </p>
+          <p class="error-edit-page" *ngIf="form.get('title')?.errors?.['minlength']">
+            Title name must be at least 4 characters long.
+          </p>
         </ng-container>
         <!-- description -->
 
@@ -27,15 +32,27 @@
         <textarea
           id="description"
           name="description"
+          [ngModel]="lesson.description"
           formControlName="description"
-          >{{ lesson.description }}
-      </textarea
+          >{{ lesson.description }}</textarea
         >
 
         <!-- description validation -->
 
-        <p class="error">Description is required!</p>
-        <p class="error">Description must be at least 10 characters long.</p>
+        <ng-container *ngIf="form.get('description')?.touched">
+          <p
+            class="error-edit-page"
+            *ngIf="form.get('description')?.errors?.['required']"
+          >
+            Description is required!
+          </p>
+          <p
+            class="error-edit-page"
+            *ngIf="form.get('description')?.errors?.['minlength']"
+          >
+            Description must be at least 10 characters long.
+          </p>
+        </ng-container>
 
         <!-- duration -->
 
@@ -44,30 +61,38 @@
           type="number"
           name="duration"
           id="duration"
-          value="{{ lesson.duration }}"
+          [ngModel]="lesson.duration"
           formControlName="duration"
         />
 
         <!-- duration validation -->
 
-        <p class="error">Duration is required!</p>
-        <p class="error">The duration cannot exceed 15 days.</p>
+        <ng-container *ngIf="form.get('duration')?.touched">
+          <p class="error-edit-page" *ngIf="form.get('duration')?.errors?.['required']">
+            Duration is required!
+          </p>
+          <p class="error-edit-page" *ngIf="form.get('duration')?.errors?.['max']">
+            The duration cannot exceed 15 days.
+          </p>
+        </ng-container>
 
         <!-- price -->
 
         <span class="editForm">Price</span>
         <input
-          type="text"
+          type="number"
           name="price"
           id="price"
-          value="{{ lesson.price }} $"
+          [ngModel]="lesson.price"
           formControlName="price"
         />
 
         <!-- price validation -->
 
-        <p class="error">Price is required!</p>
-        <p class="error">Price name must be at least 5 characters long.</p>
+        <ng-container *ngIf="form.get('price')?.touched">
+          <p class="error-edit-page" *ngIf="form.get('price')?.errors?.['required']">Price is required!</p>
+          <p class="error-edit-page" *ngIf="form.get('price')?.errors?.['max']">The price cannot exceed 1000 $</p>
+        </ng-container>
         <button type="submit">Edit</button>
       </form>
     </div>
