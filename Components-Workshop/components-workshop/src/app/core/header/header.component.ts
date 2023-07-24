@@ -5,14 +5,13 @@ import { UserService } from 'src/app/user/user.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+  constructor(private userService: UserService, private router: Router) {}
 
-  constructor(private userService: UserService, private router: Router){}
-  
   get isLoggedIn(): boolean {
-    return this.userService.isLogged
+    return this.userService.isLogged;
   }
 
   get firstName(): string {
@@ -20,7 +19,11 @@ export class HeaderComponent {
   }
 
   logout(): void {
-    this.userService.logout();
-    this.router.navigate(['/'])
+    this.userService.logout().subscribe({
+      next: () => {
+        this.router.navigate(['/login']);
+      },
+      error: () => {},
+    });
   }
 }
