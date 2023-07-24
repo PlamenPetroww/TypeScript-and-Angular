@@ -47,13 +47,15 @@ h2 {
 }
 
 .register button {
-  color: white;
-  border: none;
-  border-radius: 0.3em;
-  padding: 0.6em 1.2em;
-  margin-top: 1.5rem;
-  width: 60%;
-  outline: none;
+  color: #01b663;
+    border: none;
+    border-radius: 0.3em;
+    padding: 0.6em 1.2em;
+    margin-top: 1.5rem;
+    width: 60%;
+    outline: none;
+    font-size: x-large;
+    font-family: "Hey October";
 }
 
 .register i {
@@ -86,4 +88,10 @@ p.error {
 
 .input-error {
   border-left-color: red;
+}
+
+.validForm {
+  transition: background-color 0.5s ease;
+  color: #01b663;
+  background-color: #121a37;
 }
