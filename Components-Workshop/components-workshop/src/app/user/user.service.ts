@@ -32,18 +32,20 @@ export class UserService {
     tel: string
   ) {
     // this.user = {
-    return this.http.post('/api/register', {
-      username,
-      email,
-      password,
-      rePassword,
-      tel,
-    });
+    return this.http
+      .post<User>('/api/register', {
+        username,
+        email,
+        password,
+        rePassword,
+        tel,
+      })
+      .pipe(tap((user) => this.user$$.next(user)));
   }
 
   logout() {
     return this.http
-      .post<User>('/api/logout', {  })
+      .post<User>('/api/logout', {})
       .pipe(tap(() => this.user$$.next(undefined)));
   }
 }
