@@ -1,8 +1,8 @@
-import { IcePipe } from './slice.pipe';
+import { SlicePipe } from './slice.pipe';
 
-describe('IcePipe', () => {
+describe('SlicePipe', () => {
   it('create an instance', () => {
-    const pipe = new IcePipe();
+    const pipe = new SlicePipe();
     expect(pipe).toBeTruthy();
   });
 });

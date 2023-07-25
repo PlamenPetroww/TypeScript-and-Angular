@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'ice'
+  name: 'slice',
 })
-export class IcePipe implements PipeTransform {
-
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+export class SlicePipe implements PipeTransform {
+  transform(value: string, maxCharCount = 5): unknown {
+    return `${value.substring(0, maxCharCount)}${
+      value.length > maxCharCount ? '...' : ''
+    }`;
   }
-
 }
