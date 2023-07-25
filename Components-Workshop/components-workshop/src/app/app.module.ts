@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { ThemeModule } from './theme/theme.module';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { appInterceptorProvider } from './app.interceptor';
+import { AuthenticateComponent } from './authenticate/authenticate.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { appInterceptorProvider } from './app.interceptor';
     PostsListComponent,
     HomeComponent,
     WelcomeComponent,
+    AuthenticateComponent,
   ],
   imports: [
     BrowserModule,
