@@ -15,7 +15,7 @@ export class CurrentOfferComponent implements OnInit {
   form = this.fb.group({
     title: ["", [Validators.required, Validators.minLength(4)]],
     description: ["", [Validators.required, Validators.minLength(10)]],
-    duration: ["", [Validators.required, Validators.max(15)]],
+    duration: ["", [Validators.required, Validators.max(15), Validators.min(2)]],
     price: ["", [Validators.required, Validators.max(1000), Validators.min(50)]],
   });
   

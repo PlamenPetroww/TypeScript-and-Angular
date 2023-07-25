@@ -34,7 +34,7 @@
           type="text"
           name="description"
           id="description"
-          rows="8"
+          rows="5"
           formControlName="description"
         ></textarea>
       </div>
@@ -49,11 +49,21 @@
 
         <div class="new-theme-duration">
         <label for="themeDuration">Duration <span class="red">*</span></label>
-        <input type="text" name="themeName" id="themeName" />
-        <!-- <p class="error">Theme name is required.</p>
-        <p class="error">Theme name must be at least 5 characters long.</p> -->
+        <input 
+        type="text" 
+        name="duration" 
+        id="duration" 
+        formControlName="duration"
+        />
       </div>
 
+      <!-- duration validation -->
+
+      <ng-container *ngIf="form.get('duration')?.touched">
+        <p class="error-create-page" *ngIf="form.get('duration')?.errors?.['required']">Duration is required.</p>
+        <p class="error-create-page" *ngIf="form.get('duration')?.errors?.['min']">The duration cannot be less than 2 days.</p>
+        <p class="error-create-page" *ngIf="form.get('duration')?.errors?.['max']">The duration cannot be more than 15 days.</p>
+      </ng-container>
       
 
       <!-- price -->
