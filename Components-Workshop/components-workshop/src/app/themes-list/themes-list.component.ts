@@ -28,7 +28,7 @@ export class ThemesListComponent implements OnInit {
       },
       error: (err) => {
         this.isLoading = false;
-        console.log(`Error: ${err}`);
+        //console.log(`Error: ${err}`);
       },
     });
   }
