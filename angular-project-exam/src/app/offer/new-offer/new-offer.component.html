@@ -3,13 +3,26 @@
     <div class="header-background">
       <span>New Theme</span>
     </div>
-    <form>
+    <form [formGroup]="form" (ngSubmit)="create()">
+
+      <!-- title -->
+
       <div class="new-theme-title">
         <label for="themeTitle">Title <span class="red">*</span></label>
-        <input for="themeTitle" type="text" name="themeName" id="themeName" />
-        <!-- <p class="error">Theme title is required.</p>
-          <p class="error">Theme name must be at least 5 characters long.</p> -->
-        </div>
+        <input for="themeTitle"
+        type="text"
+        name="title"
+        id="title"
+        formControlName="title"
+        />
+      </div>
+
+      <!-- title validation-->
+
+      <ng-container *ngIf="form.get('title')?.touched">
+        <p class="error-create-page" *ngIf="form.get('title')?.errors?.['required']">Offer title is required.</p>
+        <p class="error-create-page" *ngIf="form.get('title')?.errors?.['minlength']">Offer title must be at least 4 characters long.</p>
+      </ng-container>
       <div class="new-theme-price">
         <label for="themePrice">Price <span class="red">*</span></label>
         <input type="text" name="themeName" id="themeName" />
@@ -22,10 +35,18 @@
         <!-- <p class="error">Theme name is required.</p>
         <p class="error">Theme name must be at least 5 characters long.</p> -->
       </div>
-      
+
       <div class="new-theme-description">
-        <label for="themeDescription">Description <span class="red">*</span></label>
-        <textarea type="text"  name="themeDescription"  id="themeDescription"  rows="8"  class="height"  ></textarea>
+        <label for="themeDescription"
+          >Description <span class="red">*</span></label
+        >
+        <textarea
+          type="text"
+          name="themeDescription"
+          id="themeDescription"
+          rows="8"
+          class="height"
+        ></textarea>
         <!-- <p class="error">The field with your post is required.</p>
         <p class="error">Post must be at least 10 characters long.</p> -->
       </div>

@@ -80,7 +80,7 @@
 .new-theme-title label,
 .new-theme-description textarea,
 .new-theme-price label,
-.new-theme-duration label  {
+.new-theme-duration label {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,13 +101,24 @@ button + button {
   border-radius: 0.3em;
 }
 
-p.error {
-  text-align: left;
+/* errors  */
+
+p.error-create-page {
+  text-align: center;
   border-radius: 0.3em;
   color: red;
   padding-top: 0;
+  font-family: "Poppins";
+  background-color: white;
+  padding: 5px 10px;
 }
 
 .input-error {
   border-left-color: red;
+}
+
+.validForm {
+  transition: background-color 0.5s ease;
+  color: #01b663;
+  background-color: #121a37;
 }
