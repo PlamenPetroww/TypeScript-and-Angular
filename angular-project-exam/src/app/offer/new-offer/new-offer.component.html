@@ -37,13 +37,13 @@
           rows="8"
           formControlName="description"
         ></textarea>
-
+      </div>
       <!-- description  validation -->
 
-
-        <!-- <p class="error">The field with your post is required.</p>
-        <p class="error">Post must be at least 10 characters long.</p> -->
-      </div>
+      <ng-container *ngIf="form.get('description')?.touched">
+        <p class="error-create-page" *ngIf="form.get('description')?.errors?.['required']">The description field is required.</p>
+        <p class="error-create-page" *ngIf="form.get('description')?.errors?.['minlength']">Description must be at least 10 characters long.</p>
+      </ng-container>
 
       <!-- duration -->
 
