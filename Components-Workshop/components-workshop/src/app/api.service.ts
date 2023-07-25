@@ -10,6 +10,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  //THEMES
   getTheme(id: string) {
     const {apiUrl} = environment
     return this.http.get<Theme>(`${apiUrl}/themes/${id}`);
@@ -20,6 +21,14 @@ export class ApiService {
     return this.http.get<Theme[]>(`${apiUrl}/themes`);
   }
 
+  createTheme(
+    themeName: string,
+    postText: string
+  ) {
+    return this.http.post<Theme>('/api/themes', {themeName, postText});
+  }
+
+  //POSTS
   getPosts(limit?: number) {
     const {apiUrl} = environment
     const limitFilter = limit ? `?limit=${limit}` : '';
