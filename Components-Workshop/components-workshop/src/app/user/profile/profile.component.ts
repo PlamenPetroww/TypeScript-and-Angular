@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit{
       '',
       [Validators.required, appEmailValidator(DEFAULT_EMAIL_DOMAINS)],
     ],
-    tel: ['tel'],
+    tel: [''],
   });
 
   constructor(private fb: FormBuilder, private userService: UserService) {};
@@ -41,7 +41,13 @@ export class ProfileComponent implements OnInit{
       username,
       email,
       tel,
-    }
+    };
+
+    this.form.setValue({
+      username,
+      email,
+      tel,
+    })
   }
 
   toggleEditMode() {
