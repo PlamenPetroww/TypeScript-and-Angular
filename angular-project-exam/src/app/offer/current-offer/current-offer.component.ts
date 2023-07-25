@@ -16,7 +16,7 @@ export class CurrentOfferComponent implements OnInit {
     title: ["", [Validators.required, Validators.minLength(4)]],
     description: ["", [Validators.required, Validators.minLength(10)]],
     duration: ["", [Validators.required, Validators.max(15)]],
-    price: ["", [Validators.required, Validators.max(1000)]],
+    price: ["", [Validators.required, Validators.max(1000), Validators.min(50)]],
   });
   
   constructor(

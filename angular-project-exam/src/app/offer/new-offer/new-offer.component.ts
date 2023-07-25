@@ -11,9 +11,9 @@ import { Offer } from 'src/app/types/offers';
 export class NewOfferComponent implements OnInit {
   form = this.fb.group({
     title: ['', [Validators.required, Validators.minLength(4)]],
-    price: ['', [Validators.required, Validators.max(1000), Validators.min(1)]],
     description: ['', [Validators.required, Validators.minLength(10)]],
     duration: ['', [Validators.required, Validators.max(15)]],
+    price: ['', [Validators.required, Validators.max(1000), Validators.min(50)]],
   });
 
   constructor(private apiService: ApiService, private fb: FormBuilder) {}

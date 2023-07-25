@@ -90,6 +90,7 @@
 
         <ng-container *ngIf="form.get('price')?.touched">
           <p class="error-edit-page" *ngIf="form.get('price')?.errors?.['required']">Price is required!</p>
+          <p class="error-edit-page" *ngIf="form.get('price')?.errors?.['min']">The price cannot be less than 50 $.</p>
           <p class="error-edit-page" *ngIf="form.get('price')?.errors?.['max']">The price cannot exceed 1000 $</p>
         </ng-container>
         <button type="submit">Edit</button>
