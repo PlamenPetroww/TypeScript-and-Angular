@@ -1,23 +1,43 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Lesson } from './types/lessons';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
+  // get Lessons
 
   getLesson(lessonId: string) {
-    const {appUrl} = environment;
+    const { appUrl } = environment;
     return this.http.get<Lesson>(`${appUrl}/lessons/${lessonId}.json`);
   }
 
-  getLessons(){
-    const {appUrl} = environment
-    return this.http.get<Lesson[]>(`${appUrl}/lessons.json`)
-  } 
+  getLessons() {
+    const { appUrl } = environment;
+    return this.http.get<Lesson[]>(`${appUrl}/lessons.json`);
+  }
 
+  // post Lessons
+
+  createLesson(
+    title: string,
+    price: number,
+    duration: number,
+    description: string
+    // subscribers: number,
+    // author: string,
+    // offerId: string,
+  ) {
+    const { appUrl } = environment;
+    return this.http.post<Lesson>(`${appUrl}/lesson.json`, {
+      title,
+      price,
+      duration,
+      description,
+    });
+  }
 }

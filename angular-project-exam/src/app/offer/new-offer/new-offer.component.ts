@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from 'src/app/api.service';
 
 @Component({
@@ -6,11 +6,9 @@ import { ApiService } from 'src/app/api.service';
   templateUrl: './new-offer.component.html',
   styleUrls: ['./new-offer.component.css'],
 })
-export class NewOfferComponent implements OnInit {
+export class NewOfferComponent {
 
   constructor(private apiService: ApiService) {}
 
-  ngOnInit(): void {
-    
-  }
+  
 }

@@ -21,6 +21,14 @@ export class ApiService {
     return this.http.get<Theme[]>(`${apiUrl}/themes`);
   }
 
+  getPosts(limit?: number) {
+    const {apiUrl} = environment
+    const limitFilter = limit ? `?limit=${limit}` : '';
+    return this.http.get<Post[]>(`${apiUrl}/posts${limitFilter}`);
+  }
+
+  //POSTS
+  
   createTheme(
     themeName: string,
     postText: string
@@ -28,10 +36,4 @@ export class ApiService {
     return this.http.post<Theme>('/api/themes', {themeName, postText});
   }
 
-  //POSTS
-  getPosts(limit?: number) {
-    const {apiUrl} = environment
-    const limitFilter = limit ? `?limit=${limit}` : '';
-    return this.http.get<Post[]>(`${apiUrl}/posts${limitFilter}`);
-  }
 }
