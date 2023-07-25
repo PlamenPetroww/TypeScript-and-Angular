@@ -25,9 +25,9 @@ export class ApiService {
 
   createLesson(
     title: string,
-    price: number,
-    duration: number,
-    description: string
+    description: string,
+    duration: string,
+    price: string,
     // subscribers: number,
     // author: string,
     // offerId: string,

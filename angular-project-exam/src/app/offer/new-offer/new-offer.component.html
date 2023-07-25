@@ -85,6 +85,8 @@
         <p class="error-create-page" *ngIf="form.get('price')?.errors?.['min']">The price cannot be less than 50 $.</p>
         <p class="error-create-page" *ngIf="form.get('price')?.errors?.['max']">The price cannot be more than 1000 $.</p>
       </ng-container>
+
+      
       <div class="new-theme-buttons">
         <button class="cancel">Cancel</button>
         <button class="public">Add</button>
