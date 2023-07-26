@@ -33,7 +33,7 @@ export class ApiService {
     // offerId: string,
   ) {
     const { appUrl } = environment;
-    return this.http.post<Lesson>(`${appUrl}/lesson.json`, {
+    return this.http.post<Lesson>(`${appUrl}/lessons.json`, {
       title,
       price,
       duration,
