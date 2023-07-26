@@ -60,6 +60,5 @@ export class ReduxSimulationComponent implements OnInit {
     
     //simulate dispatching action
     const result = eventCollection.reduce(reducer, initialState);
-    console.log(result);
   }
 }
