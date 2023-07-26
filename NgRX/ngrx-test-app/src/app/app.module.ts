@@ -3,10 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ReduxSimulationComponent } from './redux-simulation/redux-simulation.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ReduxSimulationComponent
   ],
   imports: [
     BrowserModule,
