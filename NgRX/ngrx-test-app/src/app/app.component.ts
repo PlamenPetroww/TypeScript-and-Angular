@@ -15,11 +15,17 @@ export class AppComponent implements OnInit {
 
     //type
     interface AppState {
-
+      str: string;
+      obj: any;
+      bool: boolean;
     }
 
     //Default state
-    const initialState = 0;
+    const initialState: AppState = {
+      str: '',
+      obj: null,
+      bool: false,
+    };
 
     //Actions
     const EVENT_ONE = 'EVENT_1'
@@ -29,15 +35,27 @@ export class AppComponent implements OnInit {
 
 
     //reducer
-    function reducer(state: AppState, actions: any) {
-      //return acc + curr;
+    function reducer(state: AppState, action: any) {
+      switch (action.type) {
+        case EVENT_ONE:
+        return {...state, str: action.value};
+        
+        case EVENT_TWO:
+        return {...state, obj: action.value};
+
+        case EVENT_THREE:
+        return {...state, bool: action.value};
+
+        default:
+          return state;
+      }
     }
 
     //combine events with reducer and initial state
     const eventCollection = [
-      { type: EVENT_ONE, value: 'test123' },
-      { type: EVENT_TWO, value: { name: 'Pesho', age: 21 } },
-      {type: EVENT_THREE, value: true}
+      { type: EVENT_ONE, value: 'test123' },  //action
+      { type: EVENT_TWO, value: { name: 'Pesho', age: 21 } },  //action 
+      {type: EVENT_THREE, value: true}  //action
     ];
 
     const result = eventCollection.reduce(reducer, initialState);
