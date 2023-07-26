@@ -5,11 +5,11 @@ export function translateReducer(state: string = 'Hello!', action: Action) {
 
   switch (action.type) {
     case 'DEUTSCH':
-      return state = 'Hallo!';
+      return (state = 'Hallo!');
     case 'ITALIAN':
-      return state = 'Hallo auf Italianisch!';
+      return (state = 'Hallo auf Italianisch!');
 
     default:
-      break;
+      return state;
   }
 }
