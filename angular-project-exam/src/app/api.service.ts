@@ -27,7 +27,7 @@ export class ApiService {
     title: string,
     description: string,
     duration: string,
-    price: string,
+    price: string
     // subscribers: number,
     // author: string,
     // offerId: string,
