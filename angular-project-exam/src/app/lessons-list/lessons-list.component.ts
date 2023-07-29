@@ -30,4 +30,19 @@ export class LessonsListComponent implements OnInit {
     });
   }
 
+  /* constructor(private db: Database) {}
+
+  lessonList: Lesson[] = [];
+  offerId: any;
+  isLoading: boolean = true;
+
+  ngOnInit(): void {
+    const dbRef = ref(this.db, 'Lesson');
+    onValue(dbRef, (snapshot) => {
+      this.lessonList = Object.values(snapshot.val())
+      this.offerId = Object.keys(snapshot.val())
+      console.log(this.lessonList)
+    })
+  } */
+
 }

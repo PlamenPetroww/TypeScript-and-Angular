@@ -12,5 +12,6 @@ export const environment = {
         messagingSenderId: "271547833314",
         appId: "1:271547833314:web:29005a324c4262d35fb7bb"
     },
-    appUrl: "https://angular-project-demo-9d85a-default-rtdb.europe-west1.firebasedatabase.app/"
+    production: true,
+    appUrl: "https://test-angular-e21b5-default-rtdb.europe-west1.firebasedatabase.app/"
   };

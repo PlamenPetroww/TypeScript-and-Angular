@@ -13,6 +13,7 @@ import { OfferModule } from './offer/offer.module';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat'
 import { environment } from 'src/environments/environment';
+import { Database } from '@angular/fire/database/firebase';
 
 @NgModule({
   declarations: [
