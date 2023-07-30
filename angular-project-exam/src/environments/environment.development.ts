@@ -5,13 +5,16 @@
 
 export const environment = {
     firebase: {
-        apiKey: "AIzaSyAcNm5ZOJBn2x0ilJdJ-pDl302JfbVYKk4",
-        authDomain: "angular-project-demo-9d85a.firebaseapp.com",
-        projectId: "angular-project-demo-9d85a",
-        storageBucket: "angular-project-demo-9d85a.appspot.com",
-        messagingSenderId: "271547833314",
-        appId: "1:271547833314:web:29005a324c4262d35fb7bb"
-    },
-    production: true,
-    appUrl: "https://test-angular-e21b5-default-rtdb.europe-west1.firebasedatabase.app/"
-  };
+    apiKey: 'AIzaSyA2RRkNCa07yGKqZxPBcobgxvotqLr4KFk',
+    authDomain: 'test-angular-e21b5.firebaseapp.com',
+    databaseURL:
+      'https://test-angular-e21b5-default-rtdb.europe-west1.firebasedatabase.app',
+    projectId: 'test-angular-e21b5',
+    storageBucket: 'test-angular-e21b5.appspot.com',
+    messagingSenderId: '577584796191',
+    appId: '1:577584796191:web:751a492f030f4b177cfb2a',
+  },
+  production: true,
+  appUrl:
+    'https://test-angular-e21b5-default-rtdb.europe-west1.firebasedatabase.app/',
+};
