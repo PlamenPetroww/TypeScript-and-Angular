@@ -17,8 +17,8 @@
       </p>
       <!-- username validation -->
 
-      <ng-container *ngIf="username?.errors?.['required']">
-        <p class="error" *ngIf="username?.errors?.['username']">
+      <ng-container *ngIf="username?.touched">
+        <p class="error" *ngIf="username?.errors?.['required']">
           Username is required!
         </p>
         <p class="error" *ngIf="username?.errors?.['minlength']">
@@ -44,8 +44,9 @@
 
       <!-- email validation -->
 
-      <ng-container *ngIf="email?.errors?.['required']">
-        <p class="error" *ngIf="email?.errors?.['email']">Email is required!</p>
+      <ng-container *ngIf="email?.touched">
+        <p class="error" *ngIf="email?.errors?.['required']">Email is required!</p>
+        <p class="error" *ngIf="email?.errors?.['minlength']">Email must be {{email?.errors?.['minlength'] ['requiredLength']}} characters!</p>
         <p class="error" *ngIf="email?.errors?.['emailValidator']">
           Email is not valid!
         </p>
@@ -69,7 +70,8 @@
 
       <!-- password validation -->
 
-      <ng-container *ngIf="password?.errors?.['required']">
+      <ng-container *ngIf="password?.touched">
+        <p class="error" *ngIf="password?.errors?.['required']">
         Password is required!
         <p class="error" *ngIf="password?.errors?.['minlength']">
           Password must be at least 6 characters!
@@ -94,13 +96,14 @@
 
       <!-- rePass validation -->
 
-      <ng-container *ngIf="confirmPassword?.errors?.['required']">
+      <ng-container *ngIf="confirmPassword?.touched">
+        <p class="error" *ngIf="confirmPassword?.errors?.['required']">
         Confirm Password is required
+        <p class="error" *ngIf="registerForm.errors?.['passwordDontMatch']">
+          Password don't match!
+        </p>
       </ng-container>
-      <div class="error" *ngIf="registerForm.errors?.['passwordDontMatch']">
-        Password don't match!
-      </div>
-      <button type="submit">Create Account!</button>
+      <button type="submit" [ngClass]="{'validForm': registerForm.valid}">Create Account!</button>
       <p class="text-center">
         Have an account?
         <a routerLink="/login">Log In</a>

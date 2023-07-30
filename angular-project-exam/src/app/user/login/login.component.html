@@ -83,7 +83,7 @@
 
       <!-- email -->
 
-      <span class="login-email">Username</span>
+      <span class="login-email">Email</span>
       <p class="field field-icon">
         <label for="email"></label>
         <input
@@ -95,8 +95,8 @@
 
       <!-- email validation -->
 
-      <ng-container *ngIf="email?.errors?.['required']">
-        <p class="error" *ngIf="email?.errors?.['email']">
+      <ng-container *ngIf="email?.touched">
+        <p class="error" *ngIf="email?.errors?.['required']">
           Email is required!
         </p>
         <p class="error" *ngIf="email?.errors?.['emailValidator']">
@@ -129,7 +129,7 @@
         </p>
       </ng-container>
       <!-- <button (click)="login(inputEmail.value, inputPassword.value)"> -->
-      <button type="submit">
+      <button type="submit" [ngClass]="{'validForm': loginForm.valid}">
       Login
       </button>
 

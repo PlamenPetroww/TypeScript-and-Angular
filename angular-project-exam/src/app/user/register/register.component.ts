@@ -33,10 +33,10 @@ export function passwordsMatchValidator(): ValidatorFn {
 })
 export class RegisterComponent implements OnInit {
   registerForm = this.fb.group({
-    username: ['', Validators.required],
-    email: ['', [Validators.required, Validators.email, Validators.minLength(5)]],
-    password: ['', Validators.required],
-    confirmPassword: ['', Validators.required],
+    username: ['', [Validators.required, Validators.minLength(4)]],
+    email: ['', [Validators.required, Validators.email, Validators.minLength(6)]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    confirmPassword: ['', [Validators.required]],
   },
   {validators:passwordsMatchValidator()}
   );
@@ -78,9 +78,9 @@ export class RegisterComponent implements OnInit {
 
   this.authService.signUp(email, password).pipe(
 
-    switchMap(({user: {uid} }) => 
+    /* switchMap(({user: {uid} }) => 
     this.userService.addUser({uid, email})
-    ),
+    ), */
     this.toast.observe({
       success: 'Congatulation! You have a account!',
       loading: 'Signing up ...',
@@ -88,9 +88,7 @@ export class RegisterComponent implements OnInit {
     })
   )
   .subscribe(() => {
-    this.router.navigate(['/'])
+    this.router.navigate(['/']);
   })
   }
-
-  
 }

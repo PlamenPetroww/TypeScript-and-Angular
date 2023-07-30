@@ -25,12 +25,13 @@ h2 {
 
 .register-username,
 .register-password,
-.register-email { 
+.register-email {
   font-size: xx-large;
 }
 
 .register p {
-  padding: 0;
+  padding-bottom: 0;
+  padding-top: 1.5rem;
 }
 
 .register input {
@@ -48,14 +49,14 @@ h2 {
 
 .register button {
   color: #01b663;
-    border: none;
-    border-radius: 0.3em;
-    padding: 0.6em 1.2em;
-    margin-top: 1.5rem;
-    width: 60%;
-    outline: none;
-    font-size: x-large;
-    font-family: "Hey October";
+  border: none;
+  border-radius: 0.3em;
+  padding: 0.6em 1.2em;
+  margin-top: 1.5rem;
+  width: 60%;
+  outline: none;
+  font-size: x-large;
+  font-family: "Hey October";
 }
 
 .register i {
@@ -84,6 +85,7 @@ p.error {
   border-radius: 0.3em;
   color: red;
   padding-top: 0;
+  font-family: "Poppins";
 }
 
 .input-error {
