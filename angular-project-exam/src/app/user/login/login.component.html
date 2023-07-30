@@ -1,15 +1,13 @@
-<h2>Login Form</h2>
+<!-- <h2>Login Form</h2>
 <div class="container">
   <form class="login" #form="ngForm" (ngSubmit)="login(form)">
-    <fieldset>
+    <fieldset> -->
 
       <!-- email -->
 
-      <span class="login-email">Username</span>
+      <!-- <span class="login-email">Username</span>
       <p class="field field-icon">
-        <label for="email"
-          ></label
-        >
+        <label for="email"></label>
         <input
           class="input-error"
           type="email"
@@ -21,21 +19,21 @@
           required
           [appEmail]="emailDomains"
         />
-      </p>
+      </p> -->
 
       <!-- email validation -->
 
-      <ng-container *ngIf="inputEmail.touched">
+      <!-- <ng-container *ngIf="inputEmail.touched">
         <p class="error" *ngIf="inputEmail.errors?.['required']">
           Email is required!
         </p>
         <p class="error" *ngIf="inputEmail.errors?.['emailValidator']">
           Email is not valid!
         </p>
-      </ng-container>
+      </ng-container> -->
 
       <!-- password -->
-      <span class="login-password">Password</span>
+      <!-- <span class="login-password">Password</span>
 
       <p class="field field-icon">
         <label for="password"
@@ -51,11 +49,11 @@
           required
           minlength="6"
         />
-      </p>
+      </p> -->
 
       <!-- password validation -->
 
-      <ng-container *ngIf="inputPassword.touched">
+      <!-- <ng-container *ngIf="inputPassword.touched">
         <p class="error" *ngIf="inputPassword.errors?.['required']">
           Password is required!
         </p>
@@ -64,7 +62,7 @@
           {{inputPassword.errors?.['minlength']['requiredLength']}} characters!
         </p>
       </ng-container>
-      <!-- <button (click)="login(inputEmail.value, inputPassword.value)"> -->
+      <button (click)="login(inputEmail.value, inputPassword.value)">
       <button [disabled]="form.invalid"
       [class.validForm]="form.valid">
       Login
@@ -76,4 +74,70 @@
       </p>
     </fieldset>
   </form>
+</div> -->
+
+<h2>Login Form</h2>
+<div class="container">
+  <form class="login" [formGroup]="loginForm" (ngSubmit)="submit()">
+    <fieldset>
+
+      <!-- email -->
+
+      <span class="login-email">Username</span>
+      <p class="field field-icon">
+        <label for="email"></label>
+        <input
+          class="input-error"
+          placeholder="Email address" formControlName="email"
+          [appEmail]="emailDomains"
+        />
+      </p>
+
+      <!-- email validation -->
+
+      <ng-container *ngIf="email?.errors?.['required']">
+        <p class="error" *ngIf="email?.errors?.['email']">
+          Email is required!
+        </p>
+        <p class="error" *ngIf="email?.errors?.['emailValidator']">
+          Email is not valid!
+        </p>
+      </ng-container>
+
+      <!-- password -->
+      <span class="login-password">Password</span>
+
+      <p class="field field-icon">
+        <label for="password"
+          ></label
+        >
+        <input
+          type="password"
+          placeholder="Password" formControlName="password"
+        />
+      </p>
+
+      <!-- password validation -->
+
+      <ng-container *ngIf="password?.touched">
+        <p class="error" *ngIf="password?.errors?.['required']">
+          Password is required!
+        </p>
+        <p class="error" *ngIf="password?.errors?.['minlength']">
+          Password must be at least
+          {{password?.errors?.['minlength']['requiredLength']}} characters!
+        </p>
+      </ng-container>
+      <!-- <button (click)="login(inputEmail.value, inputPassword.value)"> -->
+      <button type="submit">
+      Login
+      </button>
+
+      <p class="text-center">
+        Have an account?
+        <a routerLink="/register">Register</a>
+      </p>
+    </fieldset>
+  </form>
 </div>
+

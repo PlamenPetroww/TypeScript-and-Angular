@@ -1,6 +1,6 @@
 <h2>Registration Form</h2>
 <div class="container">
-  <form class="register" #form="ngForm" (ngSubmit)="register(form)">
+  <form class="register" [formGroup]="registerForm" (ngSubmit)="submit()">
     <fieldset>
       <!-- username -->
       <span class="register-username">Username</span>
@@ -11,24 +11,19 @@
         <input
           class="input-error"
           type="text"
-          name="username"
-          id="username"
-          placeholder="Plamen"
-          ngModel
-          #inputRegister="ngModel"
-          required
-          minlength="6"
+          placeholder="username"
+          formControlName="username"
         />
       </p>
       <!-- username validation -->
 
-      <ng-container *ngIf="inputRegister.touched">
-        <p class="error" *ngIf="inputRegister.errors?.['required']">
+      <ng-container *ngIf="username?.errors?.['required']">
+        <p class="error" *ngIf="username?.errors?.['username']">
           Username is required!
         </p>
-        <p class="error" *ngIf="inputRegister.errors?.['minlength']">
+        <p class="error" *ngIf="username?.errors?.['minlength']">
           The username must be at least
-          {{inputRegister.errors?.['minlength']['requiredLength']}} characters!
+          {{username?.errors?.['minlength']['requiredLength']}} characters!
         </p>
       </ng-container>
 
@@ -42,22 +37,16 @@
         <input
           type="email"
           name="email"
-          id="email"
-          placeholder="plamenpetroww@gmail.com"
-          ngModel
-          #inputEmail="ngModel"
-          required
-          [appEmail]="emailDomains"
+          placeholder="Email address"
+          formControlName="email"
         />
       </p>
 
       <!-- email validation -->
 
-      <ng-container *ngIf="inputEmail.touched">
-        <p class="error" *ngIf="inputEmail.errors?.['required']">
-          Email is required!
-        </p>
-        <p class="error" *ngIf="inputEmail.errors?.['emailValidator']">
+      <ng-container *ngIf="email?.errors?.['required']">
+        <p class="error" *ngIf="email?.errors?.['email']">Email is required!</p>
+        <p class="error" *ngIf="email?.errors?.['emailValidator']">
           Email is not valid!
         </p>
       </ng-container>
@@ -74,20 +63,15 @@
           name="password"
           id="password"
           placeholder="******"
-          ngModel
-          #inputPassword="ngModel"
-          required
-          minlength="6"
+          formControlName="password"
         />
       </p>
 
       <!-- password validation -->
 
-      <ng-container *ngIf="inputPassword.touched">
-        <p class="error" *ngIf="inputPassword.errors?.['required']">
-          Password is required!
-        </p>
-        <p class="error" *ngIf="inputPassword.errors?.['minlength']">
+      <ng-container *ngIf="password?.errors?.['required']">
+        Password is required!
+        <p class="error" *ngIf="password?.errors?.['minlength']">
           Password must be at least 6 characters!
         </p>
       </ng-container>
@@ -104,22 +88,19 @@
           name="rePassword"
           id="rePassword"
           placeholder="******"
-          ngModel
-          #inputRePass="ngModel"
-          required
+          formControlName="confirmPassword"
         />
       </p>
 
       <!-- rePass validation -->
 
-      <ng-container *ngIf="inputRePass.touched">
-        <p class="error" *ngIf="inputRePass.errors?.['required']">Repeat Password is required</p>
+      <ng-container *ngIf="confirmPassword?.errors?.['required']">
+        Confirm Password is required
       </ng-container>
-      <button [disabled]="form.invalid"
-      [class.validForm]="form.valid">
-      Create Account
-      </button>
-
+      <div class="error" *ngIf="registerForm.errors?.['passwordDontMatch']">
+        Password don't match!
+      </div>
+      <button type="submit">Create Account!</button>
       <p class="text-center">
         Have an account?
         <a routerLink="/login">Log In</a>

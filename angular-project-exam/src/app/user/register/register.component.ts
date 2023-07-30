@@ -1,22 +1,99 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {
+  NgForm,
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  NonNullableFormBuilder,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
+import { HotToastService } from '@ngneat/hot-toast';
+import { switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
+import { AuthService } from '../auth.service';
+import { UserService } from '../user.service';
+
+export function passwordsMatchValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const password = control.get('password')?.value;
+    const confirmPassord = control.get('confirmPassword')?.value;
+
+    if (password && confirmPassord && password !== confirmPassord) {
+      return { passwordDontMatch: true };
+    } else {
+      return null;
+    }
+  };
+}
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
+  registerForm = this.fb.group({
+    username: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email, Validators.minLength(5)]],
+    password: ['', Validators.required],
+    confirmPassword: ['', Validators.required],
+  },
+  {validators:passwordsMatchValidator()}
+  );
 
-  emailDomains= DEFAULT_EMAIL_DOMAINS;
+  emailDomains = DEFAULT_EMAIL_DOMAINS;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private toast: HotToastService,
+    private userService: UserService,
+    private fb: NonNullableFormBuilder
+  ) {}
 
-  register(form: NgForm): void {
-    console.log(form.value)
-    //this.router.navigate(['/']);
+  ngOnInit(): void {}
+
+  get username() {
+    return this.registerForm.get('username')
   }
 
+  get email() {
+    return this.registerForm.get('email')
+  }
+
+  get password() {
+    return this.registerForm.get('password')
+  }
+
+  get confirmPassword() {
+    return this.registerForm.get('confirmPassword')
+  }
+
+  submit() {
+    const {username, email, password} = this.registerForm.value;
+  
+  if(!this.registerForm.valid || !username || !password || !email) {
+    return;
+  }
+
+  this.authService.signUp(email, password).pipe(
+
+    switchMap(({user: {uid} }) => 
+    this.userService.addUser({uid, email})
+    ),
+    this.toast.observe({
+      success: 'Congatulation! You have a account!',
+      loading: 'Signing up ...',
+      error: ({message}) => `${message}`,
+    })
+  )
+  .subscribe(() => {
+    this.router.navigate(['/'])
+  })
+  }
+
+  
 }
