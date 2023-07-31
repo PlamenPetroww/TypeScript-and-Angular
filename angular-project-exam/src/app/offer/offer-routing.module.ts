@@ -19,14 +19,13 @@ const routes: Routes = [
         path: ':lessonId',
         component: CurrentOfferComponent,
       },
-      {
-        path: 'load-offer',
-        component: LoadOfferComponent,
-      },
     ],
   },
-  { path: 'add-lesson',
-    component: NewOfferComponent },
+  { path: 'add-lesson', component: NewOfferComponent },
+  {
+    path: 'load-offer/:lessonId',
+    component: LoadOfferComponent,
+  },
 ];
 
 @NgModule({

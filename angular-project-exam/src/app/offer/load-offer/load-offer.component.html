@@ -1,1 +1,44 @@
-<p>load-offer works!</p>
+<main>
+    <section id="details">
+        <div *ngIf="lesson" id="details-wrapper">
+            <p id="details-title">Title: {{lesson.title}}</p>
+            <div id="img-wrapper">
+                <img src="assets/img/Kiteboarding.jpg" alt="">
+            </div>
+            <div id="info-wrapper">
+                <table>
+                    <tr>
+                        <td>
+                            <p>
+                                Description: 
+                            </p>
+                            <p>{{lesson.description}}</p>
+                        </td>
+                        <tr>
+                            <td>
+                                <p>
+                                    Author: 
+                                </p>
+                                <p>{{lesson.author}}</p>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td>
+                            <p>Duration: </p>
+                            <p>{{lesson.duration}}</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Subscribers: </p>
+                            <p>{{lesson.subscribers}}</p>
+                        </td>
+                    </tr>
+                    <p>Do you want to be a part of this project? Then press Here
+                    </p>
+                        <button type="submit" class="subscribe">Subscribe</button>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>

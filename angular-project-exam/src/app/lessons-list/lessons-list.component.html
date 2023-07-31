@@ -17,7 +17,7 @@
       <p>Duration: {{ lesson.duration }} Days</p>
       <p>Subscribers: {{ lesson.subscribers }}</p>
       <p class="summe">Price: {{ lesson.price }} $</p>
-      <button [routerLink]="['/load-offer', i]" class="info">Information </button>
+      <button [routerLink]="['/load-offer', offerId[i]]" class="info">Information</button>
       <button [routerLink]="[offerId[i]]" class="edit">Edit</button>
       <button class="delete">Delete</button>
     </div>
