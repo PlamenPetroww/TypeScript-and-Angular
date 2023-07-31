@@ -55,7 +55,7 @@
   height: 100%;
 }
 
-.add,
+.info,
 .edit,
 .delete {
   display: flex;
@@ -72,9 +72,9 @@
   cursor: pointer;
 }
 
-.add:hover,
-.add:active,
-.add:focus,
+.info:hover,
+.info:active,
+.info:focus,
 .edit:hover,
 .edit:active,
 .edit:focus,

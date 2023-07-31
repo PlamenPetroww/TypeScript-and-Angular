@@ -35,7 +35,6 @@ export class CurrentOfferComponent implements OnInit {
     const lessonId = this.activatedRoute.snapshot.params['lessonId'];
     this.apiService.getLesson(lessonId).subscribe((lesson) => {
       this.lesson = lesson;
-      console.log({ lesson });
     });
   }
 
