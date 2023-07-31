@@ -7,7 +7,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { HotToastService } from '@ngneat/hot-toast';
-import { switchMap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
 import { AuthService } from '../auth.service';

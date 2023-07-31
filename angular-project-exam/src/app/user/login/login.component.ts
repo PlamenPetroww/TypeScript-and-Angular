@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   submit() {
     const { email, password } = this.loginForm.value;
 
-    if (!this.loginForm.invalid || !email || !password) {
+    if (this.loginForm.invalid || !email || !password) {
       return;
     }
 

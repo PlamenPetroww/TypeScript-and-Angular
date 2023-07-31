@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Component({
   selector: 'app-new-offer',
@@ -22,7 +23,7 @@ export class NewOfferComponent{
     ],
   });
 
-  constructor(private apiService: ApiService,private router: Router ,private fb: FormBuilder) {}
+  constructor(private apiService: ApiService,private router: Router ,private fb: FormBuilder, private toast: HotToastService) {}
 
   create(): void {
     if (this.form.invalid) {
@@ -42,10 +43,17 @@ export class NewOfferComponent{
   
   }
   
-  
-  
-  
-  
+  cancel() {
+    this.toast.observe(
+      {
+      success: 'Are you sure ?',
+      loading: 'Canceled ...',
+      error: ({message}) => `${message}`,
+    }
+    )
+  }
   
   
 }
+
+

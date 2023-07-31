@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { concatMap, from, Observable, of, switchMap } from 'rxjs';
+import { concatMap, from, Observable, of, switchMap, tap } from 'rxjs';
 import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
@@ -7,6 +7,7 @@ import {
   UserInfo,
 } from '@firebase/auth';
 import { Auth, authState } from '@angular/fire/auth';
+import { HotToastService } from '@ngneat/hot-toast';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ import { Auth, authState } from '@angular/fire/auth';
 export class AuthService {
   currentUser$ = authState(this.auth);
 
-  constructor(private auth: Auth) {}
+  constructor(private auth: Auth, private toast: HotToastService) {}
 
   signUp(email: string, password: string): Observable<UserCredential> {
     return from(createUserWithEmailAndPassword(this.auth, email, password));
@@ -36,6 +37,12 @@ export class AuthService {
   } */
 
   logout(): Observable<any> {
-    return from(this.auth.signOut());
+    return from(this.auth.signOut()).pipe(
+      this.toast.observe({
+        success: 'Logout successful',
+        loading: 'Logout ...',
+        error: ({message}) => `${message}`,
+      })
+    );
   }
 }
