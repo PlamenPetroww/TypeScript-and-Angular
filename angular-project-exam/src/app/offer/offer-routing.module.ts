@@ -8,7 +8,6 @@ import { LoadOfferComponent } from './load-offer/load-offer.component';
 const routes: Routes = [
   {
     path: 'lessons',
-
     children: [
       {
         path: '',

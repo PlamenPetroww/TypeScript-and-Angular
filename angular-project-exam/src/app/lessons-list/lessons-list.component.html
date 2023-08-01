@@ -1,11 +1,11 @@
-<h2 class="title__page">Our Lessons</h2>
-
 <div *ngIf="isLoading">
   <app-loader />
 </div>
 
-<div *ngIf="!isLoading" class="listing__bilder__part__two">
-  <article *ngFor="let lesson of lessonArray; let i = index" class="card__part__two">
+<h2 *ngIf="lesson" class="title__page">Our Lessons</h2>
+
+<div *ngIf="!isLoading" class="listing__bilder__part__two" >
+  <article  *ngFor="let lesson of lessonArray; let i = index" class="card__part__two">
     <div class="card__media__two">
       <img src="assets/img/Kiteboarding.jpg" alt="#" />
     </div>
@@ -19,7 +19,7 @@
       <p class="summe">Price: {{ lesson.price }} $</p>
       <button [routerLink]="['/load-offer', offerId[i]]" class="info">Information</button>
       <button [routerLink]="[offerId[i]]" class="edit">Edit</button>
-      <button class="delete">Delete</button>
+      <button class="delete" (click)="onDeleteHandler(offerId[i])">Delete</button>
     </div>
   </article>
 </div>

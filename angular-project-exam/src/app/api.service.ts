@@ -21,10 +21,10 @@ export class ApiService {
     return this.http.get<Lesson[]>(`${appUrl}/lessons.json`);
   }
 
-  /* getLessonWithInformation(lessonId: string) {
-    const {appUrl} = environment;
-    return this.http.get(Lesson)
-  } */
+  deleteLessonById(lessonId: string) {
+    const { appUrl } = environment;
+    return this.http.delete<Lesson>(`${appUrl}/lessons/${lessonId}.json`)
+  }
 
   // post Lessons
 
