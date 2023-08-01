@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Lesson } from '../types/lessons';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lessons-list',
@@ -15,6 +15,7 @@ export class LessonsListComponent implements OnInit {
   offerId: any;
   lessonId: any;
   lesson: Lesson | undefined;
+  showAllLessons = false;
 
   constructor(
     private apiService: ApiService,
@@ -35,6 +36,13 @@ export class LessonsListComponent implements OnInit {
       },
     });
   }
+
+  onViewAll(event: Event) {
+    event.preventDefault();
+    this.showAllLessons = true;
+    this.router.navigate(['/lessons']);
+  }
+
   onDeleteHandler(offerId: string): void {
     if (confirm('Are you sure you want to delete this lesson?')) {
       this.apiService.deleteLessonById(offerId).subscribe(()=> {
