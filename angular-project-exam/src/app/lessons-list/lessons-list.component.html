@@ -18,8 +18,8 @@
       <p>Subscribers: {{ lesson.subscribers }}</p>
       <p class="summe">Price: {{ lesson.price }} $</p>
       <button [routerLink]="['/load-offer', offerId[i]]" class="info">Information</button>
-      <button [routerLink]="[offerId[i]]" class="edit">Edit</button>
-      <button class="delete" (click)="onDeleteHandler(offerId[i])">Delete</button>
+      <button *ngIf="isAuth" [routerLink]="[offerId[i]]" class="edit">Edit</button>
+      <button *ngIf="isAuth" class="delete" (click)="onDeleteHandler(offerId[i])">Delete</button>
     </div>
   </article>
 </div>

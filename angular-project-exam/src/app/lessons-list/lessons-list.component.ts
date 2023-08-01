@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Lesson } from '../types/lessons';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from '../user/auth.service';
 
 @Component({
   selector: 'app-lessons-list',
@@ -16,10 +18,13 @@ export class LessonsListComponent implements OnInit {
   lessonId: any;
   lesson: Lesson | undefined;
   showAllLessons = false;
+  isAuth = false;
+  private userSub?: Subscription;
 
   constructor(
     private apiService: ApiService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -33,9 +38,14 @@ export class LessonsListComponent implements OnInit {
       error: (error) => {
         this.isLoading = true;
         console.log(`Error: ${error}`);
-      },
+      }
+    });
+  
+    this.userSub = this.authService.currentUser$.subscribe(user => {
+      this.isAuth = !user ? false : true;
     });
   }
+  
 
   onViewAll(event: Event) {
     event.preventDefault();
