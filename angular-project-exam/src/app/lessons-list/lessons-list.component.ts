@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Lesson } from '../types/lessons';
 import { Router } from '@angular/router';
@@ -10,7 +10,7 @@ import { AuthService } from '../user/auth.service';
   templateUrl: './lessons-list.component.html',
   styleUrls: ['./lessons-list.component.css'],
 })
-export class LessonsListComponent implements OnInit {
+export class LessonsListComponent implements OnInit, OnDestroy {
   lessonList: Lesson[] = [];
   lessonArray: Lesson[] = [];
   isLoading: boolean = true;
@@ -58,6 +58,12 @@ export class LessonsListComponent implements OnInit {
       this.apiService.deleteLessonById(offerId).subscribe(()=> {
         this.router.navigate(['/'])
       });
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.userSub) {
+      this.userSub.unsubscribe();
     }
   }
 }
