@@ -1,5 +1,6 @@
 html {
     font-size: 16px;
+    cursor: pointer;
 }
 
 body {
@@ -7,7 +8,6 @@ body {
     font-family: 'Poppins', sans-serif;
     padding: 0;
     margin: 0;
-    cursor: pointer;
 }
 
 * {

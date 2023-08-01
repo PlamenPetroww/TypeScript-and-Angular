@@ -9,11 +9,10 @@
   <div class="header__menu">
     <ul>
       <li>
-        <a href="#">Find<span class="header__space">|</span></a>
-        <!-- <a href="#">Create Course<span class="header__space">|</span></a> -->
-        <a *ngIf="isLogged" routerLink="/login">Login<span class="header__space">|</span></a>
-        <a *ngIf="isLogged" routerLink="/register">Register<span class="header__space">|</span></a>
-        <a href="/home">Logout</a>
+        <a *ngIf="isAuth">Logged in as {{email}}<span class="header__space">|</span></a>
+        <a *ngIf="!isAuth" routerLink="/login">Login<span class="header__space">|</span></a>
+        <a *ngIf="!isAuth" routerLink="/register">Register<span class="header__space"></span></a>
+        <a *ngIf="isAuth" (click)="onLogout()">Logout</a>
       </li>
     </ul>
   </div>
