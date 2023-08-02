@@ -1,6 +1,7 @@
 export interface Offer {
     title: string;
-    price: number;
-    duration: number;
+    img: string;
     description: string;
+    duration: number;
+    price: number;
 }

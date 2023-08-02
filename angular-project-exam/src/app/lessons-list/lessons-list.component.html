@@ -7,7 +7,7 @@
 <div *ngIf="!isLoading" class="listing__bilder__part__two" >
   <article *ngFor="let lesson of lessonArray.slice(0, showAllLessons ? lessonArray.length : 3); let i = index" class="card__part__two">
     <div class="card__media__two">
-      <img src="assets/img/Kiteboarding.jpg" alt="#" />
+      <img src="{{lesson.img}}" alt="img" />
     </div>
 
     <div class="card__content__two">

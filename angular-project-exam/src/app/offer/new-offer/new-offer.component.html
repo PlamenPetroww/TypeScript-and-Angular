@@ -24,6 +24,17 @@
         <p class="error-create-page" *ngIf="form.get('title')?.errors?.['minlength']">Offer title must be at least 4 characters long.</p>
       </ng-container>
 
+      <!-- image -->
+
+      <div class="new-image">
+        <input for="img"
+        type="file"
+        name="img"
+        id="img"
+        formControlName="img"
+        >
+      </div>
+
       <!-- description -->
 
       <div class="new-theme-description">

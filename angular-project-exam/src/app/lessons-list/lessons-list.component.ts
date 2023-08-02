@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Lesson } from '../types/lessons';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../user/auth.service';
 
@@ -24,7 +24,8 @@ export class LessonsListComponent implements OnInit, OnDestroy {
   constructor(
     private apiService: ApiService,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -54,10 +55,12 @@ export class LessonsListComponent implements OnInit, OnDestroy {
   }
 
   onDeleteHandler(offerId: string): void {
-    if (confirm('Are you sure you want to delete this lesson?')) {
+    if (confirm(`Are you sure you want to delete this lesson ?`)) {
       this.apiService.deleteLessonById(offerId).subscribe(()=> {
         this.router.navigate(['/'])
       });
+    } else {
+      return;
     }
   }
 

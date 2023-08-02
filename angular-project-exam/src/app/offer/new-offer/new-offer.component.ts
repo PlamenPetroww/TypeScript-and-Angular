@@ -23,21 +23,26 @@ export class NewOfferComponent{
     ],
   });
 
-  constructor(private apiService: ApiService,private router: Router ,private fb: FormBuilder, private toast: HotToastService) {}
+  constructor(private apiService: ApiService,
+    private router: Router ,
+    private fb: FormBuilder,
+    private toast: HotToastService,
+    ) {}
 
   create(): void {
     if (this.form.invalid) {
       return;
     }
   
-    const {title, description, duration, price} = this.form.value as {
+    const {title, img, description, duration, price} = this.form.value as {
       title: string,
+      img: string,
       description: string,
       duration: string,
       price: string
     };
 
-    this.apiService.createLesson(title, description, duration, price).subscribe(() => {
+    this.apiService.createLesson(title, img, description, duration, price).subscribe(() => {
       this.router.navigate(['/lessons'])
     })
   

@@ -30,6 +30,7 @@ export class ApiService {
 
   createLesson(
     title: string,
+    img: string,
     description: string,
     duration: string,
     price: string
@@ -40,6 +41,7 @@ export class ApiService {
     const { appUrl } = environment;
     return this.http.post<Lesson>(`${appUrl}/lessons.json`, {
       title,
+      img,
       price,
       duration,
       description,
