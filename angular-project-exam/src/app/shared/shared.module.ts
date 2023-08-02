@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LoaderComponent } from './loader/loader.component';
 import { EmailDirective } from './validators/email.directive';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 
 
@@ -9,6 +10,7 @@ import { EmailDirective } from './validators/email.directive';
   declarations: [
     LoaderComponent,
     EmailDirective,
+    NotFoundComponent,
   ],
   imports: [
     CommonModule

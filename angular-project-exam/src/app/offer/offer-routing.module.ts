@@ -4,6 +4,7 @@ import { MainComponent } from '../main/main.component';
 import { NewOfferComponent } from './new-offer/new-offer.component';
 import { CurrentOfferComponent } from './current-offer/current-offer.component';
 import { LoadOfferComponent } from './load-offer/load-offer.component';
+import { NotFoundComponent } from '../shared/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,9 @@ const routes: Routes = [
     path: 'load-offer/:lessonId',
     component: LoadOfferComponent,
   },
+  {
+    path: '**', component: NotFoundComponent
+  }
 ];
 
 @NgModule({
