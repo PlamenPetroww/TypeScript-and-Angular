@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
 import { AuthService } from '../auth.service';
 import { HotToastService } from '@ngneat/hot-toast';
+import { take } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -44,10 +45,11 @@ export class LoginComponent implements OnInit {
         success: 'Logged is successfully',
         loading: 'Logging in ...',
         error: 'Email or password incorrect',
-      })
+      }),
+      take(1)
     ).subscribe(() => {
       this.router.navigate(['/']);
-    })
+    });
   }
 
   

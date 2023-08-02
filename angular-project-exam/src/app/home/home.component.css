@@ -1,0 +1,43 @@
+.service__page {
+    display: flex;
+    width: 100%;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: "Poppins";
+    position: relative;
+}
+
+.service__page__title {
+    display: flex;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-weight: bolder;
+    font-size: 2.5em;
+    position: absolute;
+    margin-top: 1em;
+}
+
+.service__page__text {
+    display: flex;
+    color: #FFFFFF;
+    justify-content: space-between;
+    position: absolute;
+    margin-top: 9em;
+}
+
+.service__page__text > .page__text__color {
+    color:#01B663
+}
+
+.service__page .img__surf__large {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    width: 500px;
+    height: auto;
+}
+
+.service__page span {
+    padding-left: 0.2em;
+}
