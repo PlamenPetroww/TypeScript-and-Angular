@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { GlobalLoaderComponent } from './global-loader/global-loader.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
@@ -10,14 +12,17 @@ import { RouterModule } from '@angular/router';
   declarations: [
     HeaderComponent,
     FooterComponent,
+    GlobalLoaderComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
+    SharedModule
   ],
   exports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    GlobalLoaderComponent
   ]
 })
 export class CoreModule { }

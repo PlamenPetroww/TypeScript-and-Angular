@@ -136,7 +136,7 @@
 
 .button__card__two a {
   display: flex;
-  margin-top: -30px;
+  margin-top: 1em;
   margin-bottom: 2em;
   justify-content: center;
   align-items: center;

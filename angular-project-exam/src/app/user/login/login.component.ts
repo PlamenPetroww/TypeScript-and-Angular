@@ -39,10 +39,10 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid || !email || !password) {
       return;
     }
-
+    
     this.authService.login(email, password).pipe(
       this.toast.observe({
-        success: 'Logged is successfully',
+        success: ('Logged is successfully'),
         loading: 'Logging in ...',
         error: 'Email or password incorrect',
       }),
@@ -53,5 +53,6 @@ export class LoginComponent implements OnInit {
   }
 
   
+
 
 }

@@ -33,8 +33,8 @@ export class LessonsListComponent implements OnInit, OnDestroy {
     this.apiService.getLessons().subscribe({
       next: (offers) => {
         this.lessonList = offers;
-        // this.lessonArray = Object.values(this.lessonList);
-        this.lessonArray = Object.values([]);
+        this.lessonArray = Object.values(this.lessonList);
+        // this.lessonArray = Object.values([]);
 
         this.offerId = Object.keys(this.lessonList);
         this.isLoading = false;
