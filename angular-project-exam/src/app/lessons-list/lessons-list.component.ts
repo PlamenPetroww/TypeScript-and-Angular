@@ -34,8 +34,6 @@ export class LessonsListComponent implements OnInit, OnDestroy {
       next: (offers) => {
         this.lessonList = offers;
         this.lessonArray = Object.values(this.lessonList);
-        // this.lessonArray = Object.values([]);
-
         this.offerId = Object.keys(this.lessonList);
         this.isLoading = false;
 
