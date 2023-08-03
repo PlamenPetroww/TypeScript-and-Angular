@@ -1,7 +1,7 @@
 export interface Lesson {
     title: string;
-    price: number;
-    duration: number;
+    price: string;
+    duration: string;
     img: string;
     description: string;
     subscribers: number;

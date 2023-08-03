@@ -10,17 +10,12 @@ import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
   styleUrls: ['./current-offer.component.css'],
 })
 export class CurrentOfferComponent implements OnInit {
+
   form = this.fb.group({
     title: ['', [Validators.required, Validators.minLength(4)]],
     description: ['', [Validators.required, Validators.minLength(10)]],
-    duration: [
-      '',
-      [Validators.required, Validators.max(15), Validators.min(2)],
-    ],
-    price: [
-      '',
-      [Validators.required, Validators.max(1000), Validators.min(50)],
-    ],
+    duration: ['', [Validators.required, Validators.max(15), Validators.min(2)]],
+    price: ['', [Validators.required, Validators.max(1000), Validators.min(50)]],
   });
 
   constructor(
@@ -30,35 +25,28 @@ export class CurrentOfferComponent implements OnInit {
     private router: Router
   ) {}
 
+  lessonId!: string; // Добавете "!" след lessonId за да го отбележите като "definitely assigned"
+
   lesson: Lesson | undefined;
 
   ngOnInit(): void {
+    this.lessonId = this.activatedRoute.snapshot.params['lessonId']; // Присвояване на стойност на lessonId при инициализацията на компонента
     this.fetchLesson();
   }
 
   fetchLesson(): void {
-    const lessonId = this.activatedRoute.snapshot.params['lessonId'];
-    this.apiService.getLesson(lessonId).subscribe((lesson) => {
+    this.apiService.getLesson(this.lessonId).subscribe((lesson) => {
       this.lesson = lesson;
       console.log(lesson);
     });
   }
 
-  edit(): void {
-    if (this.form.invalid) {
-      return;
-    }
-
-    const { title, img, description, duration, price } = this.form.value as {
-      title: string;
-      img: string;
-      description: string;
-      duration: string;
-      price: string;
-    };
-
-    this.apiService.editLesson(title, img, description, duration, price).subscribe(() => {
-      this.router.navigate(['/lessons'])
-    })
+  editHandler(lesson: Lesson) {
+    console.log(lesson)
+    this.apiService.editLesson(this.lessonId, lesson).subscribe(() => {
+      this.fetchLesson();
+      console.log(lesson)
+      this.router.navigate(['/']);
+    });
   }
 }

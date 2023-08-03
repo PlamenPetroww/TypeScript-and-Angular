@@ -1,75 +1,28 @@
-/* import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { Lesson } from './types/lessons';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class ApiService {
-  constructor(private http: HttpClient) {
-    this.appUrl = environment.appUrl
-  };
-
-  
-
-  // get Lessons
-
-  getLesson(lessonId: string) {
-    return this.http.get<Lesson>(`${this.appUrl}/lessons/${lessonId}.json`);
-  }
-
-  getLessons() {
-    const { appUrl } = environment;
-    return this.http.get<Lesson[]>(`${appUrl}/lessons.json`);
-  }
-
-  deleteLessonById(lessonId: string) {
-    const { appUrl } = environment;
-    return this.http.delete<Lesson>(`${appUrl}/lessons/${lessonId}.json`)
-  }
-
-  // post Lessons
-
-  createLesson(
-    title: string,
-    img: string,
-    description: string,
-    duration: string,
-    price: string
-    // subscribers: number,
-    // author: string,
-    // offerId: string,
-  ) {
-    const { appUrl } = environment;
-    return this.http.post<Lesson>(`${appUrl}/lessons.json`, {
-      title,
-      img,
-      price,
-      duration,
-      description,
-    });
-  }
-
-  editLesson() {
-
-  }
-}
- */
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Lesson } from './types/lessons';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
   private appUrl: string;
+  private offerIdSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 
   constructor(private http: HttpClient) {
     this.appUrl = environment.appUrl;
+  }
+
+  getOfferIdSubject() {
+    return this.offerIdSubject.asObservable();
+  }
+
+  setOfferId(offerId: string | null) {
+    this.offerIdSubject.next(offerId);
   }
 
   getLesson(lessonId: string) {
@@ -100,14 +53,17 @@ export class ApiService {
     });
   }
 
-  editLesson(
-    /* title: string,
-    img: string,
-    description: string,
-    duration: string,
-    price: string */
-    lessonId: string, editedData: Partial<Lesson>
-  ) {
-    return this.http.patch<Lesson>(`${this.appUrl}/lessons/${lessonId}.json`, editedData);
+  editLesson(lessonId: string, updatedLessonData: Partial<Lesson>) {
+    const bodyData = {
+      title: updatedLessonData.title,
+      img: updatedLessonData.img,
+      description: updatedLessonData.description,
+      duration: updatedLessonData.duration,
+      price: updatedLessonData.price
+    };
+  
+    return this.http.put<Lesson>(`${this.appUrl}/lessons/${lessonId}.json`, bodyData);
   }
+  
+  
 }

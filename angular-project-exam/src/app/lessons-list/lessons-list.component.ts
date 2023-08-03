@@ -16,6 +16,7 @@ export class LessonsListComponent implements OnInit, OnDestroy {
   isLoading: boolean = true;
   offerId: any;
   lessonId: any;
+  userId: any;
   lesson: Lesson | undefined;
   showAllLessons = false;
   isAuth = false;
@@ -52,6 +53,9 @@ export class LessonsListComponent implements OnInit, OnDestroy {
     });
   }
   
+  getOfferIdFromApiService(offerId: string) {
+    this.apiService.setOfferId(offerId);
+  }
 
   onViewAll(event: Event) {
     event.preventDefault();

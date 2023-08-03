@@ -2,7 +2,7 @@
   <section class="offer-content">
     <div class="form">
       <h2>Edit Your Offer</h2>
-      <form class="create-form" [formGroup]="form" (ngSubmit)="edit()">
+      <form class="create-form" [formGroup]="form" (ngSubmit)="editHandler(lesson)">
 
         <!-- title -->
 
@@ -93,7 +93,7 @@
           <p class="error-edit-page" *ngIf="form.get('price')?.errors?.['min']">The price cannot be less than 50 $.</p>
           <p class="error-edit-page" *ngIf="form.get('price')?.errors?.['max']">The price cannot exceed 1000 $</p>
         </ng-container>
-        <button type="submit" (click)="edit()">Edit</button>
+        <button type="submit">Edit</button>
       </form>
     </div>
   </section>
