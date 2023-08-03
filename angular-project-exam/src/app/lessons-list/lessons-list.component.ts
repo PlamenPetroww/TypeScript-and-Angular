@@ -20,6 +20,7 @@ export class LessonsListComponent implements OnInit, OnDestroy {
   showAllLessons = false;
   isAuth = false;
   private userSub?: Subscription;
+  noLessons: boolean = false;
 
   constructor(
     private apiService: ApiService,
@@ -32,9 +33,15 @@ export class LessonsListComponent implements OnInit, OnDestroy {
     this.apiService.getLessons().subscribe({
       next: (offers) => {
         this.lessonList = offers;
-        this.lessonArray = Object.values(this.lessonList);
+        // this.lessonArray = Object.values(this.lessonList);
+        this.lessonArray = Object.values([]);
+
         this.offerId = Object.keys(this.lessonList);
         this.isLoading = false;
+
+        if(this.lessonArray.length === 0) {
+          this.noLessons = true;
+        }
       },
       error: (error) => {
         this.isLoading = true;

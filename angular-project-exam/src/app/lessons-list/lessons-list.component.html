@@ -2,6 +2,10 @@
   <app-loader />
 </div>
 
+<div *ngIf="!isLoading && noLessons" class="fancy-title">
+  <h3>There no Lessons !</h3>
+</div>
+
 <h2 *ngIf="lesson" class="title__page">Our Lessons</h2>
 
 <div *ngIf="!isLoading" class="listing__bilder__part__two" >
@@ -23,6 +27,6 @@
     </div>
   </article>
 </div>
-<div class="button__card__two">
+<div *ngIf="!noLessons" class="button__card__two">
   <a href="#" (click)="onViewAll($event)">View all</a>
 </div>

@@ -18,8 +18,15 @@ import { User } from '../types/user';
 })
 export class UserService {
 
+  user: User | undefined
+
+  get isLogged() {
+    return !!this.user;
+  }
+
   constructor(private firestore: Firestore,
     private authService: AuthService) {}
+
 
     get currentUser$(): Observable<User | null> {
       return this.authService.currentUser$.pipe(
