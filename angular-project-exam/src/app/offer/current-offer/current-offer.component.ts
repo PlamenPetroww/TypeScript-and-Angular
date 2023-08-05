@@ -25,28 +25,38 @@ export class CurrentOfferComponent implements OnInit {
     private router: Router
   ) {}
 
-  lessonId!: string; // Добавете "!" след lessonId за да го отбележите като "definitely assigned"
+  lessonId!: string;
 
   lesson: Lesson | undefined;
 
   ngOnInit(): void {
-    this.lessonId = this.activatedRoute.snapshot.params['lessonId']; // Присвояване на стойност на lessonId при инициализацията на компонента
+    this.lessonId = this.activatedRoute.snapshot.params['lessonId'];
     this.fetchLesson();
   }
 
   fetchLesson(): void {
     this.apiService.getLesson(this.lessonId).subscribe((lesson) => {
       this.lesson = lesson;
-      console.log(lesson);
     });
   }
 
-  editHandler(lesson: Lesson) {
-    console.log(lesson)
-    this.apiService.editLesson(this.lessonId, lesson).subscribe(() => {
-      this.fetchLesson();
-      console.log(lesson)
+  editSubmitHandler(): void {
+    /* this.apiService.editLesson(this.lessonId, lesson).subscribe(() => {
       this.router.navigate(['/']);
-    });
+    }); */
+    if(this.form.invalid) {
+      return;
+    }
+    const {title, img, description, duration, price}= this.form.value as {
+      title:string,
+      img: string,
+      description: string,
+      duration: string,
+      price: string,
+    };
+
+    this.apiService.editLesson(this.lessonId,title, img, description, duration, price).subscribe(() => {
+      this.router.navigate(['/lessons'])
+    })
   }
 }

@@ -53,17 +53,22 @@ export class ApiService {
     });
   }
 
-  editLesson(lessonId: string, updatedLessonData: Partial<Lesson>) {
-    const bodyData = {
-      title: updatedLessonData.title,
-      img: updatedLessonData.img,
-      description: updatedLessonData.description,
-      duration: updatedLessonData.duration,
-      price: updatedLessonData.price
-    };
-  
-    return this.http.put<Lesson>(`${this.appUrl}/lessons/${lessonId}.json`, bodyData);
-  }
-  
+  editLesson(
+    lessonId: string,
+    title: string,
+    img: string,
+    description: string,
+    duration: string,
+    price: string) {
+      return this.http.patch<Lesson>(`${this.appUrl}/lessons/${lessonId}.json`, {
+        lessonId,
+        title,
+        img,
+        description,
+        duration,
+        price
+      })
+    }
+    
   
 }
