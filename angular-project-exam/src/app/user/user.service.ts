@@ -8,9 +8,10 @@ import {
   setDoc,
   updateDoc,
 } from '@angular/fire/firestore';
-import { filter, from, map, Observable, of, switchMap } from 'rxjs';
+import { BehaviorSubject, filter, from, map, Observable, of, switchMap } from 'rxjs';
 import { AuthService } from './auth.service';
 import { User } from '../types/user';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 
 @Injectable({
@@ -18,14 +19,21 @@ import { User } from '../types/user';
 })
 export class UserService {
 
-  user: User | undefined
+  user: User | null = null
 
-  get isLogged() {
-    return !!this.user;
+  private isLoggedSubject = new BehaviorSubject<boolean>(false);
+  isLogged$ = this.isLoggedSubject.asObservable();
+
+  constructor(private auth: AngularFireAuth, private firestore: Firestore,
+    private authService: AuthService,) {
+    this.auth.authState.subscribe((user) => {
+      this.isLoggedSubject.next(!!user);
+    });
   }
 
-  constructor(private firestore: Firestore,
-    private authService: AuthService) {}
+  get isLogged(): boolean {
+    return this.isLoggedSubject.getValue();
+  }
 
 
     get currentUser$(): Observable<User | null> {

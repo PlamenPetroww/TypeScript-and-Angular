@@ -5,6 +5,7 @@ import { NewOfferComponent } from './new-offer/new-offer.component';
 import { CurrentOfferComponent } from './current-offer/current-offer.component';
 import { LoadOfferComponent } from './load-offer/load-offer.component';
 import { NotFoundComponent } from '../shared/not-found/not-found.component';
+import { AuthGuard } from '../core/guards/authAuthenticate';
 
 const routes: Routes = [
   {
@@ -21,7 +22,7 @@ const routes: Routes = [
       },
     ],
   },
-  { path: 'add-lesson', component: NewOfferComponent },
+  { path: 'add-lesson', component: NewOfferComponent, canActivate: [AuthGuard] },
   {
     path: 'load-offer/:lessonId',
     component: LoadOfferComponent,

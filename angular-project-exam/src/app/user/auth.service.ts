@@ -8,6 +8,7 @@ import {
 } from '@firebase/auth';
 import { Auth, authState } from '@angular/fire/auth';
 import { HotToastService } from '@ngneat/hot-toast';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,10 @@ import { HotToastService } from '@ngneat/hot-toast';
 export class AuthService {
   currentUser$ = authState(this.auth);
 
-  constructor(private auth: Auth, private toast: HotToastService) {}
+  constructor(private auth: Auth, private toast: HotToastService,
+    private fireAuth: AngularFireAuth) {}
+
+    user$ = this.fireAuth.authState;
 
   signUp(email: string, password: string): Observable<UserCredential> {
     return from(createUserWithEmailAndPassword(this.auth, email, password));
@@ -45,4 +49,5 @@ export class AuthService {
       })
     );
   }
+
 }
