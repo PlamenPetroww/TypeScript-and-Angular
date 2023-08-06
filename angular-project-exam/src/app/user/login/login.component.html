@@ -1,6 +1,9 @@
 
 <h2>Login Form</h2>
 <div class="container">
+  <div *ngIf="login" class="messageContainer" role="alert">
+    <p>You are logged!</p>
+  </div>
   <form class="login" [formGroup]="loginForm" (ngSubmit)="submit()">
     <fieldset>
 

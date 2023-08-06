@@ -37,10 +37,16 @@ export class NewOfferComponent implements OnInit{
   });
 
   ngOnInit(): void {
-    /* this.userService.currentUser$.pipe(tap()).subscribe((user) => {
-      this.userId = user!.uid;
-      console.log('this.userId', this.userId);
-    }); */
+  
+    /* this.currentUser.currentUserProfile$
+      .pipe( tap(console.log))
+      .subscribe((user)=>{
+        // this.userId = user.uid;
+       
+        this.userId = user.uid
+        console.log('this.userId', this.userId);
+        
+      }) */
   }
 
   create(): void {

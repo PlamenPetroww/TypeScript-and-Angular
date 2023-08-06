@@ -5,6 +5,7 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { GlobalLoaderComponent } from './global-loader/global-loader.component';
 import { SharedModule } from '../shared/shared.module';
+import { ErrorComponent } from './error/error.component';
 
 
 
@@ -13,6 +14,7 @@ import { SharedModule } from '../shared/shared.module';
     HeaderComponent,
     FooterComponent,
     GlobalLoaderComponent,
+    ErrorComponent,
   ],
   imports: [
     CommonModule,

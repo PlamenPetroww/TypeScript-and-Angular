@@ -21,6 +21,7 @@ import { getAuth } from 'firebase/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import {AuthGuard} from './core/guards/authAuthenticate'
+import { HotToastModule } from '@ngneat/hot-toast';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {AuthGuard} from './core/guards/authAuthenticate'
     SharedModule,
     UserModule,
     OfferModule,
+    HotToastModule.forRoot(),
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),

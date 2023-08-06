@@ -7,7 +7,7 @@ import {
   UserInfo,
 } from '@firebase/auth';
 import { Auth, authState } from '@angular/fire/auth';
-import { HotToastService } from '@ngneat/hot-toast';
+// import { HotToastService } from '@ngneat/hot-toast';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Injectable({
@@ -16,7 +16,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class AuthService {
   currentUser$ = authState(this.auth);
 
-  constructor(private auth: Auth, private toast: HotToastService,
+  constructor(private auth: Auth, /* private toast: HotToastService ,*/
     private fireAuth: AngularFireAuth) {}
 
     user$ = this.fireAuth.authState;
@@ -41,13 +41,7 @@ export class AuthService {
   } */
 
   logout(): Observable<any> {
-    return from(this.auth.signOut()).pipe(
-      this.toast.observe({
-        success: 'Logout successful',
-        loading: 'Logout ...',
-        error: ({message}) => `${message}`,
-      })
-    );
+    return from(this.auth.signOut())
   }
 
 }
