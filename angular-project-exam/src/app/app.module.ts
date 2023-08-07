@@ -21,7 +21,9 @@ import { getAuth } from 'firebase/auth';
 import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { getStorage, provideStorage } from '@angular/fire/storage';
 import {AuthGuard} from './core/guards/authAuthenticate'
-import { HotToastModule } from '@ngneat/hot-toast';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MessageComponent } from './core/message/message.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +40,14 @@ import { HotToastModule } from '@ngneat/hot-toast';
     SharedModule,
     UserModule,
     OfferModule,
-    HotToastModule.forRoot(),
+    MatSnackBarModule,
+    BrowserAnimationsModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage()),
+    provideStorage(() => getStorage())
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent],

@@ -16,7 +16,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 export class AuthService {
   currentUser$ = authState(this.auth);
 
-  constructor(private auth: Auth, /* private toast: HotToastService ,*/
+  constructor(private auth: Auth,
     private fireAuth: AngularFireAuth) {}
 
     user$ = this.fireAuth.authState;

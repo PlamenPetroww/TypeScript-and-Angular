@@ -1,9 +1,11 @@
-<div *ngIf="isLoading">
+<!-- <div *ngIf="isLoading">
   <app-loader />
-</div>
+</div> -->
 
-<div *ngIf="!isLoading && noLessons" class="fancy-title">
-  <h3>There no Lessons !</h3>
+<div *ngIf="noLessons" class="fancy-title">
+  <div *ngIf="isLoading">
+    <h3>There no Lessons !</h3>
+  </div>
 </div>
 
 <h2 *ngIf="lesson" class="title__page">Our Lessons</h2>

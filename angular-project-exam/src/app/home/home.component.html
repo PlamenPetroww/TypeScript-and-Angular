@@ -6,9 +6,10 @@
   />
   <div class="service__page__title">Service Page</div>
   <br />
-  <div class="service__page__text"><a routerLink="/register">Register</a>
-    <span>&#8594;</span><a class="page__text__color" routerLink="/login">Login</a>
-  </div>
+
+    <div *ngIf="!isAuth" class="service__page__text"><a routerLink="/register">Register</a>
+      <span>&#8594;</span><a class="page__text__color" routerLink="/login">Login</a>
+    </div>
 </div>
 
 <div class="sport__logo">
