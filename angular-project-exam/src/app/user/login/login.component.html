@@ -1,7 +1,5 @@
-<div *ngIf="isLoggin">
-  <app-loader />
-</div>
-<div *ngIf="!isLoggin">
+
+<div>
   <h2>Login Form</h2>
   <div class="container">
     <form class="login" [formGroup]="loginForm" (ngSubmit)="submit()">

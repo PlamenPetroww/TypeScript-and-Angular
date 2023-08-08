@@ -4,9 +4,6 @@ import { Router } from '@angular/router';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
 import { AuthService } from '../auth.service';
 import { HotToastService } from '@ngneat/hot-toast';
-import { catchError, take } from 'rxjs';
-import { MessageComponent } from 'src/app/core/message/message.component';
-import {MatSnackBar} from '@angular/material/snack-bar'
 
 
 @Component({
@@ -15,12 +12,11 @@ import {MatSnackBar} from '@angular/material/snack-bar'
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  isLoggin: boolean = false;
-  message: string = 'asd'
+
 
   loginForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email, Validators.minLength(6)]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
   emailDomains = DEFAULT_EMAIL_DOMAINS;
@@ -29,8 +25,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private fb: NonNullableFormBuilder,
-    // private messageContent: MessageComponent,
-    private snackbar: MatSnackBar
+    private toast: HotToastService
   ) {}
 
   ngOnInit(): void {}
@@ -50,26 +45,19 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.authService.login(email, password).subscribe(() => {
-      // this.snackbar.open(this.message, undefined, {panelClass: 'success', duration: 2000});
-      this.router.navigate(['/']);
-    });
+    this.authService
+    .login(email, password)
+    .pipe(
+      this.toast.observe({
+        
+        loading: 'Loading',
+        success:'Logged',
+        error: 'Invalid'
+      })
+    )
+    .subscribe(() => {
+      this.router.navigate(['/'])
+    })
   }
 }
 
-/* this.authService.login(email, password).pipe(
-      catchError((error) => {
-        if(error.status === 401) {
-          this.router.navigate(['/login'])
-        } else {
-          this.messageContent.showMessage('Login failed. Please try again.')
-          return error.status;
-        }
-      })
-    ).subscribe(() => {
-      this.isLoggin=true
-      console.log('Well done')
-      this.messageContent.showMessage('You are logged in!')
-      this.router.navigate(['/'])
-    })
-  } */

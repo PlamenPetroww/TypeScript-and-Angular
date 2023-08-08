@@ -4,6 +4,10 @@ form.register {
   width: 40%;
   margin: 2em auto 0;
   text-align: center;
+  
+  mat-form-field {
+    width: 100%;
+  }
 }
 
 .register fieldset {

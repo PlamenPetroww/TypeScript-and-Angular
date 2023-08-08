@@ -27,6 +27,8 @@ export class UserService {
   constructor(private auth: AngularFireAuth, private firestore: Firestore,
     private authService: AuthService,) {
     this.auth.authState.subscribe((user) => {
+      // console.log(user?.uid)
+      // console.log(user?.email)
       this.isLoggedSubject.next(!!user);
     });
   }

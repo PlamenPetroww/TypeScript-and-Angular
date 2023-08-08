@@ -3,19 +3,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ProfileComponent } from './profile/profile.component';
+import {
+  canActivate,
+  redirectUnauthorizedTo,
+  redirectLoggedInTo,
+} from '@angular/fire/auth-guard';
+
+const redirectoToHome = () => redirectLoggedInTo(['home']);
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    ...canActivate(redirectoToHome)
   },
   {
     path: 'register',
     component: RegisterComponent,
-  },
-  {
-    path: 'profile',
-    component: ProfileComponent,
+    ...canActivate(redirectoToHome)
   }
 ];
 

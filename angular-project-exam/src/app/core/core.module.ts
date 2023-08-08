@@ -5,7 +5,6 @@ import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { GlobalLoaderComponent } from './global-loader/global-loader.component';
 import { SharedModule } from '../shared/shared.module';
-import { MessageComponent } from './message/message.component';
 
 
 
@@ -14,7 +13,6 @@ import { MessageComponent } from './message/message.component';
     HeaderComponent,
     FooterComponent,
     GlobalLoaderComponent,
-    MessageComponent,
   ],
   imports: [
     CommonModule,
@@ -25,7 +23,6 @@ import { MessageComponent } from './message/message.component';
     HeaderComponent,
     FooterComponent,
     GlobalLoaderComponent,
-    MessageComponent
   ]
 })
 export class CoreModule { }

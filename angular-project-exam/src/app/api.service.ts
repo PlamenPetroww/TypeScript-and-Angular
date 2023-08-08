@@ -49,9 +49,9 @@ export class ApiService {
       author,
       title,
       img,
-      price,
-      duration,
       description,
+      duration,
+      price,
     });
   }
 

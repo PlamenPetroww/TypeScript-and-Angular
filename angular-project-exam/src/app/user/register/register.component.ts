@@ -76,10 +76,6 @@ export class RegisterComponent implements OnInit {
   }
 
   this.authService.signUp(email, password).pipe(
-
-    /* switchMap(({user: {uid} }) => 
-    this.userService.addUser({uid, email})
-    ), */
     this.toast.observe({
       success: 'Congatulation! You have a account!',
       loading: 'Signing up ...',
