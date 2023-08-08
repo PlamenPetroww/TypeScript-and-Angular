@@ -5,6 +5,6 @@ export interface Lesson {
     img: string;
     description: string;
     subscribers: number;
-    author: string;
+    userEmail: string;
     offerId: string;
 }

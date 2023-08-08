@@ -211,7 +211,7 @@ export class NewOfferComponent implements OnInit {
     };
 
     this.apiService
-      .createLesson(this.userId, title, img, description, duration, price)
+      .createLesson(this.userId, this.userEmail, title, img, description, duration, price)
       .subscribe(() => {
         console.log('Lesson created successfully');
         this.router.navigate(['/lessons']);

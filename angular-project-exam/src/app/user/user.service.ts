@@ -27,8 +27,6 @@ export class UserService {
   constructor(private auth: AngularFireAuth, private firestore: Firestore,
     private authService: AuthService,) {
     this.auth.authState.subscribe((user) => {
-      // console.log(user?.uid)
-      // console.log(user?.email)
       this.isLoggedSubject.next(!!user);
     });
   }
@@ -36,7 +34,6 @@ export class UserService {
   get isLogged(): boolean {
     return this.isLoggedSubject.getValue();
   }
-
 
     get currentUser$(): Observable<User | null> {
       return this.authService.currentUser$.pipe(
@@ -55,4 +52,5 @@ export class UserService {
       const ref = doc(this.firestore, 'users', user.uid);
       return from(setDoc(ref, user))
     }
+
 }

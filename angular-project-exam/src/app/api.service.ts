@@ -39,6 +39,7 @@ export class ApiService {
 
   createLesson(
     author: string,
+    userEmail: string,
     title: string,
     img: string,
     description: string,
@@ -47,6 +48,7 @@ export class ApiService {
   ) {
     return this.http.post<Lesson>(`${this.appUrl}/lessons.json`, {
       author,
+      userEmail,
       title,
       img,
       description,
@@ -71,6 +73,5 @@ export class ApiService {
         price
       })
     }
-    
   
 }

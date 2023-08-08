@@ -10,6 +10,7 @@ import { Auth, authState } from '@angular/fire/auth';
 import { HotToastService } from '@ngneat/hot-toast';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Injectable({
   providedIn: 'root',
@@ -17,11 +18,22 @@ import { Router } from '@angular/router';
 export class AuthService {
   currentUser$ = authState(this.auth);
 
-  constructor(private auth: Auth,
-    private fireAuth: AngularFireAuth,
-    private router: Router) {}
+  
 
-    user$ = this.fireAuth.authState;
+  constructor(
+    private auth: Auth,
+    private fireAuth: AngularFireAuth,
+    private afDb: AngularFireDatabase,
+    private router: Router
+  ) {
+    // this.isLoggedIn = !!this.getToken();
+  }
+
+  public isLoggedIn(): boolean {
+    return !!this.auth.currentUser;
+  }
+
+  user$ = this.fireAuth.authState;
 
   signUp(email: string, password: string): Observable<UserCredential> {
     return from(createUserWithEmailAndPassword(this.auth, email, password));
@@ -30,21 +42,8 @@ export class AuthService {
   login(email: string, password: string): Observable<any> {
     return from(signInWithEmailAndPassword(this.auth, email, password));
   }
-  
-
-  /* updateProfile(profileData: Partial<UserInfo>): Observable<any> {
-    const user = this.auth.currentUser;
-    return of(user).pipe(
-      concatMap((user) => {
-        if (!user) throw new Error('Not authenticated');
-
-        return updateProfile(user, profileData);
-      })
-    );
-  } */
 
   logout(): Observable<any> {
-    return from(this.auth.signOut())
+    return from(this.auth.signOut());
   }
-
 }
