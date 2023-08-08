@@ -147,7 +147,6 @@ export class NewOfferComponent implements OnInit {
   userEmail: any;
   user: User | null = null;
 
-  tel: any;
   private isLoggedSubject = new BehaviorSubject<boolean>(false);
   isLogged$ = this.isLoggedSubject.asObservable();
 
