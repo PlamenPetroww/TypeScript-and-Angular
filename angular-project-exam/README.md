@@ -17,7 +17,7 @@ This is a web application built with Angular that provides a platform for surf l
 - Angular Forms
 - Angular Router
 - Firebase (Realtime Database and Authentication)
-- 
+  
 
 ## Getting Started
 
