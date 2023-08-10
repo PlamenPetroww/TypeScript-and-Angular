@@ -6,7 +6,6 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { HotToastService } from '@ngneat/hot-toast';
 import { Router } from '@angular/router';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
 import { AuthService } from '../auth.service';
@@ -45,7 +44,6 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private toast: HotToastService,
     private userService: UserService,
     private fb: NonNullableFormBuilder
   ) {}
@@ -76,11 +74,11 @@ export class RegisterComponent implements OnInit {
   }
 
   this.authService.signUp(email, password).pipe(
-    this.toast.observe({
+    /* this.toast.observe({
       success: 'Congatulation! You have a account!',
       loading: 'Signing up ...',
       error: ({message}) => `${message}`,
-    })
+    }) */
   )
   .subscribe(() => {
     this.router.navigate(['/']);

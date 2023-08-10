@@ -3,7 +3,7 @@ import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
 import { AuthService } from '../auth.service';
-import { HotToastService } from '@ngneat/hot-toast';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -25,10 +25,14 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private fb: NonNullableFormBuilder,
-    private toast: HotToastService
+    private toast: ToastrService
   ) {}
 
   ngOnInit(): void {}
+
+  showToastr() {
+    this.toast.success('Message', 'title')
+  }
 
   get email() {
     return this.loginForm.get('email');
@@ -47,17 +51,13 @@ export class LoginComponent implements OnInit {
 
     this.authService
     .login(email, password)
-    .pipe(
-      this.toast.observe({
-        
-        loading: 'Loading',
-        success:'Logged',
-        error: 'Invalid'
-      })
-    )
+    .pipe()
     .subscribe(() => {
+      this.showToastr();
       this.router.navigate(['/'])
     })
   }
+
+  
 }
 

@@ -130,7 +130,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
-import { HotToastService } from '@ngneat/hot-toast';
 import { UserService } from 'src/app/user/user.service';
 import { BehaviorSubject, tap } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -154,7 +153,6 @@ export class NewOfferComponent implements OnInit {
     private apiService: ApiService,
     private router: Router,
     private fb: FormBuilder,
-    private toast: HotToastService,
     private userService: UserService,
     private auth: AngularFireAuth
   ) {
@@ -219,10 +217,10 @@ export class NewOfferComponent implements OnInit {
     }
 
   cancel() {
-    this.toast.observe({
+    /* this.toast.observe({
       success: 'Are you sure ?',
       loading: 'Canceled ...',
       error: ({ message }) => `${message}`,
-    });
+    }); */
   }
 }

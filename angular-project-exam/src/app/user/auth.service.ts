@@ -7,7 +7,6 @@ import {
   UserInfo,
 } from '@firebase/auth';
 import { Auth, authState } from '@angular/fire/auth';
-import { HotToastService } from '@ngneat/hot-toast';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
