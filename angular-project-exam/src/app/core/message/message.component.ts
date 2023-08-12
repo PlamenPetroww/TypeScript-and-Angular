@@ -35,7 +35,7 @@ export class MessageComponent {
   }
 
   showToastAfterSucesseffulLesson() {
-    this.toast.success('You lesson is created', 'Congratulations')
+    this.toast.success('Your lesson is created', 'Congratulations')
   }
 
 }
