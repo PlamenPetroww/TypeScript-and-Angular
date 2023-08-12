@@ -41,9 +41,6 @@ export class CurrentOfferComponent implements OnInit {
   }
 
   editSubmitHandler(): void {
-    /* this.apiService.editLesson(this.lessonId, lesson).subscribe(() => {
-      this.router.navigate(['/']);
-    }); */
     if(this.form.invalid) {
       return;
     }

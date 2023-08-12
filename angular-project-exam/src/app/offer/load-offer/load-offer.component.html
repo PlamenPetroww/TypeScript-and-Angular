@@ -6,9 +6,6 @@
         <div *ngIf="lesson" class="card_datails">
           <h1>Title: {{ lesson.title }}</h1>
           <div class="card_character">
-            <div class="card_right">
-              <img src="{{lesson.img}}" alt="image" />
-            </div>
             <p class="card-species">Author: {{ this.userEmail }}</p>
             <p class="card-skin">Duration: {{ lesson.duration }}</p>
             <p class="card-eye">Subscribers:{{ lesson.subscribers }}</p>
@@ -16,6 +13,9 @@
             <p class="text-desc">{{ lesson.description }}</p>
           </div>
         </div>
+      </div>
+      <div *ngIf="lesson" class="card_right">
+        <img class="load-img" src="{{lesson.img}}" alt="image" />
       </div>
     </div>
     <p class="info-footer">

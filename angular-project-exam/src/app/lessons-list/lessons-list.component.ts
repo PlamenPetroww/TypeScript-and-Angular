@@ -4,7 +4,7 @@ import { Lesson } from '../types/lessons';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../user/auth.service';
-import { User } from 'firebase/auth';
+import { User, getAuth, onAuthStateChanged } from 'firebase/auth';
 import { UserService } from '../user/user.service';
 import { MessageComponent } from '../core/message/message.component';
 
@@ -18,9 +18,8 @@ export class LessonsListComponent implements OnInit, OnDestroy {
   lessonArray: Lesson[] = [];
   isLoading: boolean = true;
   offerId: any;
-  lessonId: any;
   userId: any;
-  isOwner: any;
+  auth = getAuth();
   lesson: Lesson | undefined;
   showAllLessons = false;
   isAuth = false;
@@ -33,7 +32,6 @@ export class LessonsListComponent implements OnInit, OnDestroy {
     private apiService: ApiService,
     private router: Router,
     private authService: AuthService,
-    private activatedRoute: ActivatedRoute,
     private userService: UserService,
     private message: MessageComponent, 
   ) {
@@ -50,11 +48,15 @@ export class LessonsListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    onAuthStateChanged(this.auth, (user) => {
+      if(user) {
+        const userEmail = user.email;
+        console.log(userEmail)
+      }
+    })
     this.apiService.getLessons().subscribe({
       next: (offers) => {
         this.lessonList = offers;
-        // console.log(this.lessonList)
-        // console.log(offers.)
         this.lessonArray = Object.values(this.lessonList);
         this.offerId = Object.keys(this.lessonList);
         this.isLoading = false;
@@ -72,14 +74,6 @@ export class LessonsListComponent implements OnInit, OnDestroy {
       this.isAuth = !user ? false : true;
     });
 
-    this.userService.userEmail$.subscribe(email => {
-      this.userEmail = email;
-    });
-
-    this.isOwner = this.userEmail == this.lesson?.userEmail;
-    console.log(this.userEmail);
-    console.log(this.lesson?.userEmail)
-    console.log('owner', this.isOwner)
     
   }
 

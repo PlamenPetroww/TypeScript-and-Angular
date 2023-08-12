@@ -23,11 +23,12 @@
       <p>Duration: {{ lesson.duration }} Days</p>
       <p>Subscribers: {{ lesson.subscribers }}</p>
       <p class="summe">Price: {{ lesson.price }} $</p>
-      <div *ngIf="isOwner">
+      <!-- {{lesson.userEmail}} -->
+      <div *ngIf="lesson.userEmail === this.userEmail">
         <button *ngIf="isAuth" [routerLink]="[offerId[i]]" class="edit">Edit</button>
         <button *ngIf="isAuth" class="delete" (click)="onDeleteHandler(offerId[i])">Delete</button>
       </div>
-      <div *ngIf="!isOwner">
+      <div>
         <button [routerLink]="['/load-offer', offerId[i]]" class="info">Information</button>
       </div>
     </div>

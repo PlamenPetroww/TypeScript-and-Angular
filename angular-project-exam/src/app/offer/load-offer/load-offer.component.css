@@ -100,6 +100,10 @@ h1 {
   line-height: 170%;
 }
 
+.load-img {
+  height: auto;
+}
+
 .PG {
   /*background: #92FE9D;*/
   background: rgba(116, 153, 226, 0.89);
