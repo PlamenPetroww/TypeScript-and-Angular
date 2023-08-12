@@ -40,11 +40,25 @@
         <label for="themeDuration">ImageUrl <span class="red">*</span></label>
         <input
           type="text"
+          name="img"
+          id="img"
           placeholder="imageUrl"
-          (change)="onFileChange($event)"
           formControlName="img"
         />
       </div>
+
+      <!-- img validation -->
+
+      <ng-container *ngIf="form.get('img')?.touched">
+        <p class="error-create-page" *ngIf="form.get('img')?.errors?.['required']">
+          The image is required!
+        </p>
+        <p class="error-create-page" *ngIf="form.get('img')?.errors?.['pattern']">
+          The image URL must start with https://
+        </p>
+
+      </ng-container>
+
       <!-- description -->
 
       <div class="new-theme-description">
@@ -62,9 +76,7 @@
       <!-- description  validation -->
 
       <ng-container *ngIf="form.get('description')?.touched">
-        <p
-          class="error-create-page"
-          *ngIf="form.get('description')?.errors?.['required']"
+        <p class="error-create-page" *ngIf="form.get('description')?.errors?.['required']"
         >
           The description field is required.
         </p>
@@ -142,8 +154,8 @@
       </ng-container>
 
       <div class="new-theme-buttons">
-        <button class="add" (click)="create()">Add</button>
-        <button class="cancel" (click)="cancel()">Cancel</button>
+        <button class="subscribe" (click)="create()">Add</button>
+        <button class="subscribe" (click)="cancel()">Cancel</button>
       </div>
     </form>
   </div>

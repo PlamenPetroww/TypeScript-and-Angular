@@ -29,7 +29,10 @@ export class MessageComponent {
 
   showToastrAfterSubscribe() {
     this.toast.success('You are subscribed', 'You did it');
+  }
 
+  showToastAfterCancel() {
+    this.toast.info('Cancelled', 'Successful!')
   }
 
 }

@@ -88,9 +88,6 @@
   align-items: center;
   margin: 0.5em 0 0.5em 0;
 }
-button + button {
-  margin-left: 1rem;
-}
 
 .new-theme-buttons {
   margin-top: 2em;
@@ -153,4 +150,27 @@ p.error-create-page {
 
 .custom-icon {
   font-size: 24px;
+}
+
+.subscribe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Poppins";
+  background-color: #121a37;
+  color: #ffffff;
+  border-radius: 0.3em;
+  text-decoration: none;
+  width: 150px;
+  height: 40px;
+  margin: 2em auto 3em auto;
+  cursor: pointer;
+}
+
+.subscribe:hover,
+.subscribe:active,
+.subscribe:focus {
+  transition: background-color 0.5s ease;
+  color: #121a37;
+  background-color: #01b663;
 }
