@@ -5,7 +5,6 @@ import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
 import { AuthService } from '../auth.service';
 import { Subject, catchError, takeUntil } from 'rxjs';
 import { MessageComponent } from 'src/app/core/message/message.component';
-import {faRightToBracket} from '@fortawesome/free-solid-svg-icons';
 import {faAt} from '@fortawesome/free-solid-svg-icons';
 import {faKey} from '@fortawesome/free-solid-svg-icons';
 
@@ -18,7 +17,6 @@ import {faKey} from '@fortawesome/free-solid-svg-icons';
 })
 export class LoginComponent implements OnInit {
 
-  login=faRightToBracket;
   emailIcon=faAt;
   passwordIcon=faKey;
 
