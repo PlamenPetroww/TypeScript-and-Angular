@@ -61,6 +61,7 @@
 }
 
 .homepage {
+    background: linear-gradient(to bottom, #FFFDFD, #A2F9D0);
     display: flex;
     justify-content: center;
     align-items: center;

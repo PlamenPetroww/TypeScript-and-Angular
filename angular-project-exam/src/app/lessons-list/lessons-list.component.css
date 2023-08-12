@@ -34,6 +34,7 @@
 
 
 .listing__bilder__part__two {
+  background: linear-gradient(to bottom, #FFFDFD, #A2F9D0);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;

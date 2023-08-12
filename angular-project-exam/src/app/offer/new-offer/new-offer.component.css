@@ -1,6 +1,7 @@
 /* new-theme */
 
 .new-theme-border {
+  background: linear-gradient(to bottom,#A2F9D0, #FFFDFD );
   border: 1px solid;
   border-radius: 1em;
   width: 60%;
