@@ -17,15 +17,12 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 export class AuthService {
   currentUser$ = authState(this.auth);
 
-  
-
   constructor(
     private auth: Auth,
     private fireAuth: AngularFireAuth,
     private afDb: AngularFireDatabase,
     private router: Router
   ) {
-    // this.isLoggedIn = !!this.getToken();
   }
 
   public isLoggedIn(): boolean {

@@ -16,6 +16,7 @@ export class LoadOfferComponent implements OnInit {
   userEmail: any;
   user: User | null = null;
   isOverflow = true;
+  
 
   private isLoggedSubject = new BehaviorSubject<boolean>(false);
   isLogged$ = this.isLoggedSubject.asObservable();

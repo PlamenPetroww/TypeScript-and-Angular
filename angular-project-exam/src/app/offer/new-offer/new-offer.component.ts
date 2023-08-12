@@ -7,7 +7,7 @@ import { UserService } from 'src/app/user/user.service';
 import { BehaviorSubject, tap } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { User } from '../../types/user';
-
+import {AngularFireStorage} from '@angular/fire/compat/storage';
 
 
 @Component({
@@ -30,7 +30,8 @@ export class NewOfferComponent implements OnInit {
     private router: Router,
     private fb: FormBuilder,
     private userService: UserService,
-    private auth: AngularFireAuth
+    private auth: AngularFireAuth,
+    private fireStorage: AngularFireStorage
   ) {
     this.auth.authState.subscribe((user) => {
       if (user) {
@@ -48,6 +49,7 @@ export class NewOfferComponent implements OnInit {
 
   form = this.fb.group({
     title: ['', [Validators.required, Validators.minLength(4)]],
+    img: [''],
     description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
     duration: [
       '',
@@ -79,7 +81,8 @@ export class NewOfferComponent implements OnInit {
     if(this.form.invalid) {
       return;
     }
-    const { title, img, description, duration, price } = this.form.value as {
+    // const { title, img, description, duration, price } = this.form.value as {
+        const { title, img, description, duration, price } = this.form.value as {
       title: string;
       img: string;
       description: string;
@@ -101,5 +104,14 @@ export class NewOfferComponent implements OnInit {
       loading: 'Canceled ...',
       error: ({ message }) => `${message}`,
     }); */
+  }
+
+  async onFileChange(event:any) {
+    const file = event.target.files[0]
+    if(file) {
+      const path = `yt/${file.name}`
+      const uploadTask = await this.fireStorage.upload(path, file);
+      const url = await uploadTask.ref.getDownloadURL();
+    }
   }
 }

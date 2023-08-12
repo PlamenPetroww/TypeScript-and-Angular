@@ -21,13 +21,13 @@ export class LessonsListComponent implements OnInit, OnDestroy {
   lessonId: any;
   userId: any;
   isOwner: any;
-  userEmail: any;
   lesson: Lesson | undefined;
   showAllLessons = false;
   isAuth = false;
   private userSub?: Subscription;
   noLessons: boolean = false;
   user: User | null = null;
+  userEmail: string | null = null;
 
   constructor(
     private apiService: ApiService,
@@ -35,15 +35,15 @@ export class LessonsListComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
     private userService: UserService,
-    private message: MessageComponent
+    private message: MessageComponent, 
   ) {
     this.userService.currentUser$.subscribe((user) => {
       if (user) {
         this.userId = user.uid;
-        this.userEmail = user.email;
+        // this.userEmail = user.email;
       } else {
         this.userId = null;
-        this.userEmail = null;
+        // this.userEmail = null;
       }
     });
 
@@ -53,8 +53,8 @@ export class LessonsListComponent implements OnInit, OnDestroy {
     this.apiService.getLessons().subscribe({
       next: (offers) => {
         this.lessonList = offers;
-        console.log(this.lessonList)
-        console.log(offers)
+        // console.log(this.lessonList)
+        // console.log(offers.)
         this.lessonArray = Object.values(this.lessonList);
         this.offerId = Object.keys(this.lessonList);
         this.isLoading = false;
@@ -72,8 +72,17 @@ export class LessonsListComponent implements OnInit, OnDestroy {
       this.isAuth = !user ? false : true;
     });
 
+    this.userService.userEmail$.subscribe(email => {
+      this.userEmail = email;
+    });
 
+    this.isOwner = this.userEmail == this.lesson?.userEmail;
+    console.log(this.userEmail);
+    console.log(this.lesson?.userEmail)
+    console.log('owner', this.isOwner)
+    
   }
+
 
   getOfferIdFromApiService(offerId: string) {
     this.apiService.setOfferId(offerId);

@@ -31,6 +31,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessageComponent } from './core/message/message.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    AngularFireStorageModule,
     AngularFireAuthModule,
     AngularFireModule.initializeApp(environment.firebase),
     provideFirebaseApp(() => initializeApp(environment.firebase)),

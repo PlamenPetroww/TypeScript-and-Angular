@@ -4,11 +4,11 @@ import { Router } from '@angular/router';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
 import { AuthService } from '../auth.service';
 import { Subject, catchError, takeUntil } from 'rxjs';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { MessageComponent } from 'src/app/core/message/message.component';
-import {faAt} from '@fortawesome/free-solid-svg-icons';
-import {faKey} from '@fortawesome/free-solid-svg-icons';
-
-
+import { faAt } from '@fortawesome/free-solid-svg-icons';
+import { faKey } from '@fortawesome/free-solid-svg-icons';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',
@@ -16,12 +16,16 @@ import {faKey} from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  auth = getAuth();
 
-  emailIcon=faAt;
-  passwordIcon=faKey;
+  emailIcon = faAt;
+  passwordIcon = faKey;
 
   loginForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email, Validators.minLength(6)]],
+    email: [
+      '',
+      [Validators.required, Validators.email, Validators.minLength(6)],
+    ],
     password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
@@ -34,7 +38,14 @@ export class LoginComponent implements OnInit {
     private message: MessageComponent
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    onAuthStateChanged(this.auth, (user) => {
+      if(user) {
+        console.log(user.email)
+      }
+    })
+
+  }
 
   private destroy$ = new Subject<void>();
 
@@ -57,29 +68,22 @@ export class LoginComponent implements OnInit {
       .login$(email, password)
       .pipe(
         catchError((error) => {
-        this.message.showToastrAfterUnsuccess()
+          this.message.showToastrAfterUnsuccess();
           return error;
         }),
         takeUntil(this.destroy$)
       )
       .subscribe(() => {
         this.message.showToastrAfterSuccess();
-
+        
         this.router.navigate(['/']);
       });
-
-  }
+    }
 
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
   }
 
-  
 
-  
 }
-
-
-
-

@@ -24,6 +24,9 @@ export class UserService {
   private isLoggedSubject = new BehaviorSubject<boolean>(false);
   isLogged$ = this.isLoggedSubject.asObservable();
 
+  private userEmailSubject = new BehaviorSubject<string | null>(null);
+  userEmail$ = this.userEmailSubject.asObservable();
+
   constructor(private auth: AngularFireAuth, private firestore: Firestore,
     private authService: AuthService,) {
     this.auth.authState.subscribe((user) => {
@@ -51,6 +54,10 @@ export class UserService {
     addUser(user: User): Observable<void> {
       const ref = doc(this.firestore, 'users', user.uid);
       return from(setDoc(ref, user))
+    }
+
+    setUserEmail(email: string) {
+      this.userEmailSubject.next(email);
     }
 
 }
