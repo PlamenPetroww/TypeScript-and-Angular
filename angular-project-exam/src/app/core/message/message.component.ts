@@ -27,4 +27,9 @@ export class MessageComponent {
     this.toast.info('Lesson deleted', 'Successful!')
   }
 
+  showToastrAfterSubscribe() {
+    this.toast.success('You are subscribed', 'You did it');
+
+  }
+
 }

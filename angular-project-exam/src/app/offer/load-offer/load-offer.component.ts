@@ -5,6 +5,7 @@ import { ApiService } from 'src/app/api.service';
 import { Lesson } from 'src/app/types/lessons';
 import { BehaviorSubject } from 'rxjs';
 import { User } from '../../types/user';
+import { MessageComponent } from 'src/app/core/message/message.component';
 
 @Component({
   selector: 'app-load-offer',
@@ -15,8 +16,8 @@ export class LoadOfferComponent implements OnInit {
   userId: any;
   userEmail: any;
   user: User | null = null;
-  isOverflow = true;
-  
+  buttonText: string = 'Subscribe';
+  isSubscribed: boolean = false;
 
   private isLoggedSubject = new BehaviorSubject<boolean>(false);
   isLogged$ = this.isLoggedSubject.asObservable();
@@ -25,7 +26,7 @@ export class LoadOfferComponent implements OnInit {
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
     private auth: AngularFireAuth,
-    private renderer: Renderer2, private el: ElementRef
+    private message: MessageComponent
   ) {
     this.auth.authState.subscribe((user) => {
       this.isLoggedSubject.next(true);
@@ -33,8 +34,8 @@ export class LoadOfferComponent implements OnInit {
         this.isLoggedSubject.next(true);
         this.userId = user.uid;
         this.userEmail = user.email;
-        // console.log(this.userId);
-        // console.log(this.userEmail);
+        console.log(this.userId);
+        console.log(this.userEmail);
 
       } else {
         this.isLoggedSubject.next(false);
@@ -55,6 +56,14 @@ export class LoadOfferComponent implements OnInit {
     this.apiService.getLesson(lessonId).subscribe((lesson) => {
       this.lesson = lesson;
     });
+  }
+
+  toggleSubscription() {
+    if (!this.isSubscribed) {
+      this.buttonText = 'Subscribed';
+      this.message.showToastrAfterSubscribe();
+      this.isSubscribed = true;
+    }
   }
 
 }

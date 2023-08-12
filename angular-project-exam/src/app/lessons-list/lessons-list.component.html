@@ -21,13 +21,14 @@
       <p>Description: {{ lesson.description | slice:0:10 }} ...</p>
       <p>Author: {{ lesson.userEmail }}</p>
       <p>Duration: {{ lesson.duration }} Days</p>
-      <p>Subscribers: {{ lesson.subscribers }}</p>
       <p class="summe">Price: {{ lesson.price }} $</p>
       <!-- {{lesson.userEmail}} -->
-      <div *ngIf="lesson.userEmail === this.userEmail">
-        <button *ngIf="isAuth" [routerLink]="[offerId[i]]" class="edit">Edit</button>
-        <button *ngIf="isAuth" class="delete" (click)="onDeleteHandler(offerId[i])">Delete</button>
-      </div>
+      <!-- <div *ngIf="lesson.userEmail === this.userEmail"> -->
+      <!-- <div *ngIf="lesson.userEmail === this.userEmail"> -->
+        <ng-container *ngIf="lesson.userEmail === userUid">
+        <button  [routerLink]="[offerId[i]]" class="edit">Edit</button>
+        <button  class="delete" (click)="onDeleteHandler(offerId[i])">Delete</button>
+        </ng-container>
       <div>
         <button [routerLink]="['/load-offer', offerId[i]]" class="info">Information</button>
       </div>

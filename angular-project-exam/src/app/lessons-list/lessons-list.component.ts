@@ -27,6 +27,7 @@ export class LessonsListComponent implements OnInit, OnDestroy {
   noLessons: boolean = false;
   user: User | null = null;
   userEmail: string | null = null;
+  userUid: any;
 
   constructor(
     private apiService: ApiService,
@@ -34,24 +35,13 @@ export class LessonsListComponent implements OnInit, OnDestroy {
     private authService: AuthService,
     private userService: UserService,
     private message: MessageComponent, 
-  ) {
-    this.userService.currentUser$.subscribe((user) => {
-      if (user) {
-        this.userId = user.uid;
-        // this.userEmail = user.email;
-      } else {
-        this.userId = null;
-        // this.userEmail = null;
-      }
-    });
-
-  }
+  ) {}
 
   ngOnInit(): void {
     onAuthStateChanged(this.auth, (user) => {
       if(user) {
-        const userEmail = user.email;
-        console.log(userEmail)
+        this.userUid = user.email;
+        console.log(this.userUid)
       }
     })
     this.apiService.getLessons().subscribe({
@@ -59,6 +49,7 @@ export class LessonsListComponent implements OnInit, OnDestroy {
         this.lessonList = offers;
         this.lessonArray = Object.values(this.lessonList);
         this.offerId = Object.keys(this.lessonList);
+        console.log(this.lessonList)
         this.isLoading = false;
         if (this.lessonArray.length === 0) {
           this.noLessons = true;
@@ -73,10 +64,7 @@ export class LessonsListComponent implements OnInit, OnDestroy {
     this.userSub = this.authService.currentUser$.subscribe((user) => {
       this.isAuth = !user ? false : true;
     });
-
-    
   }
-
 
   getOfferIdFromApiService(offerId: string) {
     this.apiService.setOfferId(offerId);

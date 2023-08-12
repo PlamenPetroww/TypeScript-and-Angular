@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+*img {
+  width: 300px;
+  height: 200px;
+}
+
 #details-page {
   margin-top: 7.5em;
   left: 50%;
@@ -15,23 +20,12 @@
   left: 55%;
   max-width: 950px;
   background: #e4a1a9;
-  background: -webkit-linear-gradient(to right, #03434c, rgb(179, 91, 98));
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(#03434c),
-    to(rgb(#08272c))
-  );
-  background: -webkit-linear-gradient(left, #03434c, #08272c);
-  background: -o-linear-gradient(left, #03434c, #08272c);
-  background: linear-gradient(to right, #03434c, #08272c);
-  -webkit-box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(to bottom,#A2F9D0, #FFFDFD );
 }
 
 .card_left {
   width: 570px;
+  background: linear-gradient(to bottom,#A2F9D0, #FFFDFD );
 }
 
 .card_datails {
@@ -47,6 +41,7 @@
   overflow-wrap: break-word;
   word-wrap: break-word;
   max-width: 42ch;
+  color:#121a37;
 }
 
 h1 {
@@ -58,12 +53,16 @@ h1 {
 .card_datails h1 {
   font-size: 29px;
   padding-bottom: 8px;
+  color:#121a37;
+  font-family: 'Poppins';
 }
 
 .card_right img {
-  height: 100%;
-  width: 420px;
+  height: 300px;
+  width: 300px;
   border-radius: 2px;
+  margin-top: 54px;
+
 }
 
 .card_character {
@@ -87,21 +86,18 @@ h1 {
   font-weight: bold;
   border-radius: 15px;
   line-height: 170%;
+  color:#121a37;
 }
 
 .card-desc {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(223, 210, 210);
+  color:#121a37;
   padding: 8px;
   font-weight: bold;
   border-radius: 15px;
   line-height: 170%;
-}
-
-.load-img {
-  height: auto;
 }
 
 .PG {
