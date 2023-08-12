@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
-import { AuthService } from '../auth.service';
 import { Subject, catchError, takeUntil } from 'rxjs';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
+import { getAuth } from 'firebase/auth';
+
+import { AuthService } from '../auth.service';
+import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
 import { MessageComponent } from 'src/app/core/message/message.component';
 import { faAt } from '@fortawesome/free-solid-svg-icons';
 import { faKey } from '@fortawesome/free-solid-svg-icons';
-import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-login',

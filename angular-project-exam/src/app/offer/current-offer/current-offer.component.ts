@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
+import { FormBuilder, Validators } from '@angular/forms';
+
 import { ApiService } from 'src/app/api.service';
 import { Lesson } from 'src/app/types/lessons';
-import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-current-offer',

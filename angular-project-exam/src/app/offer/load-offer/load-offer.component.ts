@@ -1,12 +1,12 @@
 import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject, Subscription } from 'rxjs';
+
 import { ApiService } from 'src/app/api.service';
 import { Lesson } from 'src/app/types/lessons';
-import { BehaviorSubject, Subscription } from 'rxjs';
 import { User } from '../../types/user';
-import { MessageComponent } from 'src/app/core/message/message.component';
 import { AuthService } from 'src/app/user/auth.service';
+import { MessageComponent } from 'src/app/core/message/message.component';
 
 @Component({
   selector: 'app-load-offer',

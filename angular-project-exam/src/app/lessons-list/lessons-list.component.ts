@@ -1,12 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ApiService } from '../api.service';
-import { Lesson } from '../types/lessons';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../user/auth.service';
+
 import { User, getAuth, onAuthStateChanged } from 'firebase/auth';
+
+import { AuthService } from '../user/auth.service';
+import { ApiService } from '../api.service';
 import { UserService } from '../user/user.service';
 import { MessageComponent } from '../core/message/message.component';
+import { Lesson } from '../types/lessons';
 
 @Component({
   selector: 'app-lessons-list',

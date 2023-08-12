@@ -1,13 +1,14 @@
-
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BehaviorSubject, tap } from 'rxjs';
+
+import {AngularFireStorage} from '@angular/fire/compat/storage';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+
 import { ApiService } from 'src/app/api.service';
 import { UserService } from 'src/app/user/user.service';
-import { BehaviorSubject, tap } from 'rxjs';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { User } from '../../types/user';
-import {AngularFireStorage} from '@angular/fire/compat/storage';
 import { MessageComponent } from 'src/app/core/message/message.component';
 
 

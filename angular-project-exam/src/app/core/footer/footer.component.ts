@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { AuthService } from '../../user/auth.service';
 
+import { AuthService } from '../../user/auth.service';
 
 @Component({
   selector: 'app-footer',

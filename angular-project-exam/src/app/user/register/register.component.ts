@@ -7,11 +7,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { ToastrService } from 'ngx-toastr';
+
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
 import { AuthService } from '../auth.service';
-import { UserService } from '../user.service';
 import { Subject, catchError, takeUntil } from 'rxjs';
-import { ToastrService } from 'ngx-toastr';
 import { MessageComponent } from 'src/app/core/message/message.component';
 import {faUser} from '@fortawesome/free-solid-svg-icons';
 import {faAt} from '@fortawesome/free-solid-svg-icons';
