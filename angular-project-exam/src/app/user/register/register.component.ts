@@ -14,7 +14,8 @@ import { Subject, catchError, takeUntil } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { MessageComponent } from 'src/app/core/message/message.component';
 import {faUser} from '@fortawesome/free-solid-svg-icons';
-
+import {faAt} from '@fortawesome/free-solid-svg-icons';
+import {faKey} from '@fortawesome/free-solid-svg-icons';
 
 export function passwordsMatchValidator(): ValidatorFn {
 
@@ -38,6 +39,8 @@ export function passwordsMatchValidator(): ValidatorFn {
 export class RegisterComponent implements OnInit {
 
   userIcon = faUser;
+  emailIcon=faAt;
+  passwordIcon=faKey;
 
   registerForm = this.fb.group({
     username: ['', [Validators.required, Validators.minLength(4)]],
