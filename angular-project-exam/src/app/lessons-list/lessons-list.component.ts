@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../user/auth.service';
 import { User } from 'firebase/auth';
 import { UserService } from '../user/user.service';
+import { MessageComponent } from '../core/message/message.component';
 
 @Component({
   selector: 'app-lessons-list',
@@ -33,7 +34,8 @@ export class LessonsListComponent implements OnInit, OnDestroy {
     private router: Router,
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
-    private userService: UserService
+    private userService: UserService,
+    private message: MessageComponent
   ) {
     this.userService.currentUser$.subscribe((user) => {
       if (user) {
@@ -86,6 +88,7 @@ export class LessonsListComponent implements OnInit, OnDestroy {
   onDeleteHandler(offerId: string): void {
     if (confirm(`Are you sure you want to delete this lesson ?`)) {
       this.apiService.deleteLessonById(offerId).subscribe(() => {
+        this.message.showToastrDeleteItem();
         this.router.navigate(['/']);
       });
     } else {

@@ -23,4 +23,8 @@ export class MessageComponent {
     this.toast.info('Good bye', 'Logout')
   }
 
+  showToastrDeleteItem() {
+    this.toast.info('Lesson deleted', 'Successful!')
+  }
+
 }
