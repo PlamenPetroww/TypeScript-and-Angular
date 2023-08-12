@@ -34,4 +34,8 @@ export class MessageComponent {
     this.toast.info('Cancelled', 'Successful!')
   }
 
+  showToastAfterSucesseffulLesson() {
+    this.toast.success('You lesson is created', 'Congratulations')
+  }
+
 }

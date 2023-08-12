@@ -3,7 +3,6 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BehaviorSubject, tap } from 'rxjs';
 
-import {AngularFireStorage} from '@angular/fire/compat/storage';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 import { ApiService } from 'src/app/api.service';
@@ -33,8 +32,7 @@ export class NewOfferComponent implements OnInit {
     private fb: FormBuilder,
     private userService: UserService,
     private auth: AngularFireAuth,
-    private fireStorage: AngularFireStorage,
-    private message: MessageComponent
+    private message: MessageComponent,
   ) {
     this.auth.authState.subscribe((user) => {
       if (user) {
@@ -95,6 +93,7 @@ export class NewOfferComponent implements OnInit {
     this.apiService
       .createLesson(this.userId, this.userEmail, title, img, description, duration, price)
       .subscribe(() => {
+        this.message.showToastAfterSucesseffulLesson();
         this.router.navigate(['/lessons']);
       });
     }
