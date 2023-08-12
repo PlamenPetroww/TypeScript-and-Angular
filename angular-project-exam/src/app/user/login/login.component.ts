@@ -39,11 +39,11 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    onAuthStateChanged(this.auth, (user) => {
+    /* onAuthStateChanged(this.auth, (user) => {
       if(user) {
         console.log(user.email)
       }
-    })
+    }) */
 
   }
 

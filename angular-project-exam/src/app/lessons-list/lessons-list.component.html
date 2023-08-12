@@ -22,14 +22,11 @@
       <p>Author: {{ lesson.userEmail }}</p>
       <p>Duration: {{ lesson.duration }} Days</p>
       <p class="summe">Price: {{ lesson.price }} $</p>
-      <!-- {{lesson.userEmail}} -->
-      <!-- <div *ngIf="lesson.userEmail === this.userEmail"> -->
-      <!-- <div *ngIf="lesson.userEmail === this.userEmail"> -->
         <ng-container *ngIf="lesson.userEmail === userUid">
-        <button  [routerLink]="[offerId[i]]" class="edit">Edit</button>
-        <button  class="delete" (click)="onDeleteHandler(offerId[i])">Delete</button>
+        <button *ngIf="isAuth" [routerLink]="[offerId[i]]" class="edit">Edit</button>
+        <button *ngIf="isAuth" class="delete" (click)="onDeleteHandler(offerId[i])">Delete</button>
         </ng-container>
-      <div>
+      <div *ngIf="lesson.userEmail !== userUid">
         <button [routerLink]="['/load-offer', offerId[i]]" class="info">Information</button>
       </div>
     </div>

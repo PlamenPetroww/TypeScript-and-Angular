@@ -3,9 +3,10 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
 import { Lesson } from 'src/app/types/lessons';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { User } from '../../types/user';
 import { MessageComponent } from 'src/app/core/message/message.component';
+import { AuthService } from 'src/app/user/auth.service';
 
 @Component({
   selector: 'app-load-offer',
@@ -18,6 +19,9 @@ export class LoadOfferComponent implements OnInit {
   user: User | null = null;
   buttonText: string = 'Subscribe';
   isSubscribed: boolean = false;
+  email: any;
+  isAuth = false;
+  private userSub?: Subscription;
 
   private isLoggedSubject = new BehaviorSubject<boolean>(false);
   isLogged$ = this.isLoggedSubject.asObservable();
@@ -25,29 +29,17 @@ export class LoadOfferComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
-    private auth: AngularFireAuth,
+    private authService: AuthService,
     private message: MessageComponent
-  ) {
-    this.auth.authState.subscribe((user) => {
-      this.isLoggedSubject.next(true);
-      if (user) {
-        this.isLoggedSubject.next(true);
-        this.userId = user.uid;
-        this.userEmail = user.email;
-        console.log(this.userId);
-        console.log(this.userEmail);
-
-      } else {
-        this.isLoggedSubject.next(false);
-        this.userId = null;
-        this.userEmail = null;
-      }
-    });
-  }
+  ) {}
 
   lesson: Lesson | undefined;
 
   ngOnInit(): void {
+    this.userSub = this.authService.currentUser$.subscribe(user => {
+      this.isAuth = !user ? false : true;
+      this.email = user?.email;
+    })
     this.showFullInfoLesson();
   }
 

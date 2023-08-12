@@ -6,8 +6,9 @@
         <div *ngIf="lesson" class="card_datails">
           <h1>Title: {{ lesson.title }}</h1>
           <div class="card_character">
-            <p class="card-species">Author: {{ this.userEmail }}</p>
-            <p class="card-skin">Duration: {{ lesson.duration }}</p>
+            <p class="card-species">Author: {{ lesson.userEmail }}</p>
+            <p class="card-skin">Duration: {{ lesson.duration }} Days</p>
+            <p class="card-skin">Price: {{ lesson.price }} $</p>
             <p class="card-desc">Description:</p><br>
             <p class="text-desc">{{ lesson.description }}</p>
           </div>
@@ -20,7 +21,7 @@
     <p class="info-footer">
       Do you want to be a part of this project? Then press Here
     </p>
-    <button type="submit" class="subscribe" [disabled]="isSubscribed" (click)="toggleSubscription()">
+    <button *ngIf="isAuth" type="submit" class="subscribe" [disabled]="isSubscribed" (click)="toggleSubscription()">
       {{ buttonText }}
     </button>
   </section>

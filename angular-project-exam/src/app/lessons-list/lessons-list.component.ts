@@ -26,7 +26,6 @@ export class LessonsListComponent implements OnInit, OnDestroy {
   private userSub?: Subscription;
   noLessons: boolean = false;
   user: User | null = null;
-  userEmail: string | null = null;
   userUid: any;
 
   constructor(
@@ -41,7 +40,6 @@ export class LessonsListComponent implements OnInit, OnDestroy {
     onAuthStateChanged(this.auth, (user) => {
       if(user) {
         this.userUid = user.email;
-        console.log(this.userUid)
       }
     })
     this.apiService.getLessons().subscribe({
@@ -49,7 +47,6 @@ export class LessonsListComponent implements OnInit, OnDestroy {
         this.lessonList = offers;
         this.lessonArray = Object.values(this.lessonList);
         this.offerId = Object.keys(this.lessonList);
-        console.log(this.lessonList)
         this.isLoading = false;
         if (this.lessonArray.length === 0) {
           this.noLessons = true;
