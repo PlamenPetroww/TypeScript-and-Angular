@@ -1,4 +1,4 @@
-<main>
+<!-- <main>
     <section id="details">
         <div *ngIf="lesson" id="details-wrapper">
             <p id="details-title">Title: {{lesson.title}}</p>
@@ -15,7 +15,7 @@
                             <p>{{lesson.description}}</p>
                         </td>
                         <tr>
-                            <td>
+                            <td>z
                                 <p>
                                     Author: 
                                 </p>
@@ -41,4 +41,31 @@
             </div>
         </div>
     </section>
+</main>
+ -->
+
+<main>
+  <section id="details-page">
+    <div class="main_card">
+      <div class="card_left">
+        <div *ngIf="lesson" class="card_datails">
+          <h1>Title: {{ lesson.title }}</h1>
+          <div class="card_character">
+            <p class="card-species">Author: {{ this.userEmail }}</p>
+            <p class="card-skin">Duration: {{ lesson.duration }}</p>
+            <p class="card-eye">Subscribers:{{ lesson.subscribers }}</p>
+            <p class="card-desc">Description:</p><br>
+            <p class="text-desc">{{ lesson.description }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="card_right">
+        <img src="assets/img/Kiteboarding.jpg" alt="image" />
+      </div>
+    </div>
+    <p class="info-footer">
+      Do you want to be a part of this project? Then press Here
+    </p>
+    <button type="submit" class="subscribe">Subscribe</button>
+  </section>
 </main>

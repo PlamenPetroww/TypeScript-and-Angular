@@ -70,7 +70,7 @@ export class LessonsListComponent implements OnInit, OnDestroy {
       this.isAuth = !user ? false : true;
     });
 
-    this.isOwner = this.userEmail === this.lessonArray[0].userEmail
+
   }
 
   getOfferIdFromApiService(offerId: string) {

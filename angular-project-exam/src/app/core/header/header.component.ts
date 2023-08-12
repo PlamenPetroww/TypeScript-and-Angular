@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/user/auth.service';
+import { MessageComponent } from '../message/message.component';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private userSub?: Subscription;
 
   constructor(private authService: AuthService,
-    private router: Router) {}
+    private router: Router,
+    private message: MessageComponent) {}
 
   ngOnInit(): void {
     this.userSub = this.authService.currentUser$.subscribe(user => {
@@ -29,7 +31,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   };
 
   onLogout() {
-    this.authService.logout();
+    this.authService.logout$();
+    this.message.showToastrAfterLogout();
     this.router.navigate(['/']);
   }
 

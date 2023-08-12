@@ -29,6 +29,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MessageComponent } from './core/message/message.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     UserModule,
     OfferModule,
-    
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
@@ -60,13 +61,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),
     ToastrModule.forRoot({
-      timeOut: 1000,
+      timeOut: 2000,
       progressBar: true,
       progressAnimation: 'increasing',
       preventDuplicates: true
-    })
+    }),
+    FontAwesomeModule,
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, MessageComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

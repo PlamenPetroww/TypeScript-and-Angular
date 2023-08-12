@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/api.service';
@@ -15,6 +15,7 @@ export class LoadOfferComponent implements OnInit {
   userId: any;
   userEmail: any;
   user: User | null = null;
+  isOverflow = true;
 
   private isLoggedSubject = new BehaviorSubject<boolean>(false);
   isLogged$ = this.isLoggedSubject.asObservable();
@@ -22,7 +23,8 @@ export class LoadOfferComponent implements OnInit {
   constructor(
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
-    private auth: AngularFireAuth
+    private auth: AngularFireAuth,
+    private renderer: Renderer2, private el: ElementRef
   ) {
     this.auth.authState.subscribe((user) => {
       this.isLoggedSubject.next(true);
@@ -30,8 +32,8 @@ export class LoadOfferComponent implements OnInit {
         this.isLoggedSubject.next(true);
         this.userId = user.uid;
         this.userEmail = user.email;
-        console.log(this.userId);
-        console.log(this.userEmail);
+        // console.log(this.userId);
+        // console.log(this.userEmail);
 
       } else {
         this.isLoggedSubject.next(false);
@@ -53,4 +55,5 @@ export class LoadOfferComponent implements OnInit {
       this.lesson = lesson;
     });
   }
+
 }

@@ -1,19 +1,21 @@
 
 <div>
-  <h2>Login Form</h2>
+  <h2><fa-icon size="xs" style="color: #01b663" [icon]="login"></fa-icon>Login Form</h2>
   <div class="container">
     <form class="login" [formGroup]="loginForm" (ngSubmit)="submit()">
       <fieldset>
         <!-- email -->
 
         <span class="login-email">Email</span>
-        <p class="field field-icon">
-          <label for="email"></label>
-          <input
+        <p class="field field-icon"><fa-icon  style="color: #01b663" [icon]="emailIcon" class="custom-icon"></fa-icon>
+          <label for="email" ></label>
+          <input 
+          type="email"
             class="input-error"
             placeholder="Email address"
             formControlName="email"
             [appEmail]="emailDomains"
+            
           />
         </p>
 
@@ -31,7 +33,7 @@
         <!-- password -->
         <span class="login-password">Password</span>
 
-        <p class="field field-icon">
+        <p class="field field-icon"><fa-icon  style="color: #01b663" [icon]="passwordIcon" class="custom-icon"></fa-icon>
           <label for="password"></label>
           <input
             type="password"
@@ -51,7 +53,7 @@
             {{password?.errors?.['minlength']['requiredLength']}} characters!
           </p>
         </ng-container>
-        <button type="submit" (click)="showToastr()" [ngClass]="{ validForm: loginForm.valid }">
+        <button type="submit" (click)="submit()" [ngClass]="{ validForm: loginForm.valid }">
           Login
         </button>
 
@@ -63,3 +65,4 @@
     </form>
   </div>
 </div>
+

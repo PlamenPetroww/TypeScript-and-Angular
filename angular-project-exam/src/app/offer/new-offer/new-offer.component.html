@@ -3,7 +3,7 @@
     <div class="header-background">
       <span>New Theme</span>
     </div>
-    <form [formGroup]="form" (ngSubmit)="create()">
+    <form [formGroup]="form">
 
       <!-- title -->
 
@@ -43,6 +43,7 @@
       <ng-container *ngIf="form.get('description')?.touched">
         <p class="error-create-page" *ngIf="form.get('description')?.errors?.['required']">The description field is required.</p>
         <p class="error-create-page" *ngIf="form.get('description')?.errors?.['minlength']">Description must be at least 10 characters long.</p>
+        <p class="error-create-page" *ngIf="form.get('description')?.errors?.['maxlength']">Description must be at least 200 characters long.</p>
       </ng-container>
 
       <!-- duration -->

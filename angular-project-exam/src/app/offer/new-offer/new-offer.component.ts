@@ -172,7 +172,7 @@ export class NewOfferComponent implements OnInit {
 
   form = this.fb.group({
     title: ['', [Validators.required, Validators.minLength(4)]],
-    description: ['', [Validators.required, Validators.minLength(10)]],
+    description: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(200)]],
     duration: [
       '',
       [Validators.required, Validators.max(15), Validators.min(2)],
@@ -198,6 +198,9 @@ export class NewOfferComponent implements OnInit {
 
   create(): void {
     if (!this.userService.isLogged) {
+      return;
+    }
+    if(this.form.invalid) {
       return;
     }
     const { title, img, description, duration, price } = this.form.value as {

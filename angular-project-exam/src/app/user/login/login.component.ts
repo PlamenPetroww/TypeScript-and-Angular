@@ -3,7 +3,12 @@ import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DEFAULT_EMAIL_DOMAINS } from 'src/app/shared/constants';
 import { AuthService } from '../auth.service';
-import { ToastrService } from 'ngx-toastr';
+import { Subject, catchError, takeUntil } from 'rxjs';
+import { MessageComponent } from 'src/app/core/message/message.component';
+import {faRightToBracket} from '@fortawesome/free-solid-svg-icons';
+import {faAt} from '@fortawesome/free-solid-svg-icons';
+import {faKey} from '@fortawesome/free-solid-svg-icons';
+
 
 
 @Component({
@@ -13,6 +18,9 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent implements OnInit {
 
+  login=faRightToBracket;
+  emailIcon=faAt;
+  passwordIcon=faKey;
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email, Validators.minLength(6)]],
@@ -25,14 +33,12 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private fb: NonNullableFormBuilder,
-    private toast: ToastrService
+    private message: MessageComponent
   ) {}
 
   ngOnInit(): void {}
 
-  showToastr() {
-    this.toast.success('Message', 'title')
-  }
+  private destroy$ = new Subject<void>();
 
   get email() {
     return this.loginForm.get('email');
@@ -50,14 +56,32 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService
-    .login(email, password)
-    .pipe()
-    .subscribe(() => {
-      this.showToastr();
-      this.router.navigate(['/'])
-    })
+      .login$(email, password)
+      .pipe(
+        catchError((error) => {
+        this.message.showToastrAfterUnsuccess()
+          return error;
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe(() => {
+        this.message.showToastrAfterSuccess();
+
+        this.router.navigate(['/']);
+      });
+
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   
+
+  
 }
+
+
+
 
