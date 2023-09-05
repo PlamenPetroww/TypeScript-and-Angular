@@ -10,11 +10,23 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class ApiService {
+
   private appUrl: string;
   private offerIdSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
 
   constructor(private http: HttpClient) {
     this.appUrl = environment.appUrl;
+  }
+
+  subscribeForLesson(lessonId: string, subscriberId: string) {
+    return this.http.post(`${this.appUrl}/subscribers.json`, {
+      lessonId,
+      subscriberId
+    });
+  }
+
+  getSubscribers() {
+    return this.http.get<Lesson[]>(`${this.appUrl}/subscribers.json`)
   }
 
   getOfferIdSubject() {
@@ -44,7 +56,8 @@ export class ApiService {
     img: string,
     description: string,
     duration: string,
-    price: string
+    price: string,
+    /* subscribers: string[] */
   ) {
     return this.http.post<Lesson>(`${this.appUrl}/lessons.json`, {
       author,
@@ -54,6 +67,7 @@ export class ApiService {
       description,
       duration,
       price,
+      /* subscribers */
     });
   }
 
@@ -73,5 +87,7 @@ export class ApiService {
         price
       })
     }
+
+    
   
 }

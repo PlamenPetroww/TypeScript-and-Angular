@@ -39,14 +39,7 @@ export class LoginComponent implements OnInit {
     private message: MessageComponent
   ) {}
 
-  ngOnInit(): void {
-    /* onAuthStateChanged(this.auth, (user) => {
-      if(user) {
-        console.log(user.email)
-      }
-    }) */
-
-  }
+  ngOnInit(): void {}
 
   private destroy$ = new Subject<void>();
 

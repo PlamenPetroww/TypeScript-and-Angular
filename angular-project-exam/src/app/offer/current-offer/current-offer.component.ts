@@ -5,6 +5,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import { ApiService } from 'src/app/api.service';
 import { Lesson } from 'src/app/types/lessons';
+import { map, shareReplay, tap } from 'rxjs';
 
 @Component({
   selector: 'app-current-offer',
@@ -12,6 +13,12 @@ import { Lesson } from 'src/app/types/lessons';
   styleUrls: ['./current-offer.component.css'],
 })
 export class CurrentOfferComponent implements OnInit {
+
+  authorEmail: any;
+  id: any;
+  lessonA: any;
+  isLoading: boolean = true;
+  subscriptions: any;
 
   form = this.fb.group({
     title: ['', [Validators.required, Validators.minLength(4)]],
@@ -24,7 +31,7 @@ export class CurrentOfferComponent implements OnInit {
     private apiService: ApiService,
     private activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
-    private router: Router
+    private router: Router,
   ) {}
 
   lessonId!: string;
@@ -34,6 +41,38 @@ export class CurrentOfferComponent implements OnInit {
   ngOnInit(): void {
     this.lessonId = this.activatedRoute.snapshot.params['lessonId'];
     this.fetchLesson();
+
+    const lesson$ = this.apiService.getLesson(this.id).pipe(
+      shareReplay(1),
+      tap((lesson) => {
+        this.isLoading = false;
+
+        this.lesson = lesson;
+        this.authorEmail = this.lesson?.userEmail;
+        this.lessonA.id = this.id;
+      })
+    );
+
+    /* const subs$ = this.apiService.getSubscribers().pipe(
+      shareReplay(1),
+      map((responseData) => {
+        const subsArray = [];
+        for(const key in responseData) {
+          if(responseData.hasOwnProperty(key)) {
+            subsArray.push({ ...responseData[key], id: key})
+          }
+        }
+        return subsArray;
+      })
+    ) */
+
+    /* combineLatest([lesson$, subs$]).subscribe(([lesson, subs]) => {
+      
+      this.subscriptions = subs;
+      this.lesson = lesson;
+
+      
+    }) */
   }
 
   fetchLesson(): void {
